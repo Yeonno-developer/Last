@@ -141,8 +141,8 @@ $(document).on('mouseover', 'section,header,footer', function () {
 <div class="menu2">
 <div class="sub_menu" style="margin-left: 0px;"> <!-- 경기일정 및 경기기록 -->
 <div><a href="${path}/team/teamMain.shop">팀 순위</a></div>
-<div><a href="${path}/team/teamB.shop">팀 비교</a></div>
-<div><a href="${path}/team/playerB.shop">선수 순위</a></div>
+<div><a href="${path}/schedule/teamB.shop">팀 비교</a></div>
+<div><a href="${path}/schedule/playerR.shop">선수 순위</a></div>
 </div>
 <div class="sub_menu" style="left:240px;"> <!-- 구단정보 -->
 <c:forEach items="${teamCode}" var="c">

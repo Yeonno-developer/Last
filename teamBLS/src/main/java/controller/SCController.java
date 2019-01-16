@@ -60,6 +60,18 @@ public class SCController {
 		return mav;
 	}
 	
+	@RequestMapping("schedule/teamB")
+	public ModelAndView teamB() {
+		ModelAndView mav = new ModelAndView("schedule/team");
+		return mav;
+	}
+	
+	@RequestMapping("schedule/playerR")
+	public ModelAndView playerR() {
+		ModelAndView mav = new ModelAndView("schedule/player");
+		return mav;
+	}
+	
 	@RequestMapping("schedule/CrowlingSchdule")
 	public ModelAndView CrowlingSchdule() {
 		ModelAndView mav = new ModelAndView("schedule/scheMain");
