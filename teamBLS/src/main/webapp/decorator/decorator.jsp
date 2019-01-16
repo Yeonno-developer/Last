@@ -127,14 +127,14 @@ $(document).on('mouseover', 'section,header,footer', function () {
 				</c:if>
 			</div>
 			<a href="${path}/team/mainPage.shop"><img src="${path}/picture/logo.jpg"
-				style="width: 200px; height: 100px;"></a>
+				style="width: 200px; height: 100px; margin-bottom: 20px;"></a>
 		</div>
 	</header>
 <hr style="border-top : 2px solid gray;">
 <div class="menu1">
 <div class="main_menu" style="margin-left: 0px;"><a href="${path}/schedule/CrowlingSchdule.shop">경기일정 및 순위정보</a></div>
 <div class="main_menu" style="margin-left: 240px;"><a href="${path}/team/tInfo.shop?tcode=06">구단정보</a></div>
-<div class="main_menu" style="margin-left: 480px;"><a href="${path}/board/list.shop?pcode=06">게시판</a></div>
+<div class="main_menu" style="margin-left: 480px;"><a href="${path}/board/list.shop?tcode=06">게시판</a></div>
 <div class="main_menu" style="margin-left: 720px;"><a href="${path}/item/list.shop">굿즈</a></div>
 <div class="main_menu" style="margin-left: 960px;"><a href="${path}/chat/multi.shop">실시간 중계</a></div>
 
