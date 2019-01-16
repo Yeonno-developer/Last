@@ -223,6 +223,7 @@ public class TeamController {
 		List<String> teamname = new ArrayList<String>();
 		List<String> pname = new ArrayList<String>();
 		List<String> score = new ArrayList<String>();
+		List<String> pimg = new ArrayList<String>();
 		Map<String,List> prank = new TreeMap<>();
 		String url = "https://www.kbl.or.kr/main/main.asp";	// 소스를 가져올 주소입력
 		try {
@@ -249,10 +250,24 @@ public class TeamController {
 					score.add(c.text());
 				}
 			}
+			/*
+			 * String val = outCode.substring(outCode.indexOf("/") + 1, outCode.indexOf(".png"));
+			 *  <img src="/images/playersPhoto/290381.jpg" alt="이정현">
+				<img src="/images/playersPhoto/290450.jpg" alt="오세근">
+				<img src="/images/playersPhoto/290380.jpg" alt="박찬희">
+			 */
+			for (Element src : div) {
+				for(Element c : src.select("div.cover img")) {
+					String outCode = c.toString();
+					String val = outCode.substring(outCode.lastIndexOf("/") + 1, outCode.indexOf(".jpg"));
+					pimg.add(val);
+				}
+			}
 			prank.put("cont", cont);
 			prank.put("pname", pname);
 			prank.put("teamname", teamname);
 			prank.put("score", score);
+			prank.put("pimg",pimg);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

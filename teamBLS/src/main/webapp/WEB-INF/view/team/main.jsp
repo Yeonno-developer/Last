@@ -30,15 +30,17 @@ width:330px;
 height:300px;
 margin-left: 360px;
 color: white;
+padding-left: 20px;
 }
 .visual_side .flexbox {
 	background-color: #1a1a1d;
 	width: 265px;
-	height: 150px;
+	height: 120px;
 	margin: 10px 0;
 	display: -webkit-flex;
 	-webkit-flex-wrap: wrap;
 	flex-wrap: wrap;
+	padding-bottom: 40px;
 }
 .visual_side .item {
 	width: 80px;
@@ -73,9 +75,6 @@ width:100%;
 .rank{
 font-size: 16px;
 }
-.r_num{
-margin-left: 10px;
-}
 .r_lose{
 
 }
@@ -89,7 +88,8 @@ width : 870px;
 height : 600px;
 float: right;
 font: white;
-
+padding-left: 30px;
+padding-right: 30px;
 }
 .p_rank{
 color: white;
@@ -98,6 +98,33 @@ margin-left : 690px;
 position: absolute;
 width : 870px;
 height:300px;
+padding-left: 30px;
+padding-right: 30px;
+padding-bottom: 50px;
+}
+.p_rank_img{
+overflow: hidden;
+width: 94px;
+height: 94px;
+position: relative;
+border-radius: 100%;
+float: left;
+margin-top: 20px;
+}
+.p_rank_p{
+float:  left;
+padding-right: 30px;
+}
+.p_rank_con{
+padding: 20px 0 21px 15px;
+float: left;
+width: 138px;
+}
+.p_rank_row{
+height : 130px;
+border-top: 1px solid #fff;
+border-bottom: 1px solid #fff;
+border-color: rgba(255,255,255,.2);
 }
 </style>
 <script type="text/javascript"
@@ -172,20 +199,28 @@ hhh += '<div class ="item"><img src="${path}/picture/teams/logo_06.png">';
 
 <img class="back" src="${path}/picture/back.jpg" >
 <div class="sh_gr">
+
 </div>
 
 <div class="p_rank">
 <h1>PLAYER RANKING</h1>
-
-<c:forEach var="i"  begin="0"  end="3">
+<div class="p_rank_row">
+<c:forEach var="i"  begin="0"  end="2">
+<div class="p_rank_p">
+<div class="p_rank_con">
+<div>${PRank.cont[i]}</div>
+<div>${PRank.pname[i]}</div>
+<div>${PRank.teamname[i]}</div>
+<div>${PRank.score[i]}</div>
+</div>
+<div class="p_rank_img">
 <div>
-${PRank.cont[i]}
-${PRank.pname[i]}
-${PRank.teamname[i]}
-${PRank.score[i]}
+<img src="${path}/picture/team_players/${PRank.pimg[i]}.jpg" style="width: 94px; height: 94px; ">
+</div>
+</div>
 </div>
 </c:forEach>
-
+</div>
 </div>
 <div class="visual_side" >
 	<p class="shp"align="center">${today}(${day})</p>
@@ -197,7 +232,7 @@ ${PRank.score[i]}
 <h1>TEAM RANKING</h1>
 <div>
 <c:forEach var="i"  begin="0"  end="4">
-  <div class="rank_main" >
+  <div class="rank_main">
   <span class="rank r_num">${i+1}</span>
   <span class="rank r_name">${Rank.teamname[i]}</span>
   <span class="rank r_win">${Rank.win[i]}</span><span class="rank"> - </span>
