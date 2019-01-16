@@ -71,6 +71,7 @@ text-align: center;
 font-size : 15px;
 font-family: 'Noto Sans KR', sans-serif;
 margin-top: 15px;
+margin-left: 5px;
 z-index:300;
 }
 .menu2 .sub_menu div{
