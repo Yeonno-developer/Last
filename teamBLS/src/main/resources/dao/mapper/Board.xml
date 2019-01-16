@@ -5,23 +5,30 @@
 <mapper namespace="dao.mapper.BoardMapper">
 
 	<select id="count" resultType="int" parameterType="map">
-		select count(*) from board
+		select count(*) from board where tcode=#{tcode} and reflevel=0
 		<if test="column != null and find != null">
-			where ${column} like '%${find}%'
+			and ${column} like '%${find}%'
 		</if>
 	</select>
 	
 	<select id="select" resultType="Board" parameterType="map">
-		select num,name,pass,subject,content,file1 fileurl, regdate, readcnt, ref, reflevel, refstep from board
+		select num,name,pass,subject,content,file1 fileurl, regdate, readcnt, ref, reflevel, refstep,tcode from board
+		<if test="tcode!=null">
+			where tcode=#{tcode} and reflevel=0
+		</if>
 		<if test="num != null">
 			where num = #{num}
 		</if>
 		<if test="column != null and find != null">
-			where ${column} like '%${find}%'
+			and ${column} like '%${find}%'
 		</if>
 		order by ref desc, refstep asc
 		<if test="startrow != null and limit !=null">
 			limit #{startrow},${limit}
 		</if>
+	</select>
+	<select id="selectone" resultType="Board" parameterType="map">
+		select num,name,pass,subject,content,file1 fileurl, regdate, readcnt, ref, reflevel, refstep,tcode from board
+		where ref=#{ref} and reflevel>=1
 	</select>
 </mapper>

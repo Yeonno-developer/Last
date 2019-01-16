@@ -1,10 +1,12 @@
 package controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
+import org.jboss.netty.handler.codec.http.HttpRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -22,16 +24,20 @@ public class BoardController {
 	private ShopService service;
 
 	@RequestMapping(value = "board/list")
-	public ModelAndView list(Integer pageNum, String searchType, String searchContent) {
+//	public ModelAndView list(Integer pageNum, String searchType, String searchContent,HttpRequest request) {
+	public ModelAndView list(Integer pageNum, String searchType, String searchContent,HttpServletRequest request) {
 		if (pageNum == null || pageNum.toString().equals("")) {
 			pageNum = 1;
 		}
 		ModelAndView mav = new ModelAndView();
 		int limit = 10; // 한페이지에 출력할 게시물 갯수
 		// 총 게시물 건수
-		int listcount = service.boardcount(searchType, searchContent);
+//		int listcount = service.boardcount(searchType, searchContent);
+		String tcode=request.getParameter("tcode");
+		int listcount = service.boardcount(searchType, searchContent,tcode);
 		// boardlist : 한페이지에 출력할 게시물 정보 저장
-		List<Board> boardlist = service.boardlist(searchType, searchContent, pageNum, limit);
+//		List<Board> boardlist = service.boardlist(searchType, searchContent, pageNum, limit);
+		List<Board> boardlist = service.boardlist(searchType, searchContent, tcode, pageNum, limit);
 		int maxpage = (int) ((double) listcount / limit + 0.95);
 		int startpage = ((int) ((pageNum / 10.0 + 0.9) - 1)) * 10 + 1;
 		int endpage = startpage + 9;
@@ -51,7 +57,6 @@ public class BoardController {
 	@RequestMapping(value = "board/write", method = RequestMethod.POST)
 	public ModelAndView boardadd(@Valid Board board, BindingResult br, HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView();
-		System.out.println(board);
 		if (br.hasErrors()) {
 			mav.getModel().putAll(br.getModel());
 			return mav;
@@ -59,7 +64,7 @@ public class BoardController {
 		try {
 			service.boardadd(board, request);
 			mav.addObject("board", board);
-			mav.setViewName("redirect:list.shop");
+			mav.setViewName("redirect:list.shop?tcode="+request.getParameter("tcode"));
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new ShopException("게시글 등록에 실패하셨습니다", "write.shop");
@@ -73,7 +78,7 @@ public class BoardController {
 	 * refstep 보다 큰 모든 레코드들을 refstep+1로 수정하기 3. 등록 후 list.shop 요청하기
 	 */
 	@RequestMapping(value = "board/reply", method = RequestMethod.POST)
-	public ModelAndView reply(@Valid Board board, BindingResult br) {
+	public ModelAndView reply(Board board, BindingResult br) {
 		ModelAndView mav = new ModelAndView();
 		if (br.hasErrors()) {
 			mav.getModel().putAll(br.getModel());
@@ -82,10 +87,10 @@ public class BoardController {
 		try {
 			service.replyadd(board);
 			mav.addObject("board", board);
-			mav.setViewName("redirect:list.shop");
+			mav.setViewName("redirect:detail.shop?num=" + board.getRef());
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new ShopException("답글 등록에 실패했습니다", "reply.shop?num=" + board.getNum());
+			throw new ShopException("답글 등록에 실패했습니다", "detail.shop?num=" + board.getRef());
 		}
 		return mav;
 	}
@@ -139,12 +144,16 @@ public class BoardController {
 	public ModelAndView getboard(Integer num, HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView();
 		Board board = new Board();
-		System.out.println("board");
 		if (num != null) {
 			if (request.getRequestURI().contains("detail")) { // 페이지경로가 datail을 포함할때 (상세보기)
 				service.readcntadd(num); // 조회수 증가
 			}
 			board = service.getBoard(num);
+			List<Board> boardreply=new ArrayList<>();
+			boardreply = service.boardreply(board.getNum(),board.getReflevel());
+			int commentcount = service.commentcount(board.getNum());
+			mav.addObject("ccount", commentcount);
+			mav.addObject("boardreply", boardreply);
 		}
 		mav.addObject("board", board);
 		return mav;

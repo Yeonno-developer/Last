@@ -9,6 +9,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.jboss.netty.handler.codec.http.HttpRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -144,12 +145,20 @@ public class ShopService {
 		return boardDao.select(num);
 	}
 
-	public int boardcount(String searchType, String searchContent) {
-		return boardDao.count(searchType, searchContent);
+	public int boardcount(String searchType, String searchContent,String tcode) {
+		return boardDao.count(searchType, searchContent,tcode);
+//	public int boardcount(String searchType, String searchContent) {
+//		return boardDao.count(searchType, searchContent);
+	}
+	
+	public int commentcount(int num) {
+		return boardDao.commentcount(num);
 	}
 
-	public List<Board> boardlist(String searchType, String searchContent, Integer pageNum, int limit) {
-		return boardDao.list(searchType, searchContent, pageNum, limit);
+//	public List<Board> boardlist(String searchType, String searchContent, Integer pageNum, int limit) {
+//	return boardDao.list(searchType, searchContent, pageNum, limit);
+	public List<Board> boardlist(String searchType, String searchContent, String tcode, Integer pageNum, int limit) {
+		return boardDao.list(searchType, searchContent, tcode,pageNum, limit);
 	}
 
 	public void boardadd(Board board, HttpServletRequest request) {
@@ -220,4 +229,9 @@ public class ShopService {
 	public int getMaxnum() {
 		return itemDao.Maxnum();
 	}
+
+	public List<Board> boardreply(int ref, int reflevel) {
+		return boardDao.selectR(ref,reflevel);
+	}
+
 }

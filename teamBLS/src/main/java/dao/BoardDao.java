@@ -6,6 +6,7 @@ import java.util.Map;
 
 import javax.sql.DataSource;
 
+import org.jboss.netty.handler.codec.http.HttpRequest;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -29,14 +30,22 @@ public class BoardDao {
 		map.put("num", num);
 		return sqlSession.selectOne(NS + "select",map);
 	}
-	public int count(String searchType, String searchContent) {
+	public Board selectone(Integer num) {
+		Map<String, Integer> map= new HashMap<String, Integer>();
+		map.put("num", num);
+		return sqlSession.selectOne(NS + "select",map);
+	}
+	public int count(String searchType, String searchContent, String tcode) {
+//	public int count(String searchType, String searchContent) {
 		Map<String, String> map= new HashMap<String, String>();
 		map.put("column", searchType);
 		map.put("find", searchContent);
+		map.put("tcode", tcode);
 		/*return sqlSession.selectOne(NS + "count", map);*/
-		return 1;
+		return sqlSession.selectOne(NS + "count",map);
 	}
-	public List<Board> list(String searchType, String searchContent, Integer pageNum, int limit) {
+//	public List<Board> list(String searchType, String searchContent, Integer pageNum, int limit) {
+	public List<Board> list(String searchType, String searchContent, String tcode, Integer pageNum, int limit) {
 		// sql = " order by ref desc, refstep asc limit :startrow, :limit";
 		Map<String , Object> map = new HashMap<String, Object>();
 		int startrow = (pageNum -1) * limit;
@@ -44,6 +53,8 @@ public class BoardDao {
 		map.put("find", searchContent);
 		map.put("startrow", startrow);
 		map.put("limit", limit);
+		map.put("tcode", tcode);
+		map.put("reflevel", 0);
 		return sqlSession.selectList(NS + "select", map);
 	}
 	public int maxNum() {
@@ -70,5 +81,14 @@ public class BoardDao {
 		Map<String,Integer> map = new HashMap<String,Integer>();
 		map.put("num", num);
 		sqlSession.getMapper(BoardMapper.class).delete(map);
+	}
+	public List<Board> selectR(int ref, int reflevel) {
+		Map<String, Integer> map= new HashMap<String, Integer>();
+		map.put("ref", ref);
+		map.put("reflevel", reflevel);
+		return sqlSession.selectList(NS + "selectone",map);
+	}
+	public int commentcount(int num) {
+		return sqlSession.getMapper(BoardMapper.class).ccount(num);
 	}
 }
