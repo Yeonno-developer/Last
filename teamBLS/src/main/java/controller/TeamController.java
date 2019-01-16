@@ -103,8 +103,15 @@ public class TeamController {
 	@RequestMapping("team/pl")
 	public ModelAndView pMain(HttpSession session, HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView("team/player");
+		String pnum = request.getParameter("pCode");
+		Map<String,List> pinfo = player(pnum);
+		mav.addObject("pinfo",pinfo);
 		return mav;
 	}
+
+
+
+
 
 	@RequestMapping("team/t1")
 	public ModelAndView test4(HttpSession session) {
@@ -272,6 +279,37 @@ public class TeamController {
 			e.printStackTrace();
 		}
 		return prank;
+	}
+	private Map<String,List> player(String pnum) {
+		List<String> pinfoco = new ArrayList<String>();
+		List<String> pinfosu = new ArrayList<String>();
+		Map<String,List> pinfo = new TreeMap<>();
+		
+		String url = "https://www.kbl.or.kr/players/player_info.asp?pcode="+pnum;	// 소스를 가져올 주소입력
+		try {
+			Document doc = Jsoup.connect(url).get();	// doc : url 소스 전체를 가져옴
+			Elements div = doc.select("div.playerbox_2015");
+			// div : doc에서 div태그 중 class속성이 table_type_ht이고 mt1인 div태그를 선택		
+			for (Element src : div) {
+				for(Element c : src.select("dl.protxt_2015 dd")) {	
+					String outCode = c.text();
+					String val = outCode.replace((char)160,' ');
+					pinfoco.add(val);
+				}
+			}
+			for (Element src : div) {
+				for(Element c : src.select("dl.protxt_2015 dt")) {	
+					String outCode = c.text();
+					String val = outCode.replace((char)160,' ');
+					pinfosu.add(val);
+				}
+			}
+			pinfo.put("psu",pinfosu);
+			pinfo.put("pco",pinfoco);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return pinfo;
 	}
 	private Map<String,String> Tinfo(String tnum){
 		Map<String,String> tinfo = new TreeMap<>();
