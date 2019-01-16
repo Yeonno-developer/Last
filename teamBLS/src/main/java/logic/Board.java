@@ -18,6 +18,13 @@ public class Board {
 	private String subject;
 	@NotEmpty(message="내용은 필수입니다.")
 	private String content;
+	private String tcode;
+	public String getTcode() {
+		return tcode;
+	}
+	public void setTcode(String tcode) {
+		this.tcode = tcode;
+	}
 	private int readcnt;
 	private int ref;
 	private int reflevel;
