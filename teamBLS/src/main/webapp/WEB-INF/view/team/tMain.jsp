@@ -130,8 +130,8 @@ div.w3-row {
 	<div id="tMian">
 	<h1>ÆÀ ¼øÀ§</h1>
 	</div>
-	<div id='dashboard' class="w3-border"></div>
 	<!-- 
+	<div id='dashboard' class="w3-border"></div>
  -->
 	<div>
 		<table class="team">
