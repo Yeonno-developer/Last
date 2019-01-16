@@ -56,6 +56,7 @@ img#backImg {
 .f {
 	z-index: 1;
 	position: relative;
+	height: 750px;
 }
 
 table {
@@ -81,7 +82,8 @@ td {
 </head>
 <body>
 	<hr style="border-top: 1px solid gray;">
-	<img src="${path}/picture/teams/info_logo/logo_${param.tcode}.gif" id="backImg">
+	<img src="${path}/picture/teams/info_logo/logo_${param.tcode}.gif"
+		id="backImg">
 	<!-- 
 	<div class="w3-row">
 		<c:forEach items="${sessionScope.teamCode}" var="c">
@@ -103,10 +105,10 @@ td {
 				<td colspan="2" align="left" style="padding-top: 30px"
 					class="w3-lobster font-effect-brick-sign w3-xxlarge"><c:forEach
 						items="${sessionScope.teamCode}" var="test">
-						<c:if test="${test.value==param.tcode}"> ${test.key} Team Board </c:if>
+						<c:if test="${test.value==param.tcode}"> Team Board </c:if>
 					</c:forEach></td>
 
-				<td colspan="3" align="right" style="padding-top: 55px">
+				<td colspan="4" align="right" style="padding-top: 45px">
 					<%-- 검색 기능 --%>
 					<form action="list.shop?tcode=${param.tcode}" method="post"
 						name="searchform" onsubmit="return list(1)">
@@ -148,12 +150,9 @@ td {
 									<a href="../file/${board.fileurl}">@</a>
 								</c:if> <c:if test="${!empty board.fileurl}">
 			&nbsp;
-		</c:if> <c:forEach begin="1" end="${board.reflevel}">&nbsp;&nbsp;</c:forEach>
-								<c:if test="${board.reflevel > 0}">└</c:if> <a
-								href="detail.shop?num=${board.num}">${board.subject}</a></td>
+		</c:if> <a href="detail.shop?num=${board.num}">${board.subject}</a></td>
 							<td align="center">${board.name}</td>
-							<td align="center"><fmt:formatDate value="${board.regdate}"
-									pattern="YYYY.MM.HH" /></td>
+							<td align="center"></td>
 							<td align="center">${board.readcnt}</td>
 						</tr>
 					</c:forEach>
@@ -192,7 +191,7 @@ td {
 				<td colspan="2" align="left"><c:if test="${!empty param.tcode}">
 						<h4 class="w3-col w3-lobster font-effect-brick-sign">
 							<c:forEach items="${sessionScope.teamCode}" var="test">
-								<c:if test="${test.value==param.tcode}"> ${test.key} Team Board </c:if>
+								<c:if test="${test.value==param.tcode}"> ${test.key} </c:if>
 							</c:forEach>
 						</h4>
 					</c:if> <c:if test="${empty param.tcode}">

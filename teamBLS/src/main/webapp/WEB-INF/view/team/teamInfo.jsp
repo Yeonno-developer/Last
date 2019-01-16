@@ -175,11 +175,11 @@ function list_disp(id) {
 							<div style="margin-left: 100px;">
 								<c:forEach items="${pCode}" var="pcode">
 										<c:if test="${pcode.value==param.tcode}">
-											<div class="plist">
+											<a href="${path}/team/pl.shop?pCode=${pcode.key}"><div class="plist">
 											<div class="player_img">
 											<img src="${path}/picture/team_players/${pcode.key}.jpg" style="width: 110px; height: 138px;">
 											</div>
-											</div>
+											</div></a>
 										</c:if>
 								</c:forEach>
 							</div>

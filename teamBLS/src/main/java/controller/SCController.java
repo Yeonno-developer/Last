@@ -44,8 +44,8 @@ public class SCController {
 					// cell (행의 각 열) 을 가져옵니다.
 					
 					row.forEach(cell -> {
-						System.out.print(cell.toString());
-						System.out.print(" || ");
+						/*System.out.print(cell.toString());
+						System.out.print(" || ");*/
 
 						line += cell+" ";
 					});
