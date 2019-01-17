@@ -113,7 +113,7 @@ td {
 					<c:set var="i" value="${startc.index}" />
 				</c:if>
 				<c:if test="${i%5==0}">
-					<div id="chart${i}" style="height: 250px; width: 400px;"></div>
+					<div id="chart${i}" style="height: 250px; width: 450px;"></div>
 					<script type="text/javascript">
 			   		var randomColorFactor=function(){
 			   			return Math.round(Math.random()*255);
