@@ -54,9 +54,9 @@ height: 150px;
 .info_top_menu{
 border : 1px solid gray;
 width : 200px;
-height : 80px;
+height : 50px;
 float: left;
-padding-top: 25px;
+padding-top: 11px;
 padding-left: 20px;
 padding-right: 20px;
 font-size: 18px;
@@ -75,7 +75,6 @@ border: outset 0.7px;
 margin: 7px;
 }
 .player_img{
-
 background: no-repeat 0 0;
 width: 117px;
 padding: 7px 7px 7px 7px;
@@ -86,6 +85,44 @@ width: 800px;
 padding: 20px;
 background: #fff;
 }
+.record_table{
+margin-left: 490px !important;
+width: 940px !important;
+height: 500px;
+margin-bottom: 20px;
+}
+.record_table table{
+color :#1b2637;
+border-collapse : collapse;
+padding: 20px 20px 20px 0px;
+margin-bottom: 20px;
+}
+tr{
+height: 50px;
+}
+th{
+border-top: 2px solid;
+border-bottom: 1px solid;
+}
+th td{
+border-bottom-style: none !important;
+}
+ td{
+ text-align: center;
+ border-bottom: 1px solid #dbdbdb;
+ color: #666;
+ font: 12px/1.4 'NotoSansKR', Dotum, '돋움', Gulim, '굴림', Arial, Helvetica, sans-serif;
+ }
+ tfoot{
+ 	text-align: center;
+    border-bottom: 1px solid #999999;
+    border-right: 1px solid #dbdbdb;
+    font-weight: 300;
+    font-size: 14px;
+    color: #666;
+    background: #f7f7f7;
+    padding: 14px 0 13px 0;
+ }
 </style>
 
 <script type="text/javascript">
@@ -188,9 +225,9 @@ function list_disp(id) {
 								</c:forEach>
 							</div>
 </div>
-<div id="trecord" class="info_mid" style="height: 2000px;">
+<div id="trecord">
 
-<table> <!-- 테이블1 -->
+<table class="record_table"> <!-- 테이블1 -->
 <c:set var="size1" value="${table1.size}"/>
 <tr>
 <th>배번</th><th>선수</th><th>G</th><th>Min.</th><th>2P</th>
@@ -219,7 +256,7 @@ function list_disp(id) {
 <td>${fo}</td>
 </c:forEach></tr></tfoot>
 </table>
-<table> <!-- 테이블2 -->
+<table class="record_table"> <!-- 테이블2 -->
 <c:set var="size2" value="${table2.size}"/>
 <tr>
 <th rowspan="2">배번</th><th rowspan="2">선수</th><th colspan="2">REBOUNDS</th>
@@ -244,8 +281,8 @@ function list_disp(id) {
 <tfoot><tr><c:forEach items="${table2.foot}" var="fo">
 <td>${fo}</td>
 </c:forEach></tr></tfoot>
-</table>
-<table> <!-- 테이블1 -->
+</table >
+<table class="record_table"> <!-- 테이블1 -->
 <c:set var="size3" value="${table3.size}"/>
 <tr>
 <th>배번</th><th>선수</th><th>STL</th><th>BS</th><th>GD</th>

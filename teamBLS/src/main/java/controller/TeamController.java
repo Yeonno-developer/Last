@@ -767,7 +767,6 @@ public class TeamController {
 					table.add(c.toString());
 				}
 			}
-			System.out.println(table);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -786,7 +785,6 @@ public class TeamController {
 					table.add(c.toString());
 				}
 			}
-			System.out.println(table);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
