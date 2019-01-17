@@ -18,7 +18,6 @@
 	margin: auto;
 	margin-top: 25px;
 	border-collapse: collapse;
-	border-top: 1px solid #444444;
 	margin-bottom: 25px;
 }
 

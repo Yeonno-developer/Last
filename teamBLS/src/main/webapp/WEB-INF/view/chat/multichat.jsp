@@ -22,6 +22,7 @@ div.test1 {
 	src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 </head>
 <body>
+	<hr style="border-top: 1px solid gray;">
 	<div class="test1">
 		<h1>실시간 채팅</h1>
 	</div>

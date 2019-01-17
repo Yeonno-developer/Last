@@ -14,7 +14,7 @@
 	href="https://fonts.googleapis.com/css?family=Montserrat">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<title>CRAWING을 이용한 SCREEN</title>
+<title>TEAM RANK</title>
 <style type="text/css">
 .pls, table.team, div#dashboard {
 	width: 1060px;
@@ -128,7 +128,7 @@ div.w3-row {
 <body>
 <hr style="border-top : 1px solid gray;">
 	<div id="tMian">
-	<h1>팀 순위</h1>
+	<h1>Team Rank</h1>
 	</div>
 	<!-- 
 	<div id='dashboard' class="w3-border"></div>
