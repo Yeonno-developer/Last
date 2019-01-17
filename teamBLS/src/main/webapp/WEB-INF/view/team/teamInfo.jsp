@@ -56,6 +56,7 @@ border : 1px solid gray;
 width : 200px;
 height : 80px;
 float: left;
+padding-top: 25px;
 padding-left: 20px;
 padding-right: 20px;
 font-size: 18px;
@@ -90,11 +91,14 @@ background: #fff;
 <script type="text/javascript">
 window.onload=function(){
 	document.getElementById("tinfo").style.display = "none";
+	document.getElementById("trecord").style.display = "none";
 	document.getElementById("pinfo").style.display = "block";
+	
 }
 function disp_div(id) {
 	document.getElementById("tinfo").style.display = "none";
 	document.getElementById("pinfo").style.display = "none";
+	document.getElementById("trecord").style.display = "none";
 	document.getElementById(id).style.display = "block";
 }
 function list_disp(id) {
@@ -115,7 +119,7 @@ function list_disp(id) {
 			<a href="javascript:disp_div('tinfo')">
 			<div class="info_top_menu" style="margin-left: 0px; left: 200px;">
 			선수소개</div></a>
-			<a href="">
+			<a href="javascript:disp_div('trecord')">
 			<div class="info_top_menu" style="margin-left: 0px; left: 400px;">
 			팀기록실</div></a>
 		</div>
@@ -184,6 +188,87 @@ function list_disp(id) {
 								</c:forEach>
 							</div>
 </div>
-<div></div>
+<div id="trecord" class="info_mid" style="height: 2000px;">
+
+<table> <!-- 테이블1 -->
+<c:set var="size1" value="${table1.size}"/>
+<tr>
+<th>배번</th><th>선수</th><th>G</th><th>Min.</th><th>2P</th>
+<th>2PA</th><th>%</th><th>3P</th><th>3PA</th><th>%</th>
+<th>FG%</th><th>FT</th><th>FTA</th><th>%</th>
+</tr>
+<c:forEach var="i" begin="0" end="${size1-2}">
+<tr>
+<td>${table1.num[i]}</td>
+<td>${table1.name[i]}</td>
+<td>${table1.G[i]}</td>
+<td>${table1.Min[i]}</td>
+<td>${table1.P2[i]}</td>
+<td>${table1.PA2[i]}</td>
+<td>${table1.Per1[i]}</td>
+<td>${table1.P3[i]}</td>
+<td>${table1.PA3[i]}</td> 
+<td>${table1.Per2[i]}</td> 
+<td>${table1.FG[i]}</td> 
+<td>${table1.FT[i]}</td>
+<td>${table1.FTA[i]}</td>
+<td>${table1.Per3[i]}</td>
+</tr>
+</c:forEach>
+<tfoot><tr><c:forEach items="${table1.foot}" var="fo">
+<td>${fo}</td>
+</c:forEach></tr></tfoot>
+</table>
+<table> <!-- 테이블2 -->
+<c:set var="size2" value="${table2.size}"/>
+<tr>
+<th rowspan="2">배번</th><th rowspan="2">선수</th><th colspan="2">REBOUNDS</th>
+<th rowspan="2">RPG</th><th rowspan="2">Ast</th>
+<th rowspan="2">APG</th><th rowspan="2">w/FT</th><th rowspan="2">w/oFT</th>
+</tr><tr><th>Off</th><th>Def</th></tr>
+
+
+<c:forEach var="i" begin="0" end="${size2-2}">
+<tr>
+<td>${table2.num[i]}</td>
+<td>${table2.name[i]}</td>
+<td>${table2.Off[i]}</td>
+<td>${table2.Def[i]}</td>
+<td>${table2.RPG[i]}</td>
+<td>${table2.Ast[i]}</td>
+<td>${table2.APG[i]}</td>
+<td>${table2.wFT[i]}</td>
+<td>${table2.woFT[i]}</td>
+</tr>
+</c:forEach>
+<tfoot><tr><c:forEach items="${table2.foot}" var="fo">
+<td>${fo}</td>
+</c:forEach></tr></tfoot>
+</table>
+<table> <!-- 테이블1 -->
+<c:set var="size3" value="${table3.size}"/>
+<tr>
+<th>배번</th><th>선수</th><th>STL</th><th>BS</th><th>GD</th>
+<th>TO</th><th>DK</th><th>DKA</th><th>PTS</th><th>PPG</th>
+</tr>
+<c:forEach var="i" begin="0" end="${size3-2}">
+<tr>
+<td>${table3.num[i]}</td>
+<td>${table3.name[i]}</td>
+<td>${table3.STL[i]}</td>
+<td>${table3.BS[i]}</td>
+<td>${table3.GD[i]}</td>
+<td>${table3.TO[i]}</td>
+<td>${table3.DK[i]}</td>
+<td>${table3.DKA[i]}</td>
+<td>${table3.PTS[i]}</td>
+<td>${table3.PPG[i]}</td>
+</tr>
+</c:forEach>
+<tfoot><tr><c:forEach items="${table3.foot}" var="fo">
+<td>${fo}</td>
+</c:forEach></tr></tfoot>
+</table>
+</div>
 </body>
 </html>

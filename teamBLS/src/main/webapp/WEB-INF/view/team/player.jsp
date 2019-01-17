@@ -13,7 +13,7 @@ margin-left: 360px;
 margin-bottom: 50px;
 margin-right : 360px;
 width : 1200px;
-height : 500px;
+height : 300px;
 }
 .info_full{
 width : 940px;
@@ -65,8 +65,48 @@ font-weight: bold;
 .info_box_box img{
 border: 1px solid #e1e1e1;
 }
+.info_top{
 
+margin-left: 760px;
+margin-right: 360px;
+width : 1200px;
+height: 150px;
+}
+.pinfo_menu{
+border : 1px solid gray;
+width : 200px;
+height : 80px;
+float: left;
+padding-top: 25px;
+padding-left: 20px;
+padding-right: 20px;
+font-size: 18px;
+text-align :center;
+}
+.record_table{
+
+}
 </style>
+<script type="text/javascript">
+window.onload=function(){
+	document.getElementById("season").style.display = "none";
+	document.getElementById("game").style.display = "block";
+	
+}
+function disp_div(id) {
+	document.getElementById("season").style.display = "none";
+	document.getElementById("game").style.display = "none";
+	document.getElementById(id).style.display = "block";
+}
+function list_disp(id) {
+	var disp = document.getElementById(id);
+	if(disp.style.display == 'block') {
+		disp.style.display = "none";
+	} else {
+		disp.style.display = "block";
+	}
+}
+</script>
 </head>
 <body>
 <div class="pageheader">
@@ -82,6 +122,27 @@ border: 1px solid #e1e1e1;
 </c:forEach>
 </div>
 </div>
+</div>
+</div>
+	<div  class="info_top">
+		<div><a href="javascript:disp_div('season')">
+			<div class="pinfo_menu" style="margin-left: 0px; left: 0px;">
+			시즌별 기록</div></a>
+			<a href="javascript:disp_div('game')">
+			<div class="pinfo_menu" style="margin-left: 0px; left: 200px;">
+			경기별 기록</div></a>
+		</div>
+	</div>
+<div class="record_table"> <!-- 테이블 단 -->
+<div id="season">
+<c:forEach items="${seasonrecord}" var="v">
+${v}
+</c:forEach>
+</div>
+<div id="game">
+<c:forEach items="${gamerecord}" var="v">
+${v}
+</c:forEach>
 </div>
 </div>
 </body>
