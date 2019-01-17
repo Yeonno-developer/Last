@@ -28,6 +28,7 @@ td {
 	border-bottom: 1px solid #444444;
 	padding: 10px;
 }
+
 .w3-lobster {
 	font-family: "Lobster", Sans-serif;
 }
@@ -48,8 +49,8 @@ td {
 			</tr>
 			<tr>
 				<td align="center">Writer</td>
-				<td><form:input path="name" /><font color="red"><form:errors
-							path="name" /></font></td>
+				<td><input type="text" name="name"
+					value="${sessionScope.loginUser.userId}" readonly="readonly"></td>
 			</tr>
 			<tr>
 				<td align="center">Pass</td>

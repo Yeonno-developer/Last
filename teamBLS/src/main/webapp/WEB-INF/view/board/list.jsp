@@ -7,7 +7,6 @@
 <head>
 <meta charset="EUC-KR">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css?family=Lobster&effect=brick-sign">
 <title>Team Board List</title>
@@ -41,7 +40,7 @@ div.w3-row {
 div#divT, table {
 	width: 1060px;
 	margin-left: 410px;
-	margin-top: -21px;
+	margin-top: -1px;
 	/* 	margin-top: 25px; */
 }
 
@@ -197,10 +196,15 @@ td {
 					</c:if> <c:if test="${empty param.tcode}">
 			Team Board
 		</c:if></td>
+				<c:if test="${empty sessionScope.loginUser}">
+				<td colspan="3" align="right"></td>
+				</c:if>
+				<c:if test="${!empty sessionScope.loginUser}">
 				<td colspan="3" align="right"><a
 					href="write.shop?tcode=${param.tcode}" class="w3-button"
 					onmouseover="this.style.backgroundColor='#e5e5e5'"
 					onmouseout="this.style.backgroundColor=''">Write</a></td>
+				</c:if>
 			</tr>
 		</table>
 	</div>

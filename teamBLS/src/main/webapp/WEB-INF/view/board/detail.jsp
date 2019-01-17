@@ -8,7 +8,6 @@
 <meta charset="EUC-KR">
 <title>Board Content</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <style type="text/css">
 div.w3-row {
 	width: 1100px;
