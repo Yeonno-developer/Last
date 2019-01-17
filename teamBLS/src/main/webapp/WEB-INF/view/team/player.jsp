@@ -7,10 +7,11 @@
 <head>
 <meta charset="EUC-KR">
 <title>CRAWING을 이용한 SCREEN</title>
+<link href="https://fonts.googleapis.com/css?family=Black+Han+Sans" rel="stylesheet">
 <style type="text/css">
 .info_mid{
 margin-left: 360px;
-margin-bottom: 50px;
+margin-bottom: 20px;
 margin-right : 360px;
 width : 1200px;
 height : 300px;
@@ -66,18 +67,16 @@ font-weight: bold;
 border: 1px solid #e1e1e1;
 }
 .info_top{
-
 margin-left: 760px;
 margin-right: 360px;
 width : 1200px;
-height: 150px;
 }
 .pinfo_menu{
 border : 1px solid gray;
 width : 200px;
-height : 80px;
+height : 50px;
 float: left;
-padding-top: 25px;
+padding-top: 11px;
 padding-left: 20px;
 padding-right: 20px;
 font-size: 18px;
@@ -87,25 +86,42 @@ text-align :center;
 margin-left: 490px;
 }
 .record_table table{
+color :#1b2637;
+border-collapse : collapse;
 width: 940px;
-padding: 20px;
-border-left: none;
+padding: 20px 20px 20px 0px;
+margin-bottom: 20px;
 }
  caption{
+ margin-top : 50px;
+ margin-bottom : 20px;
+ font-size : 30px !important;
+ font-family: 'Black Han Sans', sans-serif;
+ color : #24478f;
  text-align :left !important;
- padding-bottom: 10px;
 }
 tr{
 height: 50px;
 }
 th{
 border-top: 2px solid;
-border-bottom: 1px solid;
+border-bottom: 1px solid;\
 }
  td{
  text-align: center;
- border-bottom: 1px solid;
+ border-bottom: 1px solid #dbdbdb;
  color: #666;
+ font: 12px/1.4 'NotoSansKR', Dotum, '돋움', Gulim, '굴림', Arial, Helvetica, sans-serif;
+ }
+ tfoot{
+ 	text-align: center;
+    border-bottom: 1px solid #999999;
+    border-right: 1px solid #dbdbdb;
+    font-weight: 300;
+    font-size: 14px;
+    color: #666;
+    background: #f7f7f7;
+    padding: 14px 0 13px 0;
  }
  </style>
 <script type="text/javascript">

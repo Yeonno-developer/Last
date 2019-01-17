@@ -8,6 +8,7 @@
 <head>
 <meta charset="EUC-KR">
 <title>CRAWING을 이용한 SCREEN</title>
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR" rel="stylesheet">
 <style type="text/css">
 
 .info_mid{
@@ -44,7 +45,7 @@ display:none;
 	border: solid;
 }
 .info_top{
-margin-top : 50px;
+
 margin-left: 660px;
 margin-right: 360px;
 width : 1200px;
@@ -54,9 +55,9 @@ height: 150px;
 .info_top_menu{
 border : 1px solid gray;
 width : 200px;
-height : 80px;
+height : 50px;
 float: left;
-padding-top: 25px;
+padding-top: 11px;
 padding-left: 20px;
 padding-right: 20px;
 font-size: 18px;
@@ -71,20 +72,70 @@ margin-left: 180px;
 }
 .plist {
 float: left;
-border: outset 0.7px;
+
 margin: 7px;
 }
 .player_img{
-
 background: no-repeat 0 0;
-width: 117px;
-padding: 7px 7px 7px 7px;
-margin-right: 6px;
+width: 110px;
+margin: 6px;
 }
 .info_box{
 width: 800px;
 padding: 20px;
 background: #fff;
+}
+.record_table{
+margin-left: 490px !important;
+width: 940px !important;
+height: 500px;
+margin-bottom: 20px;
+}
+.record_table table{
+color :#1b2637;
+border-collapse : collapse;
+padding: 20px 20px 20px 0px;
+margin-bottom: 20px;
+}
+tr{
+height: 50px;
+}
+th{
+border-top: 2px solid;
+border-bottom: 1px solid;
+}
+th td{
+border-bottom-style: none !important;
+}
+ td{
+ text-align: center;
+ border-bottom: 1px solid #dbdbdb;
+ color: #666;
+ font: 12px/1.4 'NotoSansKR', Dotum, '돋움', Gulim, '굴림', Arial, Helvetica, sans-serif;
+ }
+ tfoot{
+ 	text-align: center;
+    border-bottom: 1px solid #999999;
+    border-right: 1px solid #dbdbdb;
+    font-weight: 300;
+    font-size: 14px;
+    color: #666;
+    background: #f7f7f7;
+    padding: 14px 0 13px 0;
+ }
+.player_name{
+margin-left : 6px;
+color: #333;
+font-weight: bold;
+}
+.info_team_name{
+margin-top : 50px;
+margin-left: 540px;
+margin-bottom : 30px;
+font-size: 30px;
+color: #252525;
+font-weight: bold;
+font-family: 'Noto Sans KR', sans-serif;
 }
 </style>
 
@@ -112,6 +163,21 @@ function list_disp(id) {
 </script>
 </head>
 <body>
+<div class="info_team_name">
+<c:choose>
+<c:when test="${param.tcode == '50'}">창원 LG 세이커스</c:when>
+<c:when test="${param.tcode == '35'}">서울 삼성 썬더스</c:when>
+<c:when test="${param.tcode == '65'}">인천 전자랜드 엘리펀츠</c:when>
+<c:when test="${param.tcode == '10'}">울산 현대모비스 피버스</c:when>
+<c:when test="${param.tcode == '30'}">고양 오리온 오리온스</c:when>
+<c:when test="${param.tcode == '06'}">부산 KT 소닉붐</c:when>
+<c:when test="${param.tcode == '50'}">KGC 인삼공사</c:when>
+<c:when test="${param.tcode == '55'}">서울 SK 나이츠</c:when>
+<c:when test="${param.tcode == '16'}">원주 DB 프로미</c:when>
+<c:when test="${param.tcode == '60'}">전주 KCC 이지스</c:when>
+</c:choose>
+
+</div>
 	<div  class="info_top">
 		<div><a href="javascript:disp_div('pinfo')">
 			<div class="info_top_menu" style="margin-left: 0px; left: 0px;">
@@ -175,22 +241,32 @@ function list_disp(id) {
 		</div>
 		</div>
 </div>
+
 <div id="tinfo"class="info_mid">
 							<div style="margin-left: 100px;">
 								<c:forEach items="${pCode}" var="pcode">
 										<c:if test="${pcode.value==param.tcode}">
-											<a href="${path}/team/pl.shop?pCode=${pcode.key}"><div class="plist">
+											<a href="${path}/team/pl.shop?pCode=${pcode.key}">
+											<div class="plist">
 											<div class="player_img">
-											<img src="${path}/picture/team_players/${pcode.key}.jpg" style="width: 110px; height: 138px;">
+											<img src="${path}/picture/team_players/${pcode.key}.jpg" style="width: 110px; height: 138px; border : 1px solid ;">
+											</div>
+											<div class="player_name">
+												<c:forEach items="${pName}" var="pname">
+													<c:if test="${pname.key==pcode.key}">
+														${pname.value}
+													</c:if>
+													</c:forEach>
 											</div>
 											</div></a>
 										</c:if>
+
 								</c:forEach>
 							</div>
 </div>
-<div id="trecord" class="info_mid" style="height: 2000px;">
+<div id="trecord">
 
-<table> <!-- 테이블1 -->
+<table class="record_table"> <!-- 테이블1 -->
 <c:set var="size1" value="${table1.size}"/>
 <tr>
 <th>배번</th><th>선수</th><th>G</th><th>Min.</th><th>2P</th>
@@ -219,7 +295,7 @@ function list_disp(id) {
 <td>${fo}</td>
 </c:forEach></tr></tfoot>
 </table>
-<table> <!-- 테이블2 -->
+<table class="record_table"> <!-- 테이블2 -->
 <c:set var="size2" value="${table2.size}"/>
 <tr>
 <th rowspan="2">배번</th><th rowspan="2">선수</th><th colspan="2">REBOUNDS</th>
@@ -244,8 +320,8 @@ function list_disp(id) {
 <tfoot><tr><c:forEach items="${table2.foot}" var="fo">
 <td>${fo}</td>
 </c:forEach></tr></tfoot>
-</table>
-<table> <!-- 테이블1 -->
+</table >
+<table class="record_table"> <!-- 테이블1 -->
 <c:set var="size3" value="${table3.size}"/>
 <tr>
 <th>배번</th><th>선수</th><th>STL</th><th>BS</th><th>GD</th>
