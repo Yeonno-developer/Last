@@ -763,6 +763,7 @@ public class TeamController {
 			for (Element src : div) {
 				for(Element c : src.select("table")) {	
 					//System.out.println(c.toString());
+					//c.child(1).attr("style","float:left");
 					table.add(c.toString());
 				}
 			}

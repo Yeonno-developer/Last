@@ -84,18 +84,39 @@ font-size: 18px;
 text-align :center;
 }
 .record_table{
-
+margin-left: 490px;
 }
-</style>
+.record_table table{
+width: 940px;
+padding: 20px;
+border-left: none;
+}
+ caption{
+ text-align :left !important;
+ padding-bottom: 10px;
+}
+tr{
+height: 50px;
+}
+th{
+border-top: 2px solid;
+border-bottom: 1px solid;
+}
+ td{
+ text-align: center;
+ border-bottom: 1px solid;
+ color: #666;
+ }
+ </style>
 <script type="text/javascript">
 window.onload=function(){
-	document.getElementById("season").style.display = "none";
-	document.getElementById("game").style.display = "block";
+	document.getElementById("game").style.display = "none";
+	document.getElementById("season").style.display = "block";
 	
 }
 function disp_div(id) {
-	document.getElementById("season").style.display = "none";
 	document.getElementById("game").style.display = "none";
+	document.getElementById("season").style.display = "none";
 	document.getElementById(id).style.display = "block";
 }
 function list_disp(id) {
