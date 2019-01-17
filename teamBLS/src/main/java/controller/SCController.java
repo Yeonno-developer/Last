@@ -72,14 +72,10 @@ public class SCController {
 	public ModelAndView teamB() {
 		ModelAndView mav = new ModelAndView("schedule/team");
 		return mav;
-	}
-	
-	
-	
-	
+	}	
 	
 	@RequestMapping("schedule/playerR")
-	public ModelAndView playerR() {
+	public ModelAndView playerR(HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView("schedule/player");
 		String day = day();
 		Map<List<String>, List<String>> prankMap = pRankS(day);
@@ -91,6 +87,13 @@ public class SCController {
 		for(List<String> s:prankMap.values()) {
 			value=s;
 		}
+		
+		Map<List<String>, List<String>> imgN= pImg(day);
+		List<String> pcode = null;
+		for(List<String> s:imgN.values()) {
+			pcode=s;
+		}
+		mav.addObject("pcode", pcode);
 		mav.addObject("Pkey", key);
 		mav.addObject("Pvalue", value);
 		return mav;
@@ -118,7 +121,6 @@ public class SCController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-//		System.out.println(line2);
 		line2 += "";
 		return line2;
 	}
@@ -146,6 +148,31 @@ public class SCController {
 		}
 		rank.put(name, score);
 		return rank;
+	}
+	private Map<List<String>, List<String>> pImg(String day) {
+		String url = "https://www.kbl.or.kr/stats/part_player_rank.asp?gpart=1&scode="+day;
+		List<String> name = new ArrayList<String>();
+		List<String> code = new ArrayList<String>();
+		Map<List<String>,List<String>> pcode=new HashMap<List<String>,List<String>>();
+		try {
+			Document doc = Jsoup.connect(url).get();
+			Elements div = doc.select("ol>li");
+			for (Element src : div) {
+				for (Element a : src.select("a")) {
+					String text = a.text();
+					name.add(text);
+				}
+				for (Element im : src.select("a")) {
+					String text = im.toString();
+					String val = text.substring(text.indexOf("de=")+3,text.indexOf(">")-1);
+					code.add(val);
+				}
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		pcode.put(name,code);
+		return pcode;
 	}
 	private String day() {
 		String url = "https://www.kbl.or.kr/stats/part_player_rank.asp?";

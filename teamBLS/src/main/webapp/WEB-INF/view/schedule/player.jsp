@@ -52,12 +52,22 @@ td {
 	<hr style="border-top: 1px solid gray;" class="w3-padding">
 	<div id="main" class="w3-row">
 	<h1>Player Rank</h1>
+		<div class="w3-col s2">
+			<c:forEach items="${pcode}" var="name" varStatus="startc">
+				<c:if test="${startc.index%5==0}">
+					<a href="${path}/team/pl.shop?pCode=${name}">
+						<img src="${path}/picture/team_players/${name}.jpg" class=" w3-border" style="margin: 26px 10px 40px 0px; padding:10px; height: 185px">
+					</a>
+				</c:if>
+			</c:forEach>
+		</div>
 		<div class="w3-col s3" style="margin-right: 25px; padding-top: 22px;">
 			<table>
 				<c:forEach items="${Pkey}" var="start" varStatus="startc">
 					<c:if test="${startc.first}">
 						<c:set var="i" value="${startc.index}" />
 						<c:set var="imgr" value="0" />
+						<c:set var="r" value="1" />
 					</c:if>
 					<c:if test="${i%5==0}">
 						<c:set var="st" value="${i}" />
@@ -71,7 +81,11 @@ td {
 								<c:if test="${varc.first}">
 									<tr>
 								</c:if>
-									<td colspan="4">${varc.current}</td>
+								<c:if test="${varc.index%5==0}">
+									<c:set var="r" value="1" />
+								</c:if>
+									<td style="width: 20px;">${r}.</td>
+									<td colspan="2" style="text-align: left;">${varc.current}</td>
 								<c:forEach items="${Pvalue}" var="value" varStatus="valuec"
 									begin="${st}" end="${end}">
 									<c:if test="${varc.index==valuec.index}">
@@ -80,6 +94,7 @@ td {
 									<tr>
 									</c:if>
 								</c:forEach>
+								<c:set var="r" value="${r+1}" />
 							</tr>
 							</c:forEach>
 						</tr>
@@ -92,13 +107,13 @@ td {
 				</c:forEach>
 			</table>
 		</div>
-		<div class="w3-col s6">
+		<div class="w3-col s5">
 			<c:forEach items="${Pkey}" var="start" varStatus="startc">
 				<c:if test="${startc.first}">
 					<c:set var="i" value="${startc.index}" />
 				</c:if>
 				<c:if test="${i%5==0}">
-					<div id="chart${i}" style="height: 250px; weight: 50px;"></div>
+					<div id="chart${i}" style="height: 250px; width: 400px;"></div>
 					<script type="text/javascript">
 			   		var randomColorFactor=function(){
 			   			return Math.round(Math.random()*255);
