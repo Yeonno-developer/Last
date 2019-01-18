@@ -133,14 +133,14 @@ function pwchk(){ //비밀번호 확인
 			<td><form:select path="ft">
 				<form:option value="현대모비스">울산 현대모비스</form:option>
 				<form:option value="전자랜드">인천 전자랜드</form:option>
-				<form:option value="부산 KT">부산 KT</form:option>
-				<form:option value="안양 KGC">안양 KGC</form:option>
-				<form:option value="전주 KCC">전주 KCC</form:option>
-				<form:option value="원주 DB">원주 DB</form:option>
-				<form:option value="창원 LG">창원 LG</form:option>
-				<form:option value="고양 오리온">고양 오리온</form:option>
-				<form:option value="서울 SK">서울 SK</form:option>
-				<form:option value="서울 삼성">서울 삼성</form:option>
+				<form:option value="부산KT">부산 KT</form:option>
+				<form:option value="안양KGC">안양 KGC</form:option>
+				<form:option value="전주KCC">전주 KCC</form:option>
+				<form:option value="원주DB">원주 DB</form:option>
+				<form:option value="창원LG">창원 LG</form:option>
+				<form:option value="고양오리온">고양 오리온</form:option>
+				<form:option value="서울SK">서울 SK</form:option>
+				<form:option value="서울삼성">서울 삼성</form:option>
 				</form:select>
 				<form:errors path="ft"/></td>
 		</tr>
@@ -152,9 +152,8 @@ function pwchk(){ //비밀번호 확인
 		<tr height="40px">
 			<td>타입<td>
 			<td><form:select path="type">
-				<form:option value="1">관리자</form:option>
-				<form:option value="2">기업</form:option>
-				<form:option value="3">일반 회원</form:option>
+				<form:option value="1">기업</form:option>
+				<form:option value="2">일반 회원</form:option>
 				</form:select>
 				<form:errors path="type"/></td>
 		</tr>
