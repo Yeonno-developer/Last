@@ -1,2 +1,12 @@
+<<<<<<< HEAD
 
 /dao/
+=======
+/aop/
+/controller/
+/dao/
+/exception/
+/logic/
+/util/
+/websocket/
+>>>>>>> branch 'yeonno' of https://github.com/Yeonno-developer/Last.git

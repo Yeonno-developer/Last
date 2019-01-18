@@ -10,6 +10,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -34,8 +36,15 @@ public class SCController {
 	@RequestMapping("schedule/teamB")
 	public ModelAndView teamB() {
 		ModelAndView mav = new ModelAndView("schedule/team");
+		
+		
 		return mav;
 	}
+	
+	
+	
+	
+	
 
 	@RequestMapping("schedule/playerR")
 	public ModelAndView playerR(HttpServletRequest request) {
@@ -55,6 +64,8 @@ public class SCController {
 		for (List<String> s : imgN.values()) {
 			pcode = s;
 		}
+		List<String> name=Stream.of("득점(국내)","득점","리바운드(국내)","리바운드","어시스트","블록","스틸","3점슛","자유투","덩크슛").collect(Collectors.toList());
+		mav.addObject("name", name);
 		mav.addObject("pcode", pcode);
 		mav.addObject("Pkey", key);
 		mav.addObject("Pvalue", value);
