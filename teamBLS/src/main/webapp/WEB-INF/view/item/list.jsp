@@ -1,11 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-   pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+   pageEncoding="UTF-8"%>
  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>»óÇ°¸ñ·Ï</title>
+<title>ìƒí’ˆëª©ë¡</title>
 <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
  <link rel="stylesheet" type="text/css" href="http://script.auction.co.kr/pc/style/css/hp.css" />
 	<style>
@@ -51,40 +51,49 @@
 			margin : 10px;
 			height:90%;
 		}
+		.thumb lazy {width:318px;
+		height:165px;
+		
+		}
 	</style>
 
    <script>
-    function prev(pagecount) {
-    	alert(pagecount);
-
-    	location.href="../item/list.shop?pagecount="+pagecount;
+    function prev2(pagenum) {
+    	alert(pagenum);
+    	location.href="../item/list.shop?pagenum="+${pagenum-1};
+    }
+    
+    function next2(pagenum) {
+    	alert(pagenum);
+    	location.href="../item/list.shop?pagenum="+${pagenum+1};
     }
     
    </script>
 </head>
 <body>
-<a href="create.shop">»óÇ°µî·Ï</a>
+<a href="create.shop">ìƒí’ˆë“±ë¡</a>
 <ul class="high">
-		<li class="inhigh"><a href="../item/list.shop?type=1">| ¿ï»ê Çö´ë ¸ğºñ½º |</a></li>
-		<li class="inhigh"><a href="../item/list.shop?type=2">ÀÎÃµ ÀüÀÚ·£µå |</a></li>
-		<li class="inhigh"><a href="../item/list.shop?type=3">ºÎ»ê KT |</a></li>
-		<li class="inhigh"><a href="../item/list.shop?type=4">¾È¾ç KGC |</a></li>
-		<li class="inhigh"><a href="../item/list.shop?type=5">ÀüÁÖ KCC |</a></li>
-		<li class="inhigh"><a href="../item/list.shop?type=6">¿øÁÖ DB |</a></li>
-		<li class="inhigh"><a href="../item/list.shop?type=7">Ã¢¿ø LG |</a></li>
-		<li class="inhigh"><a href="../item/list.shop?type=8">°í¾ç ¿À¸®¿Â |</a></li>
-		<li class="inhigh"><a href="../item/list.shop?type=9">¼­¿ï SK |</a></li>
-		<li class="inhigh"><a href="../item/list.shop?type=10">¼­¿ï »ï¼º |</a></li>
+		<li class="inhigh"><a href="../item/list.shop?ft=í˜„ëŒ€ëª¨ë¹„ìŠ¤&pagenum=1">| ìš¸ì‚° í˜„ëŒ€ ëª¨ë¹„ìŠ¤ |</a></li>
+		<li class="inhigh"><a href="../item/list.shop?ft=ì „ìëœë“œ&pagenum=1">ì¸ì²œ ì „ìëœë“œ |</a></li>
+		<li class="inhigh"><a href="../item/list.shop?ft=ë¶€ì‚°KT&pagenum=1">ë¶€ì‚° KT |</a></li>
+		<li class="inhigh"><a href="../item/list.shop?ft=ì•ˆì–‘KGC&pagenum=1">ì•ˆì–‘ KGC |</a></li>
+		<li class="inhigh"><a href="../item/list.shop?ft=ì „ì£¼KCC&pagenum=1">ì „ì£¼ KCC |</a></li>
+		<li class="inhigh"><a href="../item/list.shop?ft=ì›ì£¼DB&pagenum=1">ì›ì£¼ DB |</a></li>
+		<li class="inhigh"><a href="../item/list.shop?ft=ì°½ì›LG&pagenum=1">ì°½ì› LG |</a></li>
+		<li class="inhigh"><a href="../item/list.shop?ft=ê³ ì–‘ì˜¤ë¦¬ì˜¨&pagenum=1">ê³ ì–‘ ì˜¤ë¦¬ì˜¨ |</a></li>
+		<li class="inhigh"><a href="../item/list.shop?ft=ì„œìš¸SK&pagenum=1">ì„œìš¸ SK |</a></li>
+		<li class="inhigh"><a href="../item/list.shop?ft=ì„œìš¸ì‚¼ì„±&pagenum=1">ì„œìš¸ ì‚¼ì„± |</a></li>
 </ul>
+
 	<div class="hp_allkill" style="margin: 0 auto;">
 		<div class="allkill_title">
 			<h6>
-				<a href="../item/list.shop">BLS</a>
+				<a href="../item/list.shop?pagenum=1">BLS</a>
 			</h6>
-			<a href="../item/list.shop" class="bt_more">´õº¸±â</a>
+			<a href="../item/list.shop?pagenum=1" class="bt_more">ë”ë³´ê¸°</a>
 	</div>
 	<div class="wrap" align="center">
-	<div class="prev1 list_common">asdfasdf</div>
+	<div class="prev1 list_common"><button onclick="prev2(${pagenum-1})">ì´ì „</button></div>
 		<div class="item_list_wrap list_common">
 			<c:forEach items="${itemList }" var="item">
 				<c:if test="${item.id % 3 == 1}">
@@ -97,11 +106,15 @@
 							style="display: inline;"> <span class="title">${item.name }</span>
 						</a>
 						<div class="info">
-							<em class="prices">°¡°İ</em> <span class="pirce"> <strong>${item.price}<span>¿ø</span>
+							<em class="prices">ê°€ê²©</em> <span class="pirce"> <strong>${item.price}<span>ì›</span>
 							</strong>
 							</span> <span class="jjim"> <span class="jjim2"> <img
-									src="../picture/heart.jpg" alt="ÂòÇÏ±â"> ÂòÇÏ±â <strong></strong>
+									src="../picture/heart.jpg" alt="ì°œí•˜ê¸°"> ì°œí•˜ê¸° <strong></strong>
 							</span>
+							<c:if test="${sessionScope.loginUser.userId == 'admin' || sessionScope.loginUser.type == 1 }">
+							<a href="../item/update.shop?id=${item.id}&pictureUrl=${item.pictureUrl}">ìˆ˜ì •í•˜ê¸°</a>
+							<a href="../item/delete.shop?id=${item.id}">ì‚­ì œí•˜ê¸°</a>
+							</c:if>
 							</span>
 						</div>
 					</div>
@@ -111,7 +124,7 @@
 				</c:if>
 			</c:forEach>
 </div>
-		<div class="next1 list_common">asdf</div>
+		<div class="next1 list_common"><button onclick="next2(${pagenum+1})">ë‹¤ìŒ</button></div>
 		</div>
 		</div>
 </body>

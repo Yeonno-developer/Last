@@ -8,9 +8,29 @@
 	<if test="id != null">
 		where id=#{id}
 	</if>
-	<if test="type != null">
-		where type=#{type}
+	<if test="ft != null">
+		where ft=#{ft}
 	</if>
 	order by id
+		limit 0, 6
 	</select>
+	
+	
+	
+	<select id="list1" resultType="Item" parameterType="map">
+	select * from item
+	<if test="ft != null">
+		where ft=#{ft}
+	</if>
+	order by id
+	limit #{pagenum}, 6
+	</select>
+	
+	
+<select id="list2" resultType="Item" parameterType="map">
+	select * from item
+	order by id
+	limit #{pagenum}, 6
+	</select>	
+	
 </mapper>
