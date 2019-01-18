@@ -52,7 +52,7 @@ td {
 	<hr style="border-top: 1px solid gray;" class="w3-padding">
 	<div id="main" class="w3-row">
 	<h1>Player Rank</h1>
-		<div class="w3-col s2">
+		<div class="w3-col s2" style="margin-left: 20px">
 			<c:forEach items="${pcode}" var="name" varStatus="startc">
 				<c:if test="${startc.index%5==0}">
 					<a href="${path}/team/pl.shop?pCode=${name}">
@@ -108,12 +108,13 @@ td {
 			</table>
 		</div>
 		<div class="w3-col s5">
+			<c:set var="na" value="0" />
 			<c:forEach items="${Pkey}" var="start" varStatus="startc">
 				<c:if test="${startc.first}">
 					<c:set var="i" value="${startc.index}" />
 				</c:if>
 				<c:if test="${i%5==0}">
-					<div id="chart${i}" style="height: 250px; width: 450px;"></div>
+					<div id="chart${i}" style="height: 250px; width: 550px;"></div>
 					<script type="text/javascript">
 			   		var randomColorFactor=function(){
 			   			return Math.round(Math.random()*255);
@@ -140,8 +141,8 @@ td {
 							}
 						},
 						grid : {
-							left : '1%',
-							right : '1%',
+							left : '3%',
+							right : '3%',
 							bottom : '1%',
 							containLabel : true
 						},
@@ -156,7 +157,7 @@ td {
 							type : 'value'
 						} ],
 						series : [ {
-							name : 'test',
+							name : <c:forEach items="${name}" var="value" varStatus="valuec" begin="${na}" end="${na}">"${valuec.current}",</c:forEach>
 							type : 'bar',
 							data : [<c:forEach items="${Pvalue}" var="value" varStatus="valuec" begin="${st}" end="${end}">"${valuec.current}"<c:if test="${valuec.index!=end}">,</c:if></c:forEach>]} ]
 					};
@@ -165,6 +166,7 @@ td {
 						myChart.setOption(option, true);
 					}
 				</script>
+				<c:set var="na" value="${na+1}" />
 				</c:if>
 				<c:set var="i" value="${i+1}" />
 			</c:forEach>

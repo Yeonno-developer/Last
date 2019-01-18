@@ -1,5 +1,15 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 /dao/
 /controller/
 >>>>>>> branch 'MinSuk' of https://github.com/Yeonno-developer/Last.git
+=======
+/aop/
+/controller/
+/dao/
+/exception/
+/logic/
+/util/
+/websocket/
+>>>>>>> branch 'yeonno' of https://github.com/Yeonno-developer/Last.git

@@ -5,19 +5,24 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>CRAWING을 이용한 SCREEN</title>
+<title>Team Vs Team</title>
 <style type="text/css">
-table, td, tr, th {
-	border: 2px solid #777777;
-	border-collapse: collapse;
+div#main {
+	width: 1060px;
+	margin: auto;
+	margin-bottom: 25px;
 }
 
-th {
-	background-color: orange;
-}
 </style>
 </head>
 <body>
- ${param.tCode}:player main 입니다.
+	<hr style="border-top: 1px solid gray;" class="w3-padding">
+	<div id="main" class="w3-row">
+	<h1>Team Vs Team</h1>
+		<div>
+		
+		
+		</div>
+	</div>
 </body>
 </html>

@@ -78,8 +78,8 @@ public class BoardController {
 	 * refstep 보다 큰 모든 레코드들을 refstep+1로 수정하기 3. 등록 후 list.shop 요청하기
 	 */
 	@RequestMapping(value = "board/reply", method = RequestMethod.POST)
-	public ModelAndView reply(Board board, BindingResult br) {
-		ModelAndView mav = new ModelAndView();
+	public ModelAndView reply(Board board, BindingResult br,HttpServletRequest value) {
+		ModelAndView mav = new ModelAndView("redirect:detail.shop?num=" + board.getRef()+"&tcode="+value.getParameter("tcode"));
 		if (br.hasErrors()) {
 			mav.getModel().putAll(br.getModel());
 			return mav;
@@ -87,10 +87,9 @@ public class BoardController {
 		try {
 			service.replyadd(board);
 			mav.addObject("board", board);
-			mav.setViewName("redirect:detail.shop?num=" + board.getRef());
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new ShopException("답글 등록에 실패했습니다", "detail.shop?num=" + board.getRef());
+			throw new ShopException("답글 등록에 실패했습니다", "detail.shop?num=" + board.getRef()+"&tcode"+value.getParameter("tcode"));
 		}
 		return mav;
 	}
