@@ -71,16 +71,12 @@ position:absolute;
 height : 900px;
 min-width: 1920px;
 width:100%;
+
 }
 .rank{
 font-size: 16px;
 }
-.r_lose{
 
-}
-.rank_main{
-
-}
 .sh_gr{
 margin-left :690px;
 position : absolute;

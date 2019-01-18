@@ -6,6 +6,9 @@
 	</decorator>
 	<!-- <excludes> :  -->
 	<excludes>
+<pattern>/user/login*</pattern>
+<pattern>/user/userreg.shop</pattern>
+<pattern>/user/userEntry.shop</pattern>
 		<!-- 제외시킬 페이지 -->
 	</excludes>
 </decorators>

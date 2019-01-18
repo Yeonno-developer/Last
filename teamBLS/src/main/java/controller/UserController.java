@@ -87,7 +87,7 @@ public class UserController {
                mav.getModel().putAll(br.getModel());
                return mav;
             }
-            mav.setViewName("user/loginSuccess");
+            mav.setViewName("redirect:../team/mainPage.shop");
             return mav;
          }
    
