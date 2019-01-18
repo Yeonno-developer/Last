@@ -15,12 +15,12 @@ public interface ItemMapper {
 	@Select("select ifnull(max(id), 0) from item")
 	int maxid();
 
-	@Insert("insert into item (id,name,price,description, pictureUrl, stock, type)"
-			+ " values(#{id},#{name},#{price},#{description},#{pictureUrl},#{stock},#{type})")
+	@Insert("insert into item (id,name,price,description, pictureUrl, stock, type, ft)"
+			+ " values(#{id},#{name},#{price},#{description},#{pictureUrl},#{stock},#{type},#{ft})")
 	void insert(Item item);
 
 	
-	@Update("update item set name=#{name}, price=#{price}, description=#{description}, stock=#{stock}, type=#{type} "
+	@Update("update item set name=#{name}, price=#{price}, description=#{description}, stock=#{stock}, ft=#{ft},"
 			+ " pictureUrl=#{pictureUrl} where id=#{id}")
 	void update(Item item);
 	

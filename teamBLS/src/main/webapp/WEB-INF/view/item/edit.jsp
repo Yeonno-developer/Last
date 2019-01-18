@@ -8,15 +8,14 @@
 <title>상품수정</title>
 </head>
 <body>
-<form:form modelAttribute="item" action="register.shop" enctype="multipart/form-data">
+<form:form modelAttribute="item" action="update.shop" enctype="multipart/form-data">
 <form:hidden path="id" />
 <form:hidden path="pictureUrl" />
 <h2>상품 수정 화면</h2>
-
    <table>
       <tr>
          <th>상품명</th>
-         <td><form:input path="name" maxlength="20"/></td>
+         <td><form:input path="name" maxlength="20"></form:input></td>
          <td><font color='red'><form:errors path="name"/></font></td>
       </tr>
       <tr>
@@ -32,7 +31,15 @@
          <th>상품 설명</th>
          <td><form:textarea path="description" cols="20" rows="5"/></td>
          <td><font color="red"><form:errors path="description"/> </font></td>
-      </tr>      
+      </tr>
+      <tr>
+         <th>재고량</th>
+         <td><form:input path="stock" maxlength="20"/></td>
+         <td><font color='red'><form:errors path="stock"/></font></td>
+      </tr>    
+      <tr>
+         <td><input type="hidden" name="ft" id="ft" value="${sessionScope.loginUser.ft}"/></td>
+      </tr>     
       <tr>
          <td colspan="3">
             <input type="submit" value="수정">&nbsp;

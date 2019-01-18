@@ -22,6 +22,6 @@
 </table>
 <a href="mypage.shop?id=${loginUser.userId}">[마이페이지]</a>&nbsp;
  <a href="logout.shop?">[로그아웃]</a>&nbsp;
- <a href="../item/list.shop">상품목록</a>
+ <a href="../item/list.shop?pagenum=1">상품목록</a>
 </body>
 </html>
