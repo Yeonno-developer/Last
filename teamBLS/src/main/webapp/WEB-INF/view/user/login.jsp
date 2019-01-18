@@ -74,15 +74,16 @@ input:focus { box-shadow: inset 0 -5px 45px rgba(100,100,100,0.4), 0 1px 1px rgb
 <body>
 <form:form modelAttribute="user" method="post" action="login.shop">
 <input type="hidden" name="userName" value="test">
-	<spring:hasBindErrors name="user">
+
+<div class="login">
+	<h1>Login</h1>
+		<spring:hasBindErrors name="user">
 		<font color="red">
 			<c:forEach items="${errors.globalErrors}" var="error">
 				<spring:message code="${error.code}"/>
 			</c:forEach>
 		</font>
 	</spring:hasBindErrors>
-<div class="login">
-	<h1>Login</h1>
     <form method="post">
     	<form:input path="userId" placeholder="Username"/><font color="red"><form:errors path="userId"/></font>
     	<form:password path="password" placeholder="Password"/>
