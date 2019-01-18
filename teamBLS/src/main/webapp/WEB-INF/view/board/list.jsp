@@ -102,10 +102,8 @@ td {
 		<table>
 			<tr>
 				<td colspan="2" align="left" style="padding-top: 30px"
-					class="w3-lobster font-effect-brick-sign w3-xxlarge"><c:forEach
-						items="${sessionScope.teamCode}" var="test">
-						<c:if test="${test.value==param.tcode}"> Team Board </c:if>
-					</c:forEach></td>
+					class="w3-lobster font-effect-brick-sign w3-xxlarge">
+					Team Board</td>
 
 				<td colspan="4" align="right" style="padding-top: 45px">
 					<%-- 검색 기능 --%>
@@ -149,9 +147,9 @@ td {
 									<a href="../file/${board.fileurl}">@</a>
 								</c:if> <c:if test="${!empty board.fileurl}">
 			&nbsp;
-		</c:if> <a href="detail.shop?num=${board.num}">${board.subject}</a></td>
+		</c:if> <a href="detail.shop?num=${board.num}&tcode=${param.tcode}">${board.subject}</a></td>
 							<td align="center">${board.name}</td>
-							<td align="center"></td>
+							<td align="center"><fmt:formatDate value="${board.regdate}" pattern="yyyy-MM-dd"/></td>
 							<td align="center">${board.readcnt}</td>
 						</tr>
 					</c:forEach>
@@ -187,15 +185,12 @@ td {
 				</tr>
 			</c:if>
 			<tr>
-				<td colspan="2" align="left"><c:if test="${!empty param.tcode}">
+				<td colspan="2" align="left">
 						<h4 class="w3-col w3-lobster font-effect-brick-sign">
 							<c:forEach items="${sessionScope.teamCode}" var="test">
 								<c:if test="${test.value==param.tcode}"> ${test.key} </c:if>
 							</c:forEach>
-						</h4>
-					</c:if> <c:if test="${empty param.tcode}">
-			Team Board
-		</c:if></td>
+						</h4></td>
 				<c:if test="${empty sessionScope.loginUser}">
 				<td colspan="3" align="right"></td>
 				</c:if>
