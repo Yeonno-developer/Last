@@ -38,77 +38,9 @@ td.bo {
 	font-family: "Lobster", Sans-serif;
 }
 </style>
-
-
-
-
-<style type="text/css">
-
-h1{
-  font-size: 30px;
-  color: #fff;
-  text-transform: uppercase;
-  font-weight: 300;
-  text-align: center;
-  margin-bottom: 15px;
-}
-table{
-  width:100%;
-  table-layout: fixed;
-}
-.tbl-header{
-  background-color: rgba(255,255,255,0.3);
- }
-.tbl-content{
-  height:300px;
-  overflow-x:auto;
-  margin-top: 0px;
-  border: 1px solid rgba(255,255,255,0.3);
-}
-th{
-  padding: 20px 15px;
-  text-align: left;
-  font-weight: 500;
-  font-size: 12px;
-  color: #fff;
-  text-transform: uppercase;
-}
-td{
-  padding: 15px;
-  text-align: left;
-  vertical-align:middle;
-  font-weight: 300;
-  font-size: 12px;
-  color: #fff;
-  border-bottom: solid 1px rgba(255,255,255,0.1);
-}
-
-
-/* demo styles */
-
-@import url(https://fonts.googleapis.com/css?family=Roboto:400,500,300,700);
-
-/* for custom scrollbar for webkit browser*/
-
-::-webkit-scrollbar {
-    width: 6px;
-} 
-::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
-} 
-::-webkit-scrollbar-thumb {
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
-}
-</style>
-
-
-
-
-
 </head>
 <body>
-	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-	<script>
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script><script>
 		$(document).ready(function() {
 			$(document).ready(function() {
 				if(${sessionScope.loginUser==null}){
@@ -139,25 +71,24 @@ td{
 	<hr style="border-top: 1px solid gray;">
 	<div class="f w3-row" style="margin-bottom: 30px; margin-top: 30px">
 		<div class="f w3-col s6">
-			<table>
-				<tr>
-					<th style="vertical-align: bottom; text-align: left;"><h1>${board.subject}</h1></th>
-					<th style="vertical-align: bottom; text-align: right;"><fmt:formatDate
-							value="${board.regdate}" pattern="yyyy-MM-dd" /></th>
-				<tr>
-					<%--
+		<table>
+			<tr>
+				<th style="vertical-align:bottom; text-align: left;"><h1>${board.subject}</h1></th>
+				<th style=" vertical-align:bottom; text-align: right;"><fmt:formatDate value="${board.regdate}" pattern="yyyy-MM-dd" /></th>
+			<tr>
+				<%--
 							<td height="23">${boardcnt}
 							<c:set var="boardcnt" value="${boardcnt -1}" />
 							<td align="left">
 							--%>
-					<td class="bo">${board.name}</td>
-					<td class="bo">${board.readcnt}</td>
-				</tr>
-				<tr>
-					<td class="bo" style="height: 300px; vertical-align: top;">${board.name}</td>
-				</tr>
+				<td class="bo">${board.name}</td>
+				<td class="bo">${board.readcnt}</td>
+			</tr>
+			<tr>
+				<td class="bo" style="height: 300px; vertical-align: top;">${board.name}</td>
+			</tr>
 
-				<%-- 
+			<%-- 
 				<tr align="center" height="26">
 					<td colspan="5"><c:if test="${ pageNum > 1}">
 							<a href="javascript:list(${pageNum -1})" class="w3-button"
@@ -184,18 +115,19 @@ td{
 				</tr>
 				 --%>
 
-				<tr>
-					<td colspan="2" align="left" style="padding: 20px 0px 20px 0px;"
-						class="w3-lobster font-effect-brick-sign w3-large bo"><c:forEach
-							items="${sessionScope.teamCode}" var="test">
-							<c:if test="${test.value==param.tcode}">  Team Board ${test.key}</c:if>
-						</c:forEach></td>
-				</tr>
-			</table>
+			<tr>
+			  <td colspan="2" align="left" style="padding: 20px 0px 20px 0px;"
+				class="w3-lobster font-effect-brick-sign w3-large bo">
+				<c:forEach items="${sessionScope.teamCode}" var="test">
+					<c:if test="${test.value==param.tcode}">  Team Board ${test.key}</c:if>
+				</c:forEach>
+			  </td>
+			</tr>
+		</table>
 		</div>
-		<div class="tbl-content w3-col s6" style="margin-top: 40px">
-			<form:form action="reply.shop?tcode=${param.tcode}" method="post"
-				name="f" id="nextpa" modelAttribute="board">
+		<div class="w3-col s6" style="margin-top: 40px">
+			<form:form action="reply.shop?tcode=${param.tcode}" method="post" name="f" id="nextpa"
+				modelAttribute="board">
 				<input type="hidden" name="num" value="${board.num}">
 				<input type="hidden" name="ref" value="${board.ref}">
 				<input type="hidden" name="reflevel" value="${board.reflevel}">
@@ -205,9 +137,8 @@ td{
 					value="${sessionScope.loginUser.userId}">
 				<div class="w3-col m12">
 					<div class="w3-card w3-round w3-white">
-						<div class="w3-row-padding"
-							style="padding: 32px 16px 0px 16px; margin: 16px 16px 0px 16px">
-
+						<div class="w3-row-padding" style="padding: 32px 16px 0px 16px;margin: 16px 16px 0px 16px">
+						
 							<div class="w3-half">
 								<label>Comment</label> <input class="w3-input w3-border"
 									type="text" id="comment" name="Comment" placeholder="Comment">
@@ -220,31 +151,29 @@ td{
 								class="w3-button w3-theme w3-margin w3-padding">
 								<i class="fa fa-pencil"></i> Post
 							</button>
-							<span class="w3-padding-large w3-right" style="margin-top: 20px"><b>Comments</b>
-								<span class="w3-tag">${ccount}</span></span>
+							<span class="w3-padding-large w3-right" style="margin-top: 20px"><b>Comments</b> <span
+								class="w3-tag">${ccount}</span></span>
 						</div>
 						<div class="w3-row "
 							style="padding: 16px 16px 22px 24px; margin: 0px 16px 0px 16px">
-							<table cellpadding="0" cellspacing="0" border="0">
-								<tbody>
-								
-									<c:forEach items="${boardreply}" var="boardt">
-									<tr>
-									 <td>${boardt.name}</td>
-									 <td><fmt:formatDate value="${boardt.regdate}" pattern="YYYY.MM.HH" /></td>
-									</tr>
-									<tr>
-									<td>${boardt.content}</td>
-									<td>
+							<c:forEach items="${boardreply}" var="boardt">
+								<div class="w3-row">
+									<div class="w3-col s2">
+										${boardt.name}
+									</div>
+									<div class="w3-col s10" style="text-align: right; padding-right:15px">
+										<fmt:formatDate value="${boardt.regdate}" pattern="YYYY.MM.HH" />
+									</div>
+								</div>
+								<div class="w3-row" style="text-align: right; ">
 									<c:if test="${sessionScope.loginUser.userId==boardt.name}">
-										<a href="update.shop?num=${board.num}" class="w3-button">수정</a>
-										<a href="delete.shop?num=${board.num}" class="w3-button">Del</a>
+										<a	href="update.shop?num=${board.num}" class="w3-button">수정</a>
+										<a	href="delete.shop?num=${board.num}" class="w3-button">Del</a>
 									</c:if>
-									</td>
-									</tr>
-									</c:forEach>
-								</tbody>
-							</table>
+								</div>
+								<div>${boardt.content}</div>
+
+							</c:forEach>
 						</div>
 					</div>
 				</div>
