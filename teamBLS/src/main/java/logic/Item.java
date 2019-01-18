@@ -9,7 +9,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class Item {
 	private Integer id;
-	@NotEmpty(message="상품명을 등록하세요")	//NotNull + ���ڿ� �ǹ�
+	@NotEmpty(message="상품명을 등록하세요")	//
 	private String name;
 	@NotNull(message="가격을 등록하세요")
 	@Min(value=10, message="가격은 10원 이상 가능합니다.")
@@ -21,9 +21,16 @@ public class Item {
 	private MultipartFile picture;
 	private int stock;
 	private int type;
+	private String ft;
+
 	
 	
-	
+	public String getFt() {
+		return ft;
+	}
+	public void setFt(String ft) {
+		this.ft = ft;
+	}
 	public int getType() {
 		return type;
 	}
@@ -72,9 +79,12 @@ public class Item {
 	public void setPictureUrl(String pictureUrl) {
 		this.pictureUrl = pictureUrl;
 	}
+	
 	@Override
 	public String toString() {
 		return "Item [id=" + id + ", name=" + name + ", price=" + price + ", description=" + description
-				+ ", pictureUrl=" + pictureUrl + ", picture=" + picture + ", stock=" + stock + ", type=" + type + "]";
+				+ ", pictureUrl=" + pictureUrl + ", picture=" + picture + ", stock=" + stock + ", type=" + type
+				+ ", ft=" + ft + "]";
 	}
+
 }

@@ -1,18 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-   pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+   pageEncoding="UTF-8"%>
  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>»óÇ°¸ñ·Ï</title>
+<title>ìƒí’ˆëª©ë¡</title>
 <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
  <link rel="stylesheet" type="text/css" href="http://script.auction.co.kr/pc/style/css/hp.css" />
-<script type="text/javascript" src="http://script.auction.co.kr/common/header_stop.js"></script>
-<script type="text/javascript" src="http://script.auction.co.kr/common/library/ua-parser.min.js"></script>
-<script type="text/javascript" src="http://script.auction.co.kr/common/useragent_control.js"></script>
-<script async="" src="https://montelena.auction.co.kr/montelena.js?path=http://www.auction.co.kr/"></script>
-
 	<style>
 		ul.high {
 			background-color: #FFDAB9;
@@ -37,159 +32,100 @@
 			background-color: #CD853F;
 			color: white;
 		}
+		.wrap {
+		padding : 20px;
+		margin : 10px;
+		height:1500px;
+		}
+		.list_common{
+		float: left;
+		height:90%;
+		}
+		.prev1 {
+			padding-top : 50%;
+			margin : 10px;
+			height:90%;
+		}
+		.next1 {
+			padding-top : 50%;	
+			margin : 10px;
+			height:90%;
+		}
+		.thumb lazy {width:318px;
+		height:165px;
+		
+		}
 	</style>
 
-   <script type="text/javascript">
-      rpmAjaxCall = function (eventId) {
-         var pdsUrl = "http://pds.auction.co.kr/scriptBrokerMsgJsonp";
-         var params = { id: eventId };
-         if (eventId == "l" && !!window.performance) {
-
-            var t = window.performance.timing;
-
-            if (!!t) {
-
-               var paramO = {
-                  id: eventId,
-                  NaviStTick: t.navigationStart,
-                  LookupStTick: t.domainLookupStart,
-                  RequestStTick: t.requestStart,
-                  ResponseEdTick: t.responseEnd,
-                  DomLoadedStTick: t.domContentLoadedEventStart,
-                  LoadStTick: t.loadEventStart
-               }
-
-               if (paramO != null)
-                  params = paramO;
-            }
-
-         }
-
-         $.ajax({
-            url: pdsUrl,
-            data: params,
-            type: "GET",
-            contentType: "application/javascript; charset=utf-8",
-            scriptCharset: "utf-8",
-            dataType: "jsonp",
-            crossdomain: true,
-            error: function (request, error) {
-               //alert("Error: " + error);
-            }
-         });
-      }
-
-      var requestParams = (function () {
-         var requestParams = [];
-         var url = unescape(location.href);
-         var hash = unescape(location.hash);
-
-         if (hash) {
-            url = url.toString().replace(hash, '');
-         }
-
-         if (url.indexOf('?') > 0) {
-            var params = (url.substring(url.indexOf('?') + 1, url.length)).split('&');
-            for (var i = 0; i < params.length; i++) {
-               var tempArr = params[i].split('=');
-               requestParams.push({ param: tempArr[0].toUpperCase(), value: tempArr[1] });
-            }
-         }
-         return requestParams;
-      })();
-
-      var getParam = function (params, param) {
-         for (var i = 0; i < params.length; i++) {
-            if (params[i]['param'] === param.toString().toUpperCase()) {
-               return params[i]['value'].toString();
-            }
-         }
-         return null;
-      }
-
-      var isPCVersionView = getParam(requestParams, 'ispcversion');
-      if (isPCVersionView == "1" || location.search.toLowerCase().indexOf("mobile") > 0) {
-         // ±âÁ¸ ÄíÅ°¸¦ »ç¿ëÇÏ´Â °÷ÀÌ ÀÖÀ»¼öµµ ÀÖ¾î¼­ ³²±è
-         document.cookie = "mpcview=1; domain=.auction.co.kr; path=/";
-         document.cookie = "mpvview=1; domain=.auction.co.kr; path=/";
-      }
-
-      var uaControl = new UAControl();
-      uaControl.setMobileVersionUrl(uaControl.consts.mobileHomeMainUrl);
-   </script>
    <script>
-    function prev(pagecount) {
-    	alert(pagecount);
-
-    	location.href="../item/list.shop?pagecount="+pagecount;
+    function prev2(pagenum) {
+    	alert(pagenum);
+    	location.href="../item/list.shop?pagenum="+${pagenum-1};
     }
     
-	function next(pagecount) {
-
-    	alert(${teamtype});
-    	location.href="../item/list.shop?pagecount="+pagecount;
+    function next2(pagenum) {
+    	alert(pagenum);
+    	location.href="../item/list.shop?pagenum="+${pagenum+1};
     }
+    
    </script>
 </head>
 <body>
-<a href="create.shop">»óÇ°µî·Ï</a>
+<a href="create.shop">ìƒí’ˆë“±ë¡</a>
 <ul class="high">
-		<li class="inhigh"><a href="../item/list.shop?type=1">| ¿ï»ê Çö´ë ¸ğºñ½º |</a></li>
-		<li class="inhigh"><a href="../item/list.shop?type=2">ÀÎÃµ ÀüÀÚ·£µå |</a></li>
-		<li class="inhigh"><a href="../item/list.shop?type=3">ºÎ»ê KT |</a></li>
-		<li class="inhigh"><a href="../item/list.shop?type=4">¾È¾ç KGC |</a></li>
-		<li class="inhigh"><a href="../item/list.shop?type=5">ÀüÁÖ KCC |</a></li>
-		<li class="inhigh"><a href="../item/list.shop?type=6">¿øÁÖ DB |</a></li>
-		<li class="inhigh"><a href="../item/list.shop?type=7">Ã¢¿ø LG |</a></li>
-		<li class="inhigh"><a href="../item/list.shop?type=8">°í¾ç ¿À¸®¿Â |</a></li>
-		<li class="inhigh"><a href="../item/list.shop?type=9">¼­¿ï SK |</a></li>
-		<li class="inhigh"><a href="../item/list.shop?type=10">¼­¿ï »ï¼º |</a></li>
-	</ul>
-   <div class="hp_allkill" align="center">
-      <div class="allkill_title">
-         <h6><a href="../item/list.shop">BLS</a></h6>
-            <a href="../item/list.shop"
-            class="bt_more">´õº¸±â</a>
-      </div>
-      <div class="item_list_type1">
-         <span class="pnum"> </span>
-         <div id="touchSlider_allkill" class="touchSlider-box">
-            <div id="allKillItemList" class="touchSlider">
-               <div class="item_list_wrap">
-               <c:forEach items="${itemList }" var="item">
-   <c:if test="${item.id % 3 == 1}">
-                  <ul class="item_list">  
-   </c:if>
+		<li class="inhigh"><a href="../item/list.shop?ft=í˜„ëŒ€ëª¨ë¹„ìŠ¤&pagenum=1">| ìš¸ì‚° í˜„ëŒ€ ëª¨ë¹„ìŠ¤ |</a></li>
+		<li class="inhigh"><a href="../item/list.shop?ft=ì „ìëœë“œ&pagenum=1">ì¸ì²œ ì „ìëœë“œ |</a></li>
+		<li class="inhigh"><a href="../item/list.shop?ft=ë¶€ì‚°KT&pagenum=1">ë¶€ì‚° KT |</a></li>
+		<li class="inhigh"><a href="../item/list.shop?ft=ì•ˆì–‘KGC&pagenum=1">ì•ˆì–‘ KGC |</a></li>
+		<li class="inhigh"><a href="../item/list.shop?ft=ì „ì£¼KCC&pagenum=1">ì „ì£¼ KCC |</a></li>
+		<li class="inhigh"><a href="../item/list.shop?ft=ì›ì£¼DB&pagenum=1">ì›ì£¼ DB |</a></li>
+		<li class="inhigh"><a href="../item/list.shop?ft=ì°½ì›LG&pagenum=1">ì°½ì› LG |</a></li>
+		<li class="inhigh"><a href="../item/list.shop?ft=ê³ ì–‘ì˜¤ë¦¬ì˜¨&pagenum=1">ê³ ì–‘ ì˜¤ë¦¬ì˜¨ |</a></li>
+		<li class="inhigh"><a href="../item/list.shop?ft=ì„œìš¸SK&pagenum=1">ì„œìš¸ SK |</a></li>
+		<li class="inhigh"><a href="../item/list.shop?ft=ì„œìš¸ì‚¼ì„±&pagenum=1">ì„œìš¸ ì‚¼ì„± |</a></li>
+</ul>
 
-   <li>
-                     <div class="inner">
-                        <a href="detail.shop?id=${item.id}">
-                        <img class="thumb lazy" src="../picture/${item.pictureUrl}"
-                           data-original=".jpg" style="display: inline;">
-                           <span class="title">${item.name }</span>
-                        </a>
-                        <div class="info">
-                           <em class="prices">°¡°İ</em> <span class="pirce"> <strong>${item.price}<span>¿ø</span>
-                           </strong>
-                           </span>
-                           <span class="jjim">
-                           	<span class="jjim2">
-                           	<img src="../picture/heart.jpg" alt="ÂòÇÏ±â"> ÂòÇÏ±â <strong></strong>
-                           </span>
-                           </span>
-                        </div>
-                     </div>
-   </li>
-<c:if test="${item.id % 3 == 0}">
-                 </ul>
-   </c:if>
-                  </c:forEach>    
-               </div>
-            </div>
-         </div>
-         <a onclick="prev(1)" class="prev" >ÀÌÀü</a>
-         <button onclick="next(2)" class="next" name="pagenext">´ÙÀ½</button>
-      </div>
-   </div>
+	<div class="hp_allkill" style="margin: 0 auto;">
+		<div class="allkill_title">
+			<h6>
+				<a href="../item/list.shop?pagenum=1">BLS</a>
+			</h6>
+			<a href="../item/list.shop?pagenum=1" class="bt_more">ë”ë³´ê¸°</a>
+	</div>
+	<div class="wrap" align="center">
+	<div class="prev1 list_common"><button onclick="prev2(${pagenum-1})">ì´ì „</button></div>
+		<div class="item_list_wrap list_common">
+			<c:forEach items="${itemList }" var="item">
+				<c:if test="${item.id % 3 == 1}">
+					<ul class="item_list">
+				</c:if>
+				<li>
+					<div class="inner">
+						<a href="detail.shop?id=${item.id}"> <img class="thumb lazy"
+							src="../picture/${item.pictureUrl}" data-original=".jpg"
+							style="display: inline;"> <span class="title">${item.name }</span>
+						</a>
+						<div class="info">
+							<em class="prices">ê°€ê²©</em> <span class="pirce"> <strong>${item.price}<span>ì›</span>
+							</strong>
+							</span> <span class="jjim"> <span class="jjim2"> <img
+									src="../picture/heart.jpg" alt="ì°œí•˜ê¸°"> ì°œí•˜ê¸° <strong></strong>
+							</span>
+							<c:if test="${sessionScope.loginUser.userId == 'admin' || sessionScope.loginUser.type == 1 }">
+							<a href="../item/update.shop?id=${item.id}&pictureUrl=${item.pictureUrl}">ìˆ˜ì •í•˜ê¸°</a>
+							<a href="../item/delete.shop?id=${item.id}">ì‚­ì œí•˜ê¸°</a>
+							</c:if>
+							</span>
+						</div>
+					</div>
+				</li>
+				<c:if test="${item.id % 3 == 0}">
+					</ul>
+				</c:if>
+			</c:forEach>
+</div>
+		<div class="next1 list_common"><button onclick="next2(${pagenum+1})">ë‹¤ìŒ</button></div>
+		</div>
+		</div>
 </body>
 </html>

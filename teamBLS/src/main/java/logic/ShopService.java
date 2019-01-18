@@ -9,7 +9,6 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.jboss.netty.handler.codec.http.HttpRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -222,8 +221,9 @@ public class ShopService {
 		commentDao.commentRegister(comment);
 	}
 
-	public List<Item> getItemList_type(String type) {
-		return itemDao.typeList(type);
+	public List<Item> getItemList_type(String ft, int pagenum) {
+		System.out.println("shopservice : " + pagenum);
+		return itemDao.typeList(ft, pagenum);
 	}
 
 	public int getMaxnum() {
@@ -233,5 +233,11 @@ public class ShopService {
 	public List<Board> boardreply(int ref, int reflevel) {
 		return boardDao.selectR(ref,reflevel);
 	}
+
+	public List<Item> getItemList_type2(int pagenum) {
+		return itemDao.typeList2(pagenum);
+	}
+
+
 
 }
