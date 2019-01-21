@@ -74,7 +74,7 @@ td {
 			<tr>
 				<td colspan="2" align="center"><a
 					href="javascript:document.f.submit()">[게시물등록]</a> <a
-					href="list.shop">[Board List]</a></td>
+					href="list.shop?tcode=${param.tcode}">[Board List]</a></td>
 			</tr>
 		</table>
 	</form:form>

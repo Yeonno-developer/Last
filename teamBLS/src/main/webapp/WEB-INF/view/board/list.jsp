@@ -143,11 +143,15 @@ td {
 							onmouseout="this.style.backgroundColor=''">
 							<td height="23">${boardcnt}<c:set var="boardcnt"
 									value="${boardcnt -1}" />
-							<td align="left"><c:if test="${!empty board.fileurl}">
+							<td align="left">
+							<%-- 
+							<c:if test="${!empty board.fileurl}">
 									<a href="../file/${board.fileurl}">@</a>
 								</c:if> <c:if test="${!empty board.fileurl}">
 			&nbsp;
-		</c:if> <a href="detail.shop?num=${board.num}&tcode=${param.tcode}">${board.subject}</a></td>
+		</c:if> 
+		 --%>
+		<a href="detail.shop?num=${board.num}&tcode=${param.tcode}">${board.subject}</a></td>
 							<td align="center">${board.name}</td>
 							<td align="center"><fmt:formatDate value="${board.regdate}" pattern="yyyy-MM-dd"/></td>
 							<td align="center">${board.readcnt}</td>

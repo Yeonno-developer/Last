@@ -43,52 +43,68 @@ td.bo {
 
 
 <style type="text/css">
-
-h1#scro{
-  font-size: 30px;
-  color: #fff;
-  text-transform: uppercase;
-  font-weight: 300;
-  text-align: center;
-  margin-bottom: 15px;
-}
-table#scro{
-  width:100%;
-  table-layout: fixed;
-}
-.tbl-header{
-  background-color: rgba(255,255,255,0.3);
- }
-.tbl-content{
-  height:300px;
-  overflow-x:auto;
-  margin-top: 0px;
-  border: 1px solid rgba(255,255,255,0.3);
-}
-td.scro{
-  padding: 15px;
-  text-align: left;
-  vertical-align:middle;
-  font-weight: 300;
-  font-size: 12px;
-  border-bottom: solid 1px rgba(255,255,255,0.1);
+h1#scro {
+	font-size: 30px;
+	color: #fff;
+	text-transform: uppercase;
+	font-weight: 300;
+	text-align: center;
+	margin-bottom: 15px;
 }
 
+table#scro {
+	width: 100%;
+	table-layout: fixed;
+}
+
+.tbl-header {
+	background-color: rgba(255, 255, 255, 0.3);
+}
+
+.tbl-content {
+	height: 300px;
+	overflow-x: auto;
+	margin-top: 0px;
+	border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+td.scro {
+	padding: 2px 5px 2px 0px;
+	text-align: right;
+	vertical-align: middle;
+	font-weight: 100;
+	font-size: 12px;
+	border-color: bdbebe;
+	border-bottom: solid 1px rgba(255, 255, 255, 0.1);
+	border-bottom: 2px solid;
+}
+
+td.scrt {
+	padding: 2px 0px 2px 5px;
+	text-align: left;
+	vertical-align: middle;
+	font-weight: 500;
+	border-color: bdbebe;
+	font-size: 15px;
+	border-bottom: solid 1px rgba(255, 255, 255, 0.1);
+	border-bottom: 1px solid;
+}
 
 /* demo styles */
-
-@import url(https://fonts.googleapis.com/css?family=Roboto:400,500,300,700);
+@import
+	url(https://fonts.googleapis.com/css?family=Roboto:400,500,300,700);
 
 /* for custom scrollbar for webkit browser*/
-
 ::-webkit-scrollbar {
-    width: 6px;
-} 
+	width: 6px;
+}
+
 ::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
-} 
+	-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
 ::-webkit-scrollbar-thumb {
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+	-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
 }
 </style>
 
@@ -109,7 +125,7 @@ td.scro{
 				}
 			});
 			 $("#post").click(function(){
-				    if($("#comment").val()==''){
+				    if($("#content").val()==''){
 				    	alert("Please enter comment");
 				    	return false;
 				    }  
@@ -127,6 +143,42 @@ td.scro{
 		  $('.tbl-header').css({'padding-right':scrollWidth});
 		}).resize();
 	</script>
+	<script type="text/javascript">
+		function fun_delR(delnum) {
+			var del=delnum;
+			 document.getElementById('delnum').value=del;
+			document.getElementById('download').style.display='block';
+		}
+
+		function fun_delD(delnum) {
+			var del=delnum;
+			 document.getElementById('delnum').value=del;
+			document.getElementById('download').style.display='block';
+		}
+	</script>
+	<div id="download" class="w3-modal w3-animate-opacity">
+		<div class="w3-modal-content" style="padding: 32px">
+			<form id="ff" action="delete.shop" method="post">
+				<div class="w3-container w3-white">
+					<h2 class="w3-wide">Delete Check</h2>
+					<p>
+						<input class="w3-input w3-border" name="pass" type="password" placeholder="Please Input Pass">
+						<input name="delnum" id="delnum" type="hidden" value="">
+						<input name="num" type="hidden" value="${param.num}">
+						<input name="tcode" type="hidden" value="${param.tcode}">
+					</p>
+					<div style="text-align:right;">
+					<button type="button" class="w3-button w3-black w3-margin-bottom"
+						onclick="document.getElementById('ff').submit()">Delete</button>
+					<button type="button" class="w3-button w3-red w3-margin-bottom"
+						onclick="document.getElementById('download').style.display='none'">cancle</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+
+
 	<hr style="border-top: 1px solid gray;">
 	<div class="f w3-row" style="margin-bottom: 30px; margin-top: 30px">
 		<div class="f w3-col s6">
@@ -145,7 +197,7 @@ td.scro{
 					<td class="bo">${board.readcnt}</td>
 				</tr>
 				<tr>
-					<td class="bo" style="height: 300px; vertical-align: top;">${board.name}</td>
+					<td colspan="2" class="bo" style="height: 380px; vertical-align: top;">${board.content}</td>
 				</tr>
 
 				<%-- 
@@ -176,15 +228,22 @@ td.scro{
 				 --%>
 
 				<tr>
-					<td colspan="2" align="left" style="padding: 20px 0px 20px 0px;"
+					<td align="left" style="padding: 20px 0px 20px 0px;"
 						class="w3-lobster font-effect-brick-sign w3-large bo"><c:forEach
 							items="${sessionScope.teamCode}" var="test">
 							<c:if test="${test.value==param.tcode}">  Team Board ${test.key}</c:if>
 						</c:forEach></td>
+					<td align="right" class="bo">
+					 <c:if test="${sessionScope.loginUser.userId==board.name}">
+						<a href="update.shop?num=${board.num}" class="w3-button">수정</a>
+						<a class="w3-button" onclick="fun_delD(${board.num})"> Del</a>
+					</c:if>
+						<a class="w3-button" href="list.shop?tcode=${board.tcode}">List</a>
+					</td>
 				</tr>
 			</table>
 		</div>
-		<div class="tbl-content w3-col s6" style="margin-top: 40px">
+		<div class="w3-col s6" style="margin-top: 40px">
 			<form:form action="reply.shop?tcode=${param.tcode}" method="post"
 				name="f" id="nextpa" modelAttribute="board">
 				<input type="hidden" name="num" value="${board.num}">
@@ -195,13 +254,13 @@ td.scro{
 				<input type="hidden" name="name"
 					value="${sessionScope.loginUser.userId}">
 				<div class="w3-col m12">
-					<div class="w3-card w3-round w3-white">
+					<div class="w3-card w3-round w3-white" style="padding-bottom: 12px">
 						<div class="w3-row-padding"
 							style="padding: 32px 16px 0px 16px; margin: 16px 16px 0px 16px">
 
 							<div class="w3-half">
 								<label>Comment</label> <input class="w3-input w3-border"
-									type="text" id="comment" name="Comment" placeholder="Comment">
+									type="text" id="content" name="content" placeholder="Comment">
 							</div>
 							<div class="w3-half">
 								<label>Pass</label> <input class="w3-input w3-border"
@@ -214,24 +273,26 @@ td.scro{
 							<span class="w3-padding-large w3-right" style="margin-top: 20px"><b>Comments</b>
 								<span class="w3-tag">${ccount}</span></span>
 						</div>
-						<div class="w3-row "
-							style="padding: 16px 16px 22px 24px; margin: 0px 16px 0px 16px">
+						<div class="w3-row tbl-content"
+							style="padding: 8px 8px 8px 8px; margin: 16px 16px 16px 16px; border: 1px solid; border-color: #d3d4d5">
 							<table cellpadding="0" cellspacing="0" border="0" id="scro">
 								<tbody>
 									<c:forEach items="${boardreply}" var="boardt">
-									<tr>
-									 <td class="scro">${boardt.name}</td>
-									 <td class="scro"><fmt:formatDate value="${boardt.regdate}" pattern="YYYY.MM.HH" /></td>
-									</tr>
-									<tr>
-									<td class="scro">${boardt.content}</td>
-									<td class="scro">
-									<c:if test="${sessionScope.loginUser.userId==boardt.name}">
-										<a href="update.shop?num=${board.num}" class="w3-button">수정</a>
-										<a href="delete.shop?num=${board.num}" class="w3-button">Del</a>
-									</c:if>
-									</td>
-									</tr>
+										<tr>
+											<td class="scrt" colspan="2" style="background-color: #e1e2e2">${boardt.name}</td>
+											<td class="scro" style="background-color: #e1e2e2"><fmt:formatDate
+													value="${boardt.regdate}" pattern="yyyy.MM.dd" /></td>
+										</tr>
+										<tr>
+											<td class="scrt" colspan="2">${boardt.content}</td>
+											<td class="scro"><c:if
+													test="${sessionScope.loginUser.userId==boardt.name}">
+													<%-- <a href="update.shop?num=${board.num}" class="w3-button">수정</a> --%>
+													<%-- <a href="delete.shop?num=${board.num}" class="w3-button">Del</a> --%>
+													<a class="w3-button" onclick="fun_delR(${boardt.num})">
+														Del</a>
+												</c:if></td>
+										</tr>
 									</c:forEach>
 								</tbody>
 							</table>

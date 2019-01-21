@@ -6,7 +6,6 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
-import org.jboss.netty.handler.codec.http.HttpRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -86,7 +85,7 @@ public class BoardController {
 		}
 		try {
 			service.replyadd(board);
-			mav.addObject("board", board);
+			mav.addObject("boardt", board);
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new ShopException("답글 등록에 실패했습니다", "detail.shop?num=" + board.getRef()+"&tcode"+value.getParameter("tcode"));
@@ -116,25 +115,34 @@ public class BoardController {
 				throw new ShopException("게시글 수정에 실패했습니다", "update.shop?num=" + board.getNum());
 			}
 		}
-		mav.setViewName("redirect:list.shop");
+		mav.setViewName("redirect:detail.shop?num=" + board.getNum()+"&tcode="+board.getTcode());
 		return mav;
 	}
 	
 	@RequestMapping(value = "board/delete", method = RequestMethod.POST)
-	public ModelAndView delete(Board board) {
+	public ModelAndView delete(Board board,HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView();
-		Board bo = service.getBoard(board.getNum());
+		int delnum=Integer.parseInt(request.getParameter("delnum"));
+		int num=Integer.parseInt(request.getParameter("num"));
+		int tcode=Integer.parseInt(request.getParameter("tcode"));
+		System.out.println(delnum);
+		System.out.println(num);
+		Board bo = service.getBoard(delnum);
 		if(!board.getPass().equals(bo.getPass())) {
-			throw new ShopException("비밀번호 오류", "delete.shop?num=" + board.getNum());
+			throw new ShopException("비밀번호 오류", "detail.shop?num=" + board.getNum()+"&tcode="+board.getTcode());
 		}
 		//비밀번호 확인 성공
 		try {
-			service.boarddelete(board.getNum());
-			mav.setViewName("redirect:list.shop");
+			service.boarddelete(delnum);
+			if(delnum==num) {
+				mav.setViewName("redirect:list.shop?tcode="+tcode);
+			} else {
+				mav.setViewName("redirect:detail.shop?num="+num+"&tcode="+board.getTcode());
+			}
 			mav.addObject("board",bo);
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new ShopException("게시글 삭제에 실패했습니다", "delete.shop?num=" + board.getNum());
+			throw new ShopException("게시글 삭제에 실패했습니다", "detail.shop?num=" + board.getRef()+"&tcode="+board.getTcode());
 		}
 		return mav;
 	}

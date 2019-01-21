@@ -37,6 +37,7 @@ td {
 	<form:form modelAttribute="board" action="update.shop"
 		enctype="multipart/form-data" name="f" id="f">
 		<input type="hidden" name="num" value="${board.num}">
+		<input type="hidden" name="tcode" value="${board.tcode}">
 		<input type="hidden" name="file2" value="${board.fileurl}">
 		<table>
 			<tr>
@@ -62,6 +63,7 @@ td {
 				<td><form:textarea path="content" rows="15" cols="80" /> <font
 					color="red"><form:errors path="content" /></font></td>
 			</tr>
+			<%-- 
 			<tr>
 				<td>첨부파일</td>
 				<td>&nbsp; <c:if test="${!empty board.fileurl}">
@@ -71,10 +73,11 @@ td {
 						</div>
 					</c:if> <input type="file" name="file1"></td>
 			</tr>
+			 --%>
 			<tr>
 				<td colspan="2" align="center"><a
 					href="javascript:document.f.submit()">[게시물수정]</a> <a
-					href="list.shop">[게시물목록]</a></td>
+					href="list.shop?tcode=${board.tcode}">[게시물목록]</a></td>
 			</tr>
 		</table>
 	</form:form>
