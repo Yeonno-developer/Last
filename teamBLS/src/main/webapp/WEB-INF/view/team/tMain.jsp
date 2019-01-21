@@ -129,8 +129,8 @@ div.w3-row {
 	<div id="tMian">
 	<h1>Team Rank</h1>
 	</div>
-	<!-- 
 	<div id='dashboard' class="w3-border"></div>
+	<!-- 
  -->
 	<div>
 		<table class="team">

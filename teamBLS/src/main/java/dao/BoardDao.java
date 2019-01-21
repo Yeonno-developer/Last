@@ -30,6 +30,11 @@ public class BoardDao {
 		map.put("num", num);
 		return sqlSession.selectOne(NS + "select",map);
 	}
+	public Board selectd(Integer num) {
+		Map<String, Integer> map= new HashMap<String, Integer>();
+		map.put("del", num);
+		return sqlSession.selectOne(NS + "select",map);
+	}
 	public Board selectone(Integer num) {
 		Map<String, Integer> map= new HashMap<String, Integer>();
 		map.put("num", num);

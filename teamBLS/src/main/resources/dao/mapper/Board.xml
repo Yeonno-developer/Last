@@ -12,21 +12,25 @@
 	</select>
 	
 	<select id="select" resultType="Board" parameterType="map">
-		select num,name,pass,subject,content,file1 fileurl, regdate, readcnt, ref, reflevel, refstep,tcode from board
-		<if test="tcode!=null">
-			where tcode=#{tcode} and reflevel=0
+		select num,name,pass,subject,content,file1 fileurl, regdate, readcnt, ref, reflevel, refstep, tcode from board
+		<if test="del == null">
+			where reflevel=0
 		</if>
 		<if test="num != null">
-			where num = #{num}
+			and num = #{num}
+		</if>
+		<if test="del != null">
+			where num = #{del}
 		</if>
 		<if test="column != null and find != null">
-			and ${column} like '%${find}%'
+			and tcode=#{tcode} and ${column} like '%${find}%' 
 		</if>
-		order by ref desc, refstep asc
+		 order by ref desc, refstep desc
 		<if test="startrow != null and limit !=null">
 			limit #{startrow},${limit}
 		</if>
 	</select>
+	
 	<select id="selectone" resultType="Board" parameterType="map">
 		select num,name,pass,subject,content,file1 fileurl, regdate, readcnt, ref, reflevel, refstep,tcode from board
 		where ref=#{ref} and reflevel>=1

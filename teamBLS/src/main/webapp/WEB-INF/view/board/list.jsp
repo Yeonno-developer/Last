@@ -110,10 +110,11 @@ td {
 					<form action="list.shop?tcode=${param.tcode}" method="post"
 						name="searchform" onsubmit="return list(1)">
 						<input type="hidden" name="tcode" value="${param.tcode}">
-						<input type="hidden" name="pageNum" value="1"> <select
+						<input type="hidden" name="pageNum" value="1">
+						<select
 							name="searchType" id="searchType">
-							<option value="0">Find</option>
-							<option value="subject">Subject</option>
+							<option value="0">All</option>
+							<option value="subject" selected="selected">Subject</option>
 							<option value="name">Writer</option>
 							<option value="content">Content</option>
 						</select>&nbsp;
@@ -143,11 +144,15 @@ td {
 							onmouseout="this.style.backgroundColor=''">
 							<td height="23">${boardcnt}<c:set var="boardcnt"
 									value="${boardcnt -1}" />
-							<td align="left"><c:if test="${!empty board.fileurl}">
+							<td align="left">
+							<%-- 
+							<c:if test="${!empty board.fileurl}">
 									<a href="../file/${board.fileurl}">@</a>
 								</c:if> <c:if test="${!empty board.fileurl}">
 			&nbsp;
-		</c:if> <a href="detail.shop?num=${board.num}&tcode=${param.tcode}">${board.subject}</a></td>
+		</c:if> 
+		 --%>
+		<a href="detail.shop?num=${board.num}&tcode=${param.tcode}">${board.subject}</a></td>
 							<td align="center">${board.name}</td>
 							<td align="center"><fmt:formatDate value="${board.regdate}" pattern="yyyy-MM-dd"/></td>
 							<td align="center">${board.readcnt}</td>
