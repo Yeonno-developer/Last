@@ -35,25 +35,28 @@
 		.wrap {
 		padding : 20px;
 		margin : 10px;
-		height:1500px;
+		height:800px;
 		}
 		.list_common{
 		float: left;
 		height:90%;
 		}
 		.prev1 {
-			padding-top : 50%;
+			padding-top : 20%;
 			margin : 10px;
 			height:90%;
 		}
 		.next1 {
-			padding-top : 50%;	
+			padding-top : 20%;	
 			margin : 10px;
 			height:90%;
 		}
 		.thumb lazy {width:318px;
 		height:165px;
 		
+		}
+		.hp_allkill {
+		margin-left: 360px;
 		}
 	</style>
 
@@ -85,7 +88,7 @@
 		<li class="inhigh"><a href="../item/list.shop?ft=서울삼성&pagenum=1">서울 삼성 |</a></li>
 </ul>
 
-	<div class="hp_allkill" style="margin: 0 auto;">
+	<div class="hp_allkill">
 		<div class="allkill_title">
 			<h6>
 				<a href="../item/list.shop?pagenum=1">BLS</a>
