@@ -79,7 +79,6 @@ td{
   vertical-align:middle;
   font-weight: 300;
   font-size: 12px;
-  color: #fff;
   border-bottom: solid 1px rgba(255,255,255,0.1);
 }
 
