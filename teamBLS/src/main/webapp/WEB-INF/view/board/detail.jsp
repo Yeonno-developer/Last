@@ -44,7 +44,7 @@ td.bo {
 
 <style type="text/css">
 
-h1{
+h1#scro{
   font-size: 30px;
   color: #fff;
   text-transform: uppercase;
@@ -52,7 +52,7 @@ h1{
   text-align: center;
   margin-bottom: 15px;
 }
-table{
+table#scro{
   width:100%;
   table-layout: fixed;
 }
@@ -65,15 +65,7 @@ table{
   margin-top: 0px;
   border: 1px solid rgba(255,255,255,0.3);
 }
-th{
-  padding: 20px 15px;
-  text-align: left;
-  font-weight: 500;
-  font-size: 12px;
-  color: #fff;
-  text-transform: uppercase;
-}
-td{
+td.scro{
   padding: 15px;
   text-align: left;
   vertical-align:middle;
@@ -224,17 +216,16 @@ td{
 						</div>
 						<div class="w3-row "
 							style="padding: 16px 16px 22px 24px; margin: 0px 16px 0px 16px">
-							<table cellpadding="0" cellspacing="0" border="0">
+							<table cellpadding="0" cellspacing="0" border="0" id="scro">
 								<tbody>
-								
 									<c:forEach items="${boardreply}" var="boardt">
 									<tr>
-									 <td>${boardt.name}</td>
-									 <td><fmt:formatDate value="${boardt.regdate}" pattern="YYYY.MM.HH" /></td>
+									 <td class="scro">${boardt.name}</td>
+									 <td class="scro"><fmt:formatDate value="${boardt.regdate}" pattern="YYYY.MM.HH" /></td>
 									</tr>
 									<tr>
-									<td>${boardt.content}</td>
-									<td>
+									<td class="scro">${boardt.content}</td>
+									<td class="scro">
 									<c:if test="${sessionScope.loginUser.userId==boardt.name}">
 										<a href="update.shop?num=${board.num}" class="w3-button">¼öÁ¤</a>
 										<a href="delete.shop?num=${board.num}" class="w3-button">Del</a>
