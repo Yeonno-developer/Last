@@ -110,10 +110,11 @@ td {
 					<form action="list.shop?tcode=${param.tcode}" method="post"
 						name="searchform" onsubmit="return list(1)">
 						<input type="hidden" name="tcode" value="${param.tcode}">
-						<input type="hidden" name="pageNum" value="1"> <select
+						<input type="hidden" name="pageNum" value="1">
+						<select
 							name="searchType" id="searchType">
-							<option value="0">Find</option>
-							<option value="subject">Subject</option>
+							<option value="0">All</option>
+							<option value="subject" selected="selected">Subject</option>
 							<option value="name">Writer</option>
 							<option value="content">Content</option>
 						</select>&nbsp;
