@@ -8,6 +8,7 @@
 <head>
 <meta charset="EUC-KR">
 <title>My page</title>
+<link href="https://fonts.googleapis.com/css?family=Russo+One" rel="stylesheet">
 <script type="text/javascript"
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <style type="text/css">
@@ -102,6 +103,29 @@ background: white;
 }
 .info_user_my td{
 width: 50%;
+}
+.rank_sub{
+width: 98px;
+float: left;
+align-content: center;
+font-size: 35px;
+}
+.rank_rank{
+width : 294px;
+
+}
+.rank_rank p{
+font-family: 'Russo One', sans-serif;
+margin-block-start: 0px !important;
+margin-block-end: 0px !important;
+}
+.rank_rank_num{
+font-size: 70px;
+}
+.rank_sub p{
+font-family: 'Russo One', sans-serif;
+margin-block-start: 0px !important;
+margin-block-end: 0px !important;
 }
 </style>
 <script type="text/javascript">
@@ -220,6 +244,7 @@ function list_disp(id){
 	</div>
 	</c:when>
 	<c:when test="${user.ft =='서울 SK'}">
+	<c:set value="서울 SK 나이츠" var="teamname"/>
 	<div style="float: left;">
 	
 	</div>
@@ -229,14 +254,14 @@ function list_disp(id){
 	</div>
 	</c:when>
 	<c:when test="${user.ft =='서울 삼성'}">
-	
+	<c:set value="서울 삼성 썬더스" var="teamname"/>
 	<h2>서울 삼성 썬더스</h2>
 	<div style="float: left;">
 	<img src="${path}/picture/teams/info_logo/logo_35.gif" style="height: 200px">
 	</div> 
 	</c:when>
 	<c:when test="${user.ft =='현대모비스'}">
-	
+	<c:set value="울산 현대모비스 피버스" var="teamname"/>
 	<h2>&nbsp;울산 현대모비스 피버스</h2>
 	<div style="float: left;">
 	<img src="${path}/picture/teams/info_logo/logo_10.gif" style="height: 200px">
@@ -244,7 +269,20 @@ function list_disp(id){
 	</c:when>
 	</c:choose>
 	<div class="info_user_tinfo">
-	
+
+	<c:forEach items="${rank}" var="r">
+	  <c:if test="${r[1]== teamname}">
+	  <div class="rank_rank" ><p align="center" class="rank_rank_num">${r[0]}<span style="font-size: 40px !important;">등</span></p></div>
+	  <div class="rank_sub"><p align="center">승</p></div>
+	  <div class="rank_sub"><p align="center">패</p></div>
+	  <div class="rank_sub"><p align="center">승률</p></div>	 
+	  <div class="rank_sub"><p align="center">${r[2]}</p></div>
+	  <div class="rank_sub"><p align="center">${r[3]}</p></div>
+	  <div class="rank_sub"><p align="center">${r[4]}</p></div>
+	  	 
+	  </c:if>
+	</c:forEach>
+
 	</div>
 	</div>
 	<div class="info_user_my" >

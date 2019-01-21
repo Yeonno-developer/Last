@@ -2,11 +2,19 @@ package controller;
 
 
 
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -68,7 +76,6 @@ public class UserController {
             }
             try {
                User dbuser = service.selectUser(user.getUserId());
-               System.out.println(dbuser);
                if(dbuser == null) {
                   br.reject("error.login.id");
                   mav.getModel().putAll(br.getModel());
@@ -94,7 +101,7 @@ public class UserController {
    @RequestMapping("user/logout")
    public ModelAndView logout(HttpSession session) {
       ModelAndView mav = new ModelAndView();
-      mav.setViewName("redirect:login.shop");
+      mav.setViewName("redirect:../team/mainPage.shop");
       session.invalidate();
       return mav;   
    }
@@ -102,7 +109,8 @@ public class UserController {
    @RequestMapping("user/mypage")
      public ModelAndView mypage(String id,HttpSession session) {
        ModelAndView mav = new ModelAndView();
-        User user = (User)session.getAttribute("loginUser");  
+        User user = (User)session.getAttribute("loginUser");
+
         List<Sale> saleList = service.getSaleList(id);     
         for(Sale s : saleList) {
 
@@ -112,13 +120,47 @@ public class UserController {
               Item item=service.getItem(""+si.getItemId());
               si.setItem(item);
            }
-        }     
+        }
+        mav.addObject("rank",rank());
         mav.addObject("salelist",saleList);
         mav.addObject("user",user);
       return mav;  
      }
    
-    @RequestMapping("user/updateForm")
+      private List<List<String>> rank() {
+    	String url = "https://www.kbl.or.kr/stats/team_rank.asp";
+    	List<String> tr = new ArrayList<String>();
+    	Map<String, List> rank = new TreeMap<String, List>();
+    	List<List<String>> trlist = new ArrayList<List<String>>();
+    	try {
+    		Document doc = Jsoup.connect(url).get();
+    		Elements div = doc.select("table.tbltype_record");
+    		for (Element src : div) {
+    			for(Element c : src.select("table tr td")) {	
+    				tr.add(c.text());	
+    			}	
+    		}
+/*    		for(int i=0;i<trlist.size();i++) {
+    			trlist.add(tr.subList(i, (i+1)*10));
+    		}
+*/
+    		trlist.add(tr.subList(0, 10));
+    		trlist.add(tr.subList(10,20));
+    		trlist.add(tr.subList(20, 30));
+    		trlist.add(tr.subList(30, 40));
+    		trlist.add(tr.subList(40, 50));
+    		trlist.add(tr.subList(50, 60));
+    		trlist.add(tr.subList(60, 70));
+    		trlist.add(tr.subList(70, 80));
+    		trlist.add(tr.subList(80, 90));
+    		trlist.add(tr.subList(90, 100));
+    	} catch (IOException e) {
+    		e.printStackTrace();
+    	}
+   	return trlist;
+}
+
+	@RequestMapping("user/updateForm")
      public ModelAndView updateForm(String id, HttpSession session) {
         ModelAndView mav = new ModelAndView();
          User user = service.selectUser(id);
@@ -131,7 +173,7 @@ public class UserController {
         ModelAndView mav = new ModelAndView("user/updateForm");
         if(br.hasErrors()) {
            mav.getModel().putAll(br.getModel());
-           System.out.println(br.getModel());
+
            return mav;
         }
 
