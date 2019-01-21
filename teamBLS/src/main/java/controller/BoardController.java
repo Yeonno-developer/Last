@@ -131,7 +131,6 @@ public class BoardController {
 		} else {
 			bo = service.getdeBoard(delnum);
 		}
-		System.out.println(bo);
 		if(!board.getPass().equals(bo.getPass())) {
 			throw new ShopException("비밀번호 오류", "detail.shop?num=" + board.getNum()+"&tcode="+board.getTcode());
 		}
