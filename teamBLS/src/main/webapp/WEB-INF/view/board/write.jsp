@@ -49,32 +49,37 @@ td {
 			</tr>
 			<tr>
 				<td align="center">Writer</td>
-				<td><input type="text" name="name"
+				<td><input type="text" name="name" class="w3-input" style="width: 150px"
 					value="${sessionScope.loginUser.userId}" readonly="readonly"></td>
 			</tr>
 			<tr>
 				<td align="center">Pass</td>
-				<td><form:password path="pass" /><font color="red"><form:errors
+				<td><form:password path="pass" class="w3-input" placeholder="Enter Pass"
+				style="width: 150px" /><font color="red"><form:errors
 							path="pass" /></font></td>
 			</tr>
 			<tr>
 				<td align="center">Subject</td>
-				<td><form:input path="subject" /><font color="red"><form:errors
+				<td><form:input path="subject" class="w3-input"  placeholder="Enter Subject"
+				style="width: 50%"	/><font color="red"><form:errors
 							path="subject" /></font></td>
 			</tr>
 			<tr>
 				<td align="center">Content</td>
-				<td><form:textarea path="content" rows="15" cols="80" /> <font
+				<td><form:textarea path="content" rows="15" cols="80" placeholder="Enter Content"
+					style="resize: none;"/> <font
 					color="red"><form:errors path="content" /></font></td>
 			</tr>
+			<!-- 
 			<tr>
 				<td align="center">File</td>
 				<td><input type="file" name="file1"></td>
 			</tr>
+			 -->
 			<tr>
 				<td colspan="2" align="center"><a
-					href="javascript:document.f.submit()">[게시물등록]</a> <a
-					href="list.shop?tcode=${param.tcode}">[Board List]</a></td>
+					href="javascript:document.f.submit()" class="w3-button">Write</a> <a
+					href="list.shop?tcode=${param.tcode}" class="w3-button">Board List</a></td>
 			</tr>
 		</table>
 	</form:form>

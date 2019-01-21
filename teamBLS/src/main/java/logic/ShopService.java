@@ -139,7 +139,10 @@ public class ShopService {
 	public Board getBoard(Integer num) {
 		return boardDao.select(num);
 	}
-
+	public Board getdeBoard(Integer num) {
+		return boardDao.selectd(num);
+	}
+	
 	public Board getBoard(Integer num, HttpSession session) {
 		return boardDao.select(num);
 	}
@@ -161,10 +164,12 @@ public class ShopService {
 	}
 
 	public void boardadd(Board board, HttpServletRequest request) {
+		/*
 		if (board.getFile1() != null && !board.getFile1().isEmpty()) {
 			uploadFileCreate(board.getFile1(), request, "file");
 			board.setFileurl(board.getFile1().getOriginalFilename());
 		}
+		*/
 		int max = boardDao.maxNum();
 		board.setTcode(request.getParameter("tcode"));
 		board.setNum(++max);

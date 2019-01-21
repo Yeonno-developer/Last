@@ -36,31 +36,31 @@ td {
 <hr style="border-top : 1px solid gray;">
 	<form:form modelAttribute="board" action="update.shop"
 		enctype="multipart/form-data" name="f" id="f">
+	<h1>Board Update</h1>
 		<input type="hidden" name="num" value="${board.num}">
 		<input type="hidden" name="tcode" value="${board.tcode}">
 		<input type="hidden" name="file2" value="${board.fileurl}">
 		<table>
-			<tr>
-				<td colspan="2" align="center">Team Board Update</td>
-			</tr>
-			<tr>
-				<td align="center">글쓴이</td>
+			<tr style="border-top: 1px solid;">
+				<td align="center">Writer</td>
 				<td><form:input path="name" /><font color="red"><form:errors
 							path="name" /></font></td>
 			</tr>
 			<tr>
-				<td align="center">비밀번호</td>
-				<td><form:password path="pass" /><font color="red"><form:errors
+				<td align="center">Pass</td>
+				<td><form:password path="pass"  placeholder="Enter Pass"
+				style="width: 150px" /><font color="red"><form:errors
 							path="pass" /></font></td>
 			</tr>
 			<tr>
-				<td align="center">제목</td>
-				<td><form:input path="subject" /><font color="red"><form:errors
+				<td align="center">Subject</td>
+				<td><form:input path="subject"   placeholder="Enter Subject"
+				style="width: 50%"	/><font color="red"><form:errors
 							path="subject" /></font></td>
 			</tr>
 			<tr>
-				<td align="center">내용</td>
-				<td><form:textarea path="content" rows="15" cols="80" /> <font
+				<td align="center">Content</td>
+				<td><form:textarea path="content" rows="15" cols="80" style="resize: none;"/> <font
 					color="red"><form:errors path="content" /></font></td>
 			</tr>
 			<%-- 
@@ -76,8 +76,8 @@ td {
 			 --%>
 			<tr>
 				<td colspan="2" align="center"><a
-					href="javascript:document.f.submit()">[게시물수정]</a> <a
-					href="list.shop?tcode=${board.tcode}">[게시물목록]</a></td>
+					href="javascript:document.f.submit()" class="w3-button">Update</a> <a
+					href="list.shop?tcode=${board.tcode}" class="w3-button">List</a></td>
 			</tr>
 		</table>
 	</form:form>

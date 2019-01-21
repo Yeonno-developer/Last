@@ -124,19 +124,24 @@ public class BoardController {
 		ModelAndView mav = new ModelAndView();
 		int delnum=Integer.parseInt(request.getParameter("delnum"));
 		int num=Integer.parseInt(request.getParameter("num"));
-		int tcode=Integer.parseInt(request.getParameter("tcode"));
-		System.out.println(delnum);
-		System.out.println(num);
-		Board bo = service.getBoard(delnum);
+		String tcode=request.getParameter("tcode");
+		Board bo;
+		if(delnum==num) {
+			bo = service.getBoard(delnum);
+		} else {
+			bo = service.getdeBoard(delnum);
+		}
+		System.out.println(bo);
 		if(!board.getPass().equals(bo.getPass())) {
 			throw new ShopException("비밀번호 오류", "detail.shop?num=" + board.getNum()+"&tcode="+board.getTcode());
 		}
 		//비밀번호 확인 성공
 		try {
-			service.boarddelete(delnum);
 			if(delnum==num) {
+				service.boarddelete(delnum);
 				mav.setViewName("redirect:list.shop?tcode="+tcode);
 			} else {
+				service.boarddelete(delnum);
 				mav.setViewName("redirect:detail.shop?num="+num+"&tcode="+board.getTcode());
 			}
 			mav.addObject("board",bo);
