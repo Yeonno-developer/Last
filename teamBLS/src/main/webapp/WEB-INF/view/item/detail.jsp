@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>상세정보 보기</title>
 <link rel="alternate" media="only screen and (max-width: 640px)" href="http://mitem.auction.co.kr/vip?itemno=B517025211" />
 <link rel="stylesheet" type="text/css" href="//script.auction.co.kr/pc/style/css/common.css?t=20171221080000" />
 <link rel="stylesheet" type="text/css" href="//script.auction.co.kr/pc/style/css/vip_group.css?t=20171221080000" />
@@ -94,7 +94,6 @@ function submitform()
       fullscreenClose('PDPLayer');
    }
 </script>
-                  <h1 id="item_name">${item.name}</h1>
                   
                      <div class="prod_info">
                         
@@ -443,13 +442,16 @@ function purchaseform() {
     <!-- 조합형 /독립-->
    
             <div class="optiontype type_selection noline">
-            <h2 id="ucItemOrderInfo_ucOptionTemplate_ucItemRequest_ucCombinationRequest_rpDisplays_hdivOptionTile_0" class="tit_options">옵션선택</h2>
+            <h2 id="ucItemOrderInfo_ucOptionTemplate_ucItemRequest_ucCombinationRequest_rpDisplays_hdivOptionTile_0" class="tit_options">수량선택</h2>
         
-      <div class="item_options uxeselectbox combination disable"><!-- D:선택값 옵션1 선택후  옵션2 선택중일때 linked 클래스추가 --><!-- 필수옵션인 경우 essential_opt 추가 -->
+      <div class="item_options uxeselectbox combination disable">
          <input type="hidden" value="-1" title="상품 옵션값" name="selectedRequest">
             <button class="select-item_option uxeselect_btn" onclick="pvprofiler.sendEvt('click', '100000452', 'Utility');" type="button">
             <span class="txt" data-textinit="사이즈">사이즈</span>
-            <span class="arr blind">열기</span>
+            <input type="radio" name="size" value="S" />s(95)     
+            <input type="radio" name="size" value="M" />M(100)     
+            <input type="radio" name="size" value="L" />L(105)     
+            <input type="radio" name="size" value="XL" />XL(110)
             </button>
          <ul class="select-itemoption-list uxeselect_dropdown" style="display: none;">
       
