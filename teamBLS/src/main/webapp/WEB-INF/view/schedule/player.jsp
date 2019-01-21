@@ -159,7 +159,14 @@ td {
 						series : [ {
 							name : <c:forEach items="${name}" var="value" varStatus="valuec" begin="${na}" end="${na}">"${valuec.current}",</c:forEach>
 							type : 'bar',
-							data : [<c:forEach items="${Pvalue}" var="value" varStatus="valuec" begin="${st}" end="${end}">"${valuec.current}"<c:if test="${valuec.index!=end}">,</c:if></c:forEach>]} ]
+							label: {
+				                normal: {
+				                    show: true,
+				                    position: 'inside'
+				                }
+				            },
+							data : [<c:forEach items="${Pvalue}" var="value" varStatus="valuec" begin="${st}" end="${end}">"${valuec.current}"<c:if test="${valuec.index!=end}">,</c:if></c:forEach>]}
+							]
 					};
 					;
 					if (option && typeof option === "object") {
