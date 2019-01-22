@@ -14,6 +14,7 @@
 <link rel="stylesheet" type="text/css" href="http://script.auction.co.kr/style/css/common/etc.css">
 <link rel="stylesheet" type="text/css" href="http://script.auction.co.kr/style/css/frame/vip_all2013.css">
 <link rel="stylesheet" type="text/css" href="http://script.auction.co.kr/pc/style/css/hp.css" />
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
 
 
@@ -501,16 +502,39 @@ function purchaseform() {
             </div><!-- //.item-topinfo -->
          </div>
          <script type="text/javascript" src="http://script.auction.co.kr/itempage3/1.0/ItemOrderButtons.js?_cb=20171221080000"></script>
-    <div>
-    <form:form modelAttribute="comm" action="../comm/register.shop">
+    <div class="w3-card-4 w3-container w3-display-middle" style="width:1200px; height:650px; margin-top:700px">
+    <form:form modelAttribute="comment" action="../comment/register.shop">
+    <input type="hidden" name="itemid" value="${param.id}">
+    <div class="w3-display-middle" style="width:1100px; height:650px; margin-top:10px">
  	   <table>
- 	   	<tr><td>작성자<input type="text" name="writer"></td></tr>
- 	   	<tr><td>비밀번호<input type="password" name="password"></td></tr>
- 	   	<tr><td>내용<textarea  name="contents" cols="50" rows="10"></textarea></td></tr>
- 	   	<tr><td><input type="submit" value="등록"></td></tr>
+ 	   	<tr>
+ 	   		<td width="100px">작성자</td>
+ 	   		<td width="500px"><input type="text" name="writer"></td>
+ 	   		<td width="100px">비밀번호</td>
+ 	   		<td width="500px"><input type="password" name="password"></td>
+ 	   	</tr>
+ 	   	
+ 	   	<tr><td colspan="4" style="padding-top:10px"><textarea  name="contents" cols="140" rows="10" style="width:1100px"></textarea></td></tr>
+ 	   	<tr><td><input type="submit" value="등록" class="w3-btn w3-red"></td></tr>
    	   </table>
+   	   </div>
    	</form:form>
+   	<div class="w3-display-middle w3-card-4" style="margin-top:120px; padding-left: 50px; width:1100px; height:230px">
+    <table>
+    <c:forEach items="${commentlist}" var="comment">
+    <tr>
+<td width="150px" align="center" colspan="4">${comment.writer}</td>
+<td width="1200px" colspan="4">${comment.contents}</td>
+<td>
+<a href="../comment/commentupdate.shop?comnum=${comment.comnum}&password=${comment.password}&contents=${comment.contents}&writer=${comment.writer}" class="w3-btn w3-red" style="width:80px">수정</a></td>
+<td><a href="../comment/commentdelete.shop?comnum=${comment.comnum}&password=${comment.password}&writer=${comment.writer}&contents=${comment.contents}" class="w3-btn w3-gray" style="width:80px">삭제</a>
+</td>
+</tr>
+</c:forEach>
+</table>
+</div>
     </div>
+
 
 
 </body>

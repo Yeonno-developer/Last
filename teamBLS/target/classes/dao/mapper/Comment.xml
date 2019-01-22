@@ -6,15 +6,9 @@
 <mapper namespace="dao.mapper.CommentMapper">
    <select id="list" resultType="Comment" parameterType="map">
       select * from shopcomment
-      <if test = "writer != null">
-         where writer = #{writer}
-      </if>
-       <if test="ids != null">
-         where writer in
-         <foreach collection="ids" separator="," item="writer" open="(" close=")">
-            #{writer}
-         </foreach>
+      <if test = "comnum != null">
+         where comnum = #{comnum}
       </if> 
-      order by writer
+      order by comnum
    </select>
 </mapper>
