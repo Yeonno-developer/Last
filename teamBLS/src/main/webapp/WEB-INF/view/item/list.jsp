@@ -62,13 +62,20 @@
 
    <script>
     function prev2(pagenum) {
-    	alert(pagenum);
-    	location.href="../item/list.shop?pagenum="+${pagenum-1};
+    	if(pagenum == 0){
+    		alert("첫번째 페이지 입니다.");
+    		location.href="../item/list.shop?ft=${ft}&pagenum=1";
+    	}else {
+    	location.href="../item/list.shop?ft=${ft}&pagenum=${pagenum-1}";
+    }
     }
     
     function next2(pagenum) {
-    	alert(pagenum);
-    	location.href="../item/list.shop?pagenum="+${pagenum+1};
+    	if(false){
+    		alert("마지막 페이지 입니다.");
+    		location.href="../item/list.shop?ft=${ft}&pagenum=${pagenum-1}";
+    	}
+    	location.href="../item/list.shop?ft=${ft}&pagenum=${pagenum+1}";
     }
     
    </script>
@@ -98,8 +105,9 @@
 	<div class="wrap" align="center">
 	<div class="prev1 list_common"><button onclick="prev2(${pagenum-1})">이전</button></div>
 		<div class="item_list_wrap list_common">
-			<c:forEach items="${itemList }" var="item">
-				<c:if test="${item.id % 3 == 1}">
+		<c:set var="i" value="1"/>
+			<c:forEach items="${itemList}" var="item">
+				<c:if test="${i%3 == 1}">
 					<ul class="item_list">
 				</c:if>
 				<li>
@@ -109,7 +117,7 @@
 							style="display: inline;"> <span class="title">${item.name }</span>
 						</a>
 						<div class="info">
-							<em class="prices">가격</em> <span class="pirce"> <strong>${item.price}<span>원</span>
+							<em class="prices"></em> <span class="pirce"> <strong>${item.price}<span>원</span>
 							</strong>
 							</span> <span class="jjim"> <span class="jjim2"> <img
 									src="../picture/heart.jpg" alt="찜하기"> 찜하기 <strong></strong>
@@ -122,10 +130,11 @@
 						</div>
 					</div>
 				</li>
-				<c:if test="${item.id % 3 == 0}">
-					</ul>
+		<c:set var="i" value="${i+1}"/>
+				<c:if test="${i % 3 == 1}">
+					</ul>					
 				</c:if>
-			</c:forEach>
+				</c:forEach>
 </div>
 		<div class="next1 list_common"><button onclick="next2(${pagenum+1})">다음</button></div>
 		</div>

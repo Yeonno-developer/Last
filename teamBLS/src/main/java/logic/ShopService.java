@@ -229,7 +229,8 @@ public class ShopService {
 	}
 
 	public List<Item> getItemList_type(String ft, int pagenum) {
-		System.out.println("shopservice : " + pagenum);
+		System.out.println("shopservice ft : " + ft);
+		System.out.println("shopservice pagenum : " + pagenum);
 		return itemDao.typeList(ft, pagenum);
 	}
 

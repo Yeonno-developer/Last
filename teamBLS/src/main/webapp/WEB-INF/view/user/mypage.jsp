@@ -177,49 +177,49 @@ function list_disp(id){
 	<img src="${path}/picture/teams/info_logo/logo_65.gif" style="height: 200px">
 	</div>
 	</c:when>
-	<c:when test="${user.ft =='부산 KT'}">
+	<c:when test="${user.ft =='부산KT'}">
 	
 	<h2>&nbsp;부산 KT 소닉붐</h2>
 	<div style="float: left;">
 	<img src="${path}/picture/teams/info_logo/logo_06.gif" style="height: 200px">
 	</div>
 	</c:when>
-	<c:when test="${user.ft =='안양 KGC'}">
+	<c:when test="${user.ft =='안양KGC'}">
 	
 	<h2>&nbsp;안양 KGC 인삼공사</h2>
 	<div style="float: left;">
 	<img src="${path}/picture/teams/info_logo/logo_70.gif" style="height: 200px">
 	</div>
 	</c:when>
-	<c:when test="${user.ft =='전주 KCC'}">
+	<c:when test="${user.ft =='전주KCC'}">
 	
 	<h2>&nbsp;전주 KCC 이지스</h2>
 	<div style="float: left;">
 	<img src="${path}/picture/teams/info_logo/logo_60.gif" style="height: 200px">
 	</div>
 	</c:when>
-	<c:when test="${user.ft =='원주 DB'}">
+	<c:when test="${user.ft =='원주DB'}">
 	
 	<h2>&nbsp;원주 DB 프로미</h2>
 	<div style="float: left;">
 	<img src="${path}/picture/teams/info_logo/logo_16.gif" style="height: 200px">
 	</div>
 	</c:when>
-	<c:when test="${user.ft =='창원 LG'}">
+	<c:when test="${user.ft =='창원LG'}">
 	
 	<h2>&nbsp;창원 LG 세이커스</h2>
 	<div style="float: left;">
 	<img src="${path}/picture/teams/info_logo/logo_50.gif" style="height: 200px">
 	</div>
 	</c:when>
-	<c:when test="${user.ft =='고양 오리온'}">
+	<c:when test="${user.ft =='고양오리온'}">
 	
 	<h2>&nbsp;고양 오리온 오리온스</h2>
 	<div style="float: left;">
 	<img src="${path}/picture/teams/info_logo/logo_30.gif" style="height: 200px">
 	</div>
 	</c:when>
-	<c:when test="${user.ft =='서울 SK'}">
+	<c:when test="${user.ft =='서울SK'}">
 	<div style="float: left;">
 	
 	</div>
@@ -228,7 +228,7 @@ function list_disp(id){
 	<img src="${path}/picture/teams/info_logo/logo_55.gif" style="height: 200px">
 	</div>
 	</c:when>
-	<c:when test="${user.ft =='서울 삼성'}">
+	<c:when test="${user.ft =='서울삼성'}">
 	
 	<h2>서울 삼성 썬더스</h2>
 	<div style="float: left;">

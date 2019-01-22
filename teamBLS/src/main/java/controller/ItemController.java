@@ -36,17 +36,19 @@ public class ItemController {
 		String ft = request.getParameter("ft");
 		int pagenum = Integer.parseInt(request.getParameter("pagenum"));
 		mav.addObject("pagenum", pagenum);
-		mav.addObject("ft",ft);
+		mav.addObject("ft", ft);
 		
-
 		if(request.getParameter("ft")!=null || request.getParameter("pagenum") !=null) {
 			pagenum = pagenum*6-6;
+			int size = itemList.size();
 			itemList = service.getItemList_type(ft, pagenum);
+			mav.addObject("size",size);
+			System.out.println(itemList);
 			mav.addObject("maxnum", maxnum);
 			mav.addObject("itemList",itemList);
 			return mav;
-		}
-		else {
+
+			}else {
 			pagenum = pagenum*6-6;
 		itemList = service.getItemList_type2(pagenum);
 		mav.addObject("itemList",itemList);	//ModelAndView 객체에 객체를 더한다는 의미
