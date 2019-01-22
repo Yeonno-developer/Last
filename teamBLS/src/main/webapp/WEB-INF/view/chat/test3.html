@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<title>Realtime Multi Chat</title>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet"
+	href="https://www.w3schools.com/lib/w3-theme-black.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
+<link
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+	rel="stylesheet">
+<style type="text/css">
+li {
+	width: 50%
+}
+</style>
+</head>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<script src="js/Chart.js"></script>
+<body>
+	<div style="width: 50%;">
+		<canvas id="canvas_bar"></canvas>
+	</div>
+	<div class="dataset">
+		<table>
+			<tr>
+				<th>Year</th>
+				<th>Income</th>
+				<th>Expenditure</th>
+				<th>Profit/Loss
+				<th>
+			</tr>
+			<tr>
+				<td>2012</td>
+				<td>10000</td>
+				<td>5000</td>
+				<td>5000</td>
+			</tr>
+			<tr>
+				<td>2013</td>
+				<td>11500</td>
+				<td>7500</td>
+				<td>4000</td>
+			</tr>
+			<tr>
+				<td>2014</td>
+				<td>9800</td>
+				<td>4700</td>
+				<td>5100</td>
+			</tr>
+		</table>
+	</div>
+
+	<script>
+		var randomScalingFactor = function() {
+			return Math.round(Math.random() * 100)
+		};
+
+		var barChartData = {
+			labels : [ "2012", "2013", "2014" ],
+			datasets : [ {
+				fillColor : "rgba(95,137,250,0.5)",
+				strokeColor : "rgba(95,137,250,0.9)",
+				highlightFill : "rgba(95,137,250,0.75)",
+				highlightStroke : "rgba(95,137,250,1)",
+				data : [ 10000, 11500, 9800 ]
+			}, {
+				fillColor : "rgba(245,75,75,0.5)",
+				strokeColor : "rgba(245,75,75,0.8)",
+				highlightFill : "rgba(245,75,75,0.75)",
+				highlightStroke : "rgba(245,75,75,1)",
+				data : [ 5000, 7500, 4700 ]
+			}, {
+				fillColor : "rgba(98,223,114,0.5)",
+				strokeColor : "rgba(98,223,114,0.8)",
+				highlightFill : "rgba(98,223,114,0.75)",
+				highlightStroke : "rgba(98,223,114,1)",
+				data : [ 5000, 4000, 5100 ]
+			} ]
+
+		};
+		window.onload = function() {
+			var ctx = document.getElementById("canvas_bar").getContext("2d");
+			window.myBar = new Chart(ctx).Bar(barChartData, {
+				responsive : true
+			});
+		}
+	</script>
+</body>
+</html>
