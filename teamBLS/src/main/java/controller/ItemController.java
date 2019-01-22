@@ -33,17 +33,24 @@ public class ItemController {
 		ModelAndView mav = new ModelAndView();	//view 등록 안함 : "item/list"가 기본 view
 		List<Item> itemList = service.getItemList();
 		int maxnum = service.getMaxnum();
-		String teamtype =request.getParameter("type");
-		mav.addObject("teamtype",teamtype);
+		String ft = request.getParameter("ft");
+		int pagenum = Integer.parseInt(request.getParameter("pagenum"));
+		mav.addObject("pagenum", pagenum);
+		mav.addObject("ft", ft);
 		
-		// /WEB/view/item/list.jsp
-		if(request.getParameter("type")!=null) {
-			itemList = service.getItemList_type(teamtype);
+		if(request.getParameter("ft")!=null || request.getParameter("pagenum") !=null) {
+			pagenum = pagenum*6-6;
+			int size = itemList.size();
+			itemList = service.getItemList_type(ft, pagenum);
+			mav.addObject("size",size);
+			System.out.println(itemList);
 			mav.addObject("maxnum", maxnum);
 			mav.addObject("itemList",itemList);
 			return mav;
-		}
-		else {
+
+			}else {
+			pagenum = pagenum*6-6;
+		itemList = service.getItemList_type2(pagenum);
 		mav.addObject("itemList",itemList);	//ModelAndView 객체에 객체를 더한다는 의미
 		return mav;
 		}
@@ -57,7 +64,6 @@ public class ItemController {
 		ModelAndView mav = new ModelAndView();
 		Item item = service.getItem(id);	//item은 ItemDao의 return 값으로 ... mapper로 나오게 됨.
 		mav.addObject("item",item);
-		
 		return mav;
 	}
 	
@@ -73,16 +79,14 @@ public class ItemController {
 	@RequestMapping("item/register")
 	public ModelAndView register
 			(@Valid Item item,BindingResult br, HttpServletRequest request) {
-		//@Valid : 유효성 검증. Item 클래스에 정의된 내용으로 검증을 함.
-		//item 객체 : 파라미터 정보와 업로드된 파일내용을 저장
 		ModelAndView mav= new ModelAndView();
 		mav = new ModelAndView("item/add");
 		if(br.hasErrors()) {
 			mav.getModel().putAll(br.getModel());
 			return mav;
 		}
-		service.itemCreate(item,request);
-		mav.setViewName("redirect:/item/list.shop");
+		service.itemCreate(item, request);
+		mav.setViewName("redirect:/item/list.shop?pagenum=1");
 		
 		return mav;
 	}
@@ -96,8 +100,9 @@ public class ItemController {
 				mav.getModel().putAll(br.getModel());
 				return mav;
 			}
+			System.out.println(item.getId());
 			service.itemUpdate(item,request);
-			mav.setViewName("redirect:/item/list.shop");
+			mav.setViewName("redirect:/item/list.shop?pagenum=1");
 			return mav;
 	}
 	
@@ -105,7 +110,7 @@ public class ItemController {
 	public ModelAndView delete(String id) {
 		ModelAndView mav= new ModelAndView();
 		service.delete(id);
-		mav.setViewName("redirect:/item/list.shop");
+		mav.setViewName("redirect:/item/list.shop?pagenum=1");
 		return mav;
 	}
 	

@@ -8,8 +8,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import io.socket.emitter.Emitter;
 import io.socket.engineio.client.Socket;
-import websocket.SocketIO;
-
 
 @Controller
 public class ChatContoller {
@@ -22,6 +20,8 @@ public class ChatContoller {
 
 	@RequestMapping("chat/multi")
 	public ModelAndView test1(HttpSession session) throws Exception {
+		// D:\Spring\Git\reslast\Last\teamBLS\test1
+		// D:/Spring/Git/reslast/Last/teamBLS/test1
 		ModelAndView mav = new ModelAndView("chat/multichat");
 		return mav;
 	}

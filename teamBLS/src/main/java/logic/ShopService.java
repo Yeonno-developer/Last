@@ -9,7 +9,6 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.jboss.netty.handler.codec.http.HttpRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -140,7 +139,10 @@ public class ShopService {
 	public Board getBoard(Integer num) {
 		return boardDao.select(num);
 	}
-
+	public Board getdeBoard(Integer num) {
+		return boardDao.selectd(num);
+	}
+	
 	public Board getBoard(Integer num, HttpSession session) {
 		return boardDao.select(num);
 	}
@@ -162,11 +164,14 @@ public class ShopService {
 	}
 
 	public void boardadd(Board board, HttpServletRequest request) {
+		/*
 		if (board.getFile1() != null && !board.getFile1().isEmpty()) {
 			uploadFileCreate(board.getFile1(), request, "file");
 			board.setFileurl(board.getFile1().getOriginalFilename());
 		}
+		*/
 		int max = boardDao.maxNum();
+		board.setTcode(request.getParameter("tcode"));
 		board.setNum(++max);
 		board.setRef(max);
 		boardDao.insert(board);
@@ -181,6 +186,7 @@ public class ShopService {
 		int max = boardDao.maxNum();
 		board.setNum(++max);
 		board.setRef(b1.getRef());
+		board.setRegdate(new Date());
 		board.setReflevel(b1.getReflevel() + 1);
 		board.setRefstep(b1.getRefstep() + 1);
 		boardDao.refstep(b1); // => 작업 전 기존의 원글의 refstep 보다 큰 모든 레코드들을 refstep+1로 수정하기
@@ -222,8 +228,10 @@ public class ShopService {
 		commentDao.commentRegister(comment);
 	}
 
-	public List<Item> getItemList_type(String type) {
-		return itemDao.typeList(type);
+	public List<Item> getItemList_type(String ft, int pagenum) {
+		System.out.println("shopservice ft : " + ft);
+		System.out.println("shopservice pagenum : " + pagenum);
+		return itemDao.typeList(ft, pagenum);
 	}
 
 	public int getMaxnum() {
@@ -233,5 +241,11 @@ public class ShopService {
 	public List<Board> boardreply(int ref, int reflevel) {
 		return boardDao.selectR(ref,reflevel);
 	}
+
+	public List<Item> getItemList_type2(int pagenum) {
+		return itemDao.typeList2(pagenum);
+	}
+
+
 
 }

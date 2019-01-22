@@ -39,13 +39,21 @@ public class ItemDao {
 		map.put("id", id);
 		sqlSession.getMapper(ItemMapper.class).delete(map);
 	}
-	public List<Item> typeList(String type) {
-		Map<String, String> map = new HashMap<String,String>();
-		map.put("type", type);
-		return sqlSession.selectList(NS+"list", map);
+	public List<Item> typeList(String ft, int pagenum) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		System.out.println("itemDao ft : " + ft);
+		System.out.println("itemDao pagenum : " + pagenum);
+		map.put("ft", ft);
+		map.put("pagenum", pagenum);
+		return sqlSession.selectList(NS+"list1", map);
 	}
 	public int Maxnum() {
 		int maxnum = sqlSession.getMapper(ItemMapper.class).maxnum();
 		return maxnum;
+	}
+	public List<Item> typeList2(int pagenum) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("pagenum", pagenum);
+		return sqlSession.selectList(NS+"list2", map);
 	}
 }

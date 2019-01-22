@@ -156,6 +156,8 @@ $(document).on('mouseover', 'section,header,footer', function () {
 </c:forEach>
 </div>
 <div class="sub_menu" style="left:720px;"> <!-- 굿즈 -->
+<div><a href="${path}/item/list.shop?pagenum=1">Goods</a></div>
+<div><a href="${path}/item/list.shop?pagenum=1">내굿즈를 보여줄게</a></div>
 </div>
 <div class="sub_menu" style="left:960px;"> <!-- 실시간 중계 -->
 </div>

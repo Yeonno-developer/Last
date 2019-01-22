@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<title>Realtime Multi Chat</title>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet"
+	href="https://www.w3schools.com/lib/w3-theme-black.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+<style type="text/css">
+li{
+	width: 50%
+}
+</style>
+</head>
+<body>
+	<div class="w3-row">
+		<div class="w3-col s4">
+			<div class="w3-col s4">
+				<textarea rows="15" cols="40" name="chatMsg" disabled="disabled" style="resize: none;"></textarea>
+			</div>
+			<div id="w3-col s2">
+				<div id="chatLogs"></div>
+			</div>
+			<form class="form-inline">
+				<div class="form-group">
+					<label for="msgForm">Message: </label> <input type="text"
+						class="form-controla" id="msgForm">
+				</div>
+				<button id="post" type="submit" class="btn btn-primary" style="height:35px; padding: 5px 10px 5px 10px"><i class="material-icons">chat</i></button>
+			</form>
+		</div>
+		<div class="w3-col s4">
+			<div>
+			  <div id="app">
+			    <div class="container">
+			      <h1>Let's vote Team!</h1>
+			      <ul class="list-group">
+			        <story v-for="(story, index) in stories"
+			          :key="index"
+			          :story="story"
+			          :favorite="favorite"
+			          @update="updateFavorite">
+			        </story>
+				   </ul>
+				  </div>
+				</div>
+			</div>
+			<div>
+				 <div id="app2">
+				   <div class="container">
+				     <h1>Let's vote Team!</h1>
+				     <ul class="list-group">
+				       <story v-for="(test, index) in stories"
+				         :key="index"
+				         :story="test"
+				         :favorite="favorite"
+				         @update="updateFavorite">
+				       </story>
+				   </ul>
+				  </div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<template id="story-template">
+	  <li class="list-group-item">
+	    "{{ story.writer }}"	 upvotes {{ story.upvotes }}.
+	    <button v-show="!story.voted" @click="upvote" class="btn btn-default">
+	      Upvote
+	    </button>
+	    <button v-show="!isFavorite" @click="markAsFavorite" class="btn btn-primary">
+	      Favorite
+	  </button>
+	  <span v-show="isFavorite" class="glyphicon glyphicon-star pull-right" aria-hidden="true"></span>
+	  </li>
+	</template>
+
+	<template id="test-template">
+	  <li class="list-group-item">
+	    {{ test.writer }} 	upvotes {{ test.upvotes }}.
+	    <button v-show="!story.voted" @click="upvote" class="btn btn-default">
+	      Upvote
+	    </button>
+	    <button v-show="!isFavorite" @click="markAsFavorite" class="btn btn-primary">
+	      Favorite
+	  </button>
+	  <span v-show="isFavorite" class="glyphicon glyphicon-star pull-right" aria-hidden="true"></span>
+	  </li>
+	</template>
+
+	
+	</body>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.0-rc.8/vue.js"></script>
+	<script type="text/javascript">
+	Vue.component('story', {
+	  template: "#story-template",
+	  props: ['story', 'favorite'],
+	  methods:{
+	    upvote: function () {
+	      this.story.upvotes += 1;
+	      this.story.voted = true;
+	    },
+	    markAsFavorite: function () {
+	      // 'update' is just the name of the custom event
+	      // it could be anything. ex: fav-update
+	      this.$emit('update', this.story)
+	    },
+	  },
+	  computed:{
+	    isFavorite: function () {
+	      return this.story === this.favorite;
+	    },
+	  }
+	});
+	
+	new Vue({
+	  el: '#app',
+	  data: {
+	    stories: [
+	      {
+	        writer: 'Mr. Weebl',
+	        upvotes: 28,
+	        voted: false,
+	      },
+	    ],
+	    favorite: {}
+	  },
+	  methods:{
+	      updateFavorite: function (story) {
+	        this.favorite = story;
+	      },
+	    },
+	})
+	</script>
+	
+	<script type="text/javascript">
+	Vue.component('test', {
+		  template: "#test-template",
+		  props: ['test', 'favorite'],
+		  methods:{
+		    upvote: function () {
+		      this.story.upvotes += 1;
+		      this.story.voted = true;
+		    },
+		    markAsFavorite: function () {
+		      // 'update' is just the name of the custom event
+		      // it could be anything. ex: fav-update
+		      this.$emit('update', this.story)
+		    },
+		  },
+		  computed:{
+		    isFavorite: function () {
+		      return this.story === this.favorite;
+		    },
+		  }
+		});
+		
+		new Vue({
+		  el: '#app2',
+		  data: {
+		    stories: [
+		      {
+		        writer: 'test',
+		        upvotes: 28,
+		        voted: false,
+		      },
+		    ],
+		    favorite: {}
+		  },
+		  methods:{
+		      updateFavorite: function (story) {
+		        this.favorite = story;
+		      },
+		    },
+		})
+	</script>
+
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+	<script src="/socket.io/socket.io.js"></script>
+	<script>
+		$(function() {
+			// socket.io 서버에 접속한다
+			var socket = io("http://192.168.0.157:3000");
+			var href = document.location.href;
+			var Id = href.substring(href.indexOf('id=') + 3);
+			if (Id=="") {
+				$("input").attr("disabled",true)
+						.attr("placeholder","Please Login");
+				$("#post").attr("disabled",true);
+			} else {
+				// 서버로 자신의 정보를 전송한다.
+				socket.emit("login", {
+					name : Id
+				/*
+				name: Id,
+				userid : "tset"
+				 */
+			});
+			}
+			// 서버로부터의 메시지가 수신되면
+			socket.on("login", function(data) {
+				var i = $('#chatLogs>div').size()
+				if ($("#chatLogs>div#data").size() <= 1) {
+					$("#chatLogs").prepend($("#chatLogs"));
+					$("#chatLogs").prepend(
+							"<div id=data><strong>" + data
+									+ "</strong> has joined</div>");
+				} else {
+
+				}
+			});
+
+			// 서버로부터의 메시지가 수신되면
+			socket.on("chat", function(data) {
+				if(data.msg!=""){
+				$("textarea").eq(0).prepend(
+						data.from.name + ":" + data.msg + "\n");
+				}
+				/* 
+				$("#chatLogs").append(
+						"<div>" + data.msg + " : from <strong>"
+								+ data.from.name + "</strong></div>");
+				 */
+			});
+
+			// Send 버튼이 클릭되면
+			$("form").submit(function(e) {
+				e.preventDefault();
+				var $msgForm = $("#msgForm");
+				var $msg = $msgForm.val();
+				var $list=["fuck","a","b","\uBC14\uBCF4","\uBCD1\uC2E0",
+					"\uAC1C\uC0C8\uB07C","\uC721\uC2DC\uB784","\uC560\uBBF8",
+					"\uC5FC\uBCD1","\uC528\uBC1C","\uB188","\uB118","\uB144",
+					"\uB1EC","\uAC1C\uC0C8","\uAC1C\uB07C"]
+ 				for (var i = 0; i < $list.length; i++){
+					$msg=$msg.replace($list[i],"**");
+				}
+				
+				// 서버로 메시지를 전송한다.
+				socket.emit("chat", {
+					msg : $msg
+				});
+				if($msg!=""){
+					$("textarea").eq(0).prepend($msg+ "\n");
+				}
+				$msgForm.val("");
+			});
+			
+			socket.off("close", function(data) {
+				$("#chatLogs>div#data").remove(
+						"<div id=data><strong>" + data
+								+ "</strong> has joined</div>");
+			});
+		});
+	</script>
+</body>
+</html>

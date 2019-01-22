@@ -10,7 +10,6 @@
 <body>
 <form:form modelAttribute="item" action="register.shop" enctype="multipart/form-data">
 <h2>상품 등록 화면</h2>
-
    <table>
       <tr>
          <th>상품명</th>
@@ -37,14 +36,12 @@
          <td><font color='red'><form:errors path="stock"/></font></td>
       </tr>    
       <tr>
-         <th>구단</th>
-         <td><form:input path="type" maxlength="20"/></td>
-         <td><font color='red'><form:errors path="type"/></font></td>
-      </tr>  
+         <td><input type="hidden" name="ft" id="ft" value="${sessionScope.loginUser.ft}"/></td>
+      </tr>
       <tr>
          <td colspan="3">
             <input type="submit" value="등록">&nbsp;
-            <input type="button" value="상품등록" onclick="location.href='list.shop'">
+            <input type="button" value="등록 취소" onclick="location.href='list.shop?pagenum=1'">
          </td>
       </tr>
    </table>

@@ -7,7 +7,6 @@
 <head>
 <meta charset="EUC-KR">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css?family=Lobster&effect=brick-sign">
 <title>Team Board List</title>
@@ -41,7 +40,7 @@ div.w3-row {
 div#divT, table {
 	width: 1060px;
 	margin-left: 410px;
-	margin-top: -21px;
+	margin-top: -1px;
 	/* 	margin-top: 25px; */
 }
 
@@ -103,20 +102,19 @@ td {
 		<table>
 			<tr>
 				<td colspan="2" align="left" style="padding-top: 30px"
-					class="w3-lobster font-effect-brick-sign w3-xxlarge"><c:forEach
-						items="${sessionScope.teamCode}" var="test">
-						<c:if test="${test.value==param.tcode}"> Team Board </c:if>
-					</c:forEach></td>
+					class="w3-lobster font-effect-brick-sign w3-xxlarge">
+					Team Board</td>
 
 				<td colspan="4" align="right" style="padding-top: 45px">
 					<%-- 검색 기능 --%>
 					<form action="list.shop?tcode=${param.tcode}" method="post"
 						name="searchform" onsubmit="return list(1)">
 						<input type="hidden" name="tcode" value="${param.tcode}">
-						<input type="hidden" name="pageNum" value="1"> <select
+						<input type="hidden" name="pageNum" value="1">
+						<select
 							name="searchType" id="searchType">
-							<option value="0">Find</option>
-							<option value="subject">Subject</option>
+							<option value="0">All</option>
+							<option value="subject" selected="selected">Subject</option>
 							<option value="name">Writer</option>
 							<option value="content">Content</option>
 						</select>&nbsp;
@@ -146,13 +144,17 @@ td {
 							onmouseout="this.style.backgroundColor=''">
 							<td height="23">${boardcnt}<c:set var="boardcnt"
 									value="${boardcnt -1}" />
-							<td align="left"><c:if test="${!empty board.fileurl}">
+							<td align="left">
+							<%-- 
+							<c:if test="${!empty board.fileurl}">
 									<a href="../file/${board.fileurl}">@</a>
 								</c:if> <c:if test="${!empty board.fileurl}">
 			&nbsp;
-		</c:if> <a href="detail.shop?num=${board.num}">${board.subject}</a></td>
+		</c:if> 
+		 --%>
+		<a href="detail.shop?num=${board.num}&tcode=${param.tcode}">${board.subject}</a></td>
 							<td align="center">${board.name}</td>
-							<td align="center"></td>
+							<td align="center"><fmt:formatDate value="${board.regdate}" pattern="yyyy-MM-dd"/></td>
 							<td align="center">${board.readcnt}</td>
 						</tr>
 					</c:forEach>
@@ -188,19 +190,21 @@ td {
 				</tr>
 			</c:if>
 			<tr>
-				<td colspan="2" align="left"><c:if test="${!empty param.tcode}">
+				<td colspan="2" align="left">
 						<h4 class="w3-col w3-lobster font-effect-brick-sign">
 							<c:forEach items="${sessionScope.teamCode}" var="test">
 								<c:if test="${test.value==param.tcode}"> ${test.key} </c:if>
 							</c:forEach>
-						</h4>
-					</c:if> <c:if test="${empty param.tcode}">
-			Team Board
-		</c:if></td>
+						</h4></td>
+				<c:if test="${empty sessionScope.loginUser}">
+				<td colspan="3" align="right"></td>
+				</c:if>
+				<c:if test="${!empty sessionScope.loginUser}">
 				<td colspan="3" align="right"><a
 					href="write.shop?tcode=${param.tcode}" class="w3-button"
 					onmouseover="this.style.backgroundColor='#e5e5e5'"
 					onmouseout="this.style.backgroundColor=''">Write</a></td>
+				</c:if>
 			</tr>
 		</table>
 	</div>

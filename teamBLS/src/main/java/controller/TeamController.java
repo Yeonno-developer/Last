@@ -3,12 +3,10 @@ package controller;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -38,7 +36,7 @@ import org.springframework.web.servlet.ModelAndView;
 */
 @Controller
 public class TeamController {
-	
+	//메인
 	@RequestMapping("team/mainPage")
 	public ModelAndView main(HttpSession session) {
 		ModelAndView mav = new ModelAndView("team/main");
@@ -53,7 +51,7 @@ public class TeamController {
 	}
 
 
-
+	//팀 순위
 	@RequestMapping("team/teamMain")
 	public ModelAndView tMain(HttpSession session) {
 		ModelAndView mav = new ModelAndView("team/tMain");
@@ -91,23 +89,28 @@ public class TeamController {
 			tName.add(s);
 		}
 		Map<String, String> pName = pName(tName); //pName(선수 번호) =>key : 선수 번호, value : 선수 이름
-		Tinfo(tnum);
+		mav.addObject("table1",Table1(tnum));
+		mav.addObject("table2",Table2(tnum));
+		mav.addObject("table3",Table3(tnum));
 		mav.addObject("teaminfo",Tinfo(tnum)); //팀 정보
 		mav.addObject("pCode", pCode);
 		mav.addObject("pName", pName);
+		
 		return mav;
 	}
-
-	
-	
+	//
 	@RequestMapping("team/pl")
 	public ModelAndView pMain(HttpSession session, HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView("team/player");
 		String pnum = request.getParameter("pCode");
 		Map<String,List> pinfo = player(pnum);
+		mav.addObject("seasonrecord",season(pnum));
+		mav.addObject("gamerecord",game(pnum));
 		mav.addObject("pinfo",pinfo);
 		return mav;
 	}
+
+
 
 
 
@@ -457,5 +460,332 @@ public class TeamController {
 			e.printStackTrace();
 		}
 		return tMap;
+	}
+	private Map<String,Object> Table1(String tnum) {
+		String url = "https://www.kbl.or.kr/teams/team_record.asp?tcode="+tnum;
+		List<String> num = new ArrayList<String>();
+		List<String> name = new ArrayList<String>();
+		List<String> G = new ArrayList<String>();
+		List<String> Min = new ArrayList<String>();
+		List<String> P2 = new ArrayList<String>();
+		List<String> PA2 = new ArrayList<String>();
+		List<String> Per1 = new ArrayList<String>();
+		List<String> P3 = new ArrayList<String>();
+		List<String> PA3 = new ArrayList<String>();
+		List<String> Per2 = new ArrayList<String>();
+		List<String> FG = new ArrayList<String>();
+		List<String> FT = new ArrayList<String>();
+		List<String> FTA = new ArrayList<String>();
+		List<String> Per3 = new ArrayList<String>();
+		List<String> foot = new ArrayList<String>();
+		Map<String, Object> table1 = new TreeMap<>();
+		
+		try {
+			Document doc = Jsoup.connect(url).get();
+			Elements div = doc.select("table.tbltype_record");
+			for (Element src : div) {
+				for(Element c : src.select("table:eq(0) td:eq(0)")) {	
+					num.add(c.text());
+				}
+			}
+			for (Element src : div) {
+				for(Element c : src.select("table:eq(0) td:eq(1)")) {	
+					name.add(c.text());
+				}
+			}
+			for (Element src : div) {
+				for(Element c : src.select("table:eq(0) td:eq(2)")) {	
+					G.add(c.text());
+				}
+			}
+			for (Element src : div) {
+				for(Element c : src.select("table:eq(0) td:eq(3)")) {	
+					Min.add(c.text());
+				}
+			}
+			for (Element src : div) {
+				for(Element c : src.select("table:eq(0) td:eq(4)")) {	
+					P2.add(c.text());
+				}
+			}
+			for (Element src : div) {
+				for(Element c : src.select("table:eq(0) td:eq(5)")) {	
+					PA2.add(c.text());
+				}
+			}
+			for (Element src : div) {
+				for(Element c : src.select("table:eq(0) td:eq(6)")) {	
+					Per1.add(c.text());
+				}
+			}
+			for (Element src : div) {
+				for(Element c : src.select("table:eq(0) td:eq(7)")) {	
+					P3.add(c.text());
+				}
+			}
+			for (Element src : div) {
+				for(Element c : src.select("table:eq(0) td:eq(8)")) {	
+					PA3.add(c.text());
+				}
+			}
+			for (Element src : div) {
+				for(Element c : src.select("table:eq(0) td:eq(9)")) {	
+					Per2.add(c.text());
+				}
+			}
+			for (Element src : div) {
+				for(Element c : src.select("table:eq(0) td:eq(10)")) {	
+					FG.add(c.text());
+				}
+			}
+			for (Element src : div) {
+				for(Element c : src.select("table:eq(0) td:eq(11)")) {	
+					FT.add(c.text());
+				}
+			}
+			for (Element src : div) {
+				for(Element c : src.select("table:eq(0) td:eq(12)")) {	
+					FTA.add(c.text());
+				}
+			}
+			for (Element src : div) {
+				for(Element c : src.select("table:eq(0) td:eq(13)")) {	
+					Per3.add(c.text());
+				}
+			}
+			for (Element src : div) {
+				for(Element c : src.select("table:eq(0) tfoot tr td")) {	
+					foot.add(c.text());
+					
+				}
+			}
+			table1.put("num",num);
+			table1.put("name",name);
+			table1.put("G",G);
+			table1.put("Min",Min);
+			table1.put("P2",P2);
+			table1.put("PA2",PA2);
+			table1.put("Per1",Per1);
+			table1.put("P3",PA3);
+			table1.put("PA3",PA3);
+			table1.put("Per2",Per2);
+			table1.put("FG",FG);
+			table1.put("FT",FT);
+			table1.put("FTA",FTA);
+			table1.put("Per3",Per3);
+			table1.put("foot", foot);
+			table1.put("size", num.size());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return table1;	
+	}
+	private Map<String,Object> Table2(String tnum) {
+		String url = "https://www.kbl.or.kr/teams/team_record.asp?tcode="+tnum;
+		List<String> num = new ArrayList<String>();
+		List<String> name = new ArrayList<String>();
+		List<String> Off = new ArrayList<String>();
+		List<String> Def = new ArrayList<String>();
+		List<String> RPG = new ArrayList<String>();
+		List<String> Ast = new ArrayList<String>();
+		List<String> APG = new ArrayList<String>();
+		List<String> wFT = new ArrayList<String>();
+		List<String> woFT = new ArrayList<String>();
+		List<String> foot = new ArrayList<String>();
+		Map<String, Object> table2 = new TreeMap<>();
+		try {
+			Document doc = Jsoup.connect(url).get();
+			Elements div = doc.select("table.tbltype_record");
+			for (Element src : div) {
+				for(Element c : src.select("table:eq(1) td:eq(0)")) {	
+					num.add(c.text());
+				}
+			}
+			for (Element src : div) {
+				for(Element c : src.select("table:eq(1) td:eq(1)")) {	
+					name.add(c.text());
+				}
+			}
+			for (Element src : div) {
+				for(Element c : src.select("table:eq(1) td:eq(2)")) {	
+					Off.add(c.text());
+				}
+			}
+			for (Element src : div) {
+				for(Element c : src.select("table:eq(1) td:eq(3)")) {	
+					Def.add(c.text());
+				}
+			}
+			for (Element src : div) {
+				for(Element c : src.select("table:eq(1) td:eq(4)")) {	
+					RPG.add(c.text());
+				}
+			}
+			for (Element src : div) {
+				for(Element c : src.select("table:eq(1) td:eq(5)")) {	
+					Ast.add(c.text());
+				}
+			}
+			for (Element src : div) {
+				for(Element c : src.select("table:eq(1) td:eq(6)")) {	
+					APG.add(c.text());
+				}
+			}
+			for (Element src : div) {
+				for(Element c : src.select("table:eq(1) td:eq(7)")) {	
+					wFT.add(c.text());
+				}
+			}
+			for (Element src : div) {
+				for(Element c : src.select("table:eq(1) td:eq(8)")) {	
+					woFT.add(c.text());
+				}
+			}
+			for (Element src : div) {
+				for(Element c : src.select("table:eq(1) tfoot tr td")) {	
+					foot.add(c.text());
+					
+				}
+			}
+			table2.put("num",num);
+			table2.put("name",name);
+			table2.put("Off",Off);
+			table2.put("Def",Def);
+			table2.put("RPG",RPG);
+			table2.put("Ast",Ast);
+			table2.put("APG",APG);
+			table2.put("wFT",wFT);
+			table2.put("woFT",woFT);
+			table2.put("foot", foot);
+			table2.put("size", num.size());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return table2;
+	}
+	private Map<String,Object> Table3(String tnum) {
+		List<String> num = new ArrayList<String>();
+		List<String> name = new ArrayList<String>();
+		List<String> STL = new ArrayList<String>();
+		List<String> BS = new ArrayList<String>();
+		List<String> GD = new ArrayList<String>();
+		List<String> TO = new ArrayList<String>();
+		List<String> DK = new ArrayList<String>();
+		List<String> DKA = new ArrayList<String>();
+		List<String> PTS = new ArrayList<String>();
+		List<String> PPG = new ArrayList<String>();
+		List<String> foot = new ArrayList<String>();
+		Map<String, Object> table3 = new TreeMap<>();
+		String url = "https://www.kbl.or.kr/teams/team_record.asp?tcode="+tnum;
+		try {
+			Document doc = Jsoup.connect(url).get();
+			Elements div = doc.select("table.tbltype_record");
+			for (Element src : div) {
+				for(Element c : src.select("table:eq(2) td:eq(0)")) {	
+					num.add(c.text());
+				}
+			}
+			for (Element src : div) {
+				for(Element c : src.select("table:eq(2) td:eq(1)")) {	
+					name.add(c.text());
+				}
+			}
+			for (Element src : div) {
+				for(Element c : src.select("table:eq(2) td:eq(2)")) {	
+					STL.add(c.text());
+				}
+			}
+			for (Element src : div) {
+				for(Element c : src.select("table:eq(2) td:eq(3)")) {	
+					BS.add(c.text());
+				}
+			}
+			for (Element src : div) {
+				for(Element c : src.select("table:eq(2) td:eq(4)")) {	
+					GD.add(c.text());
+				}
+			}
+			for (Element src : div) {
+				for(Element c : src.select("table:eq(2) td:eq(5)")) {	
+					TO.add(c.text());
+				}
+			}
+			for (Element src : div) {
+				for(Element c : src.select("table:eq(2) td:eq(6)")) {	
+					DK.add(c.text());
+				}
+			}
+			for (Element src : div) {
+				for(Element c : src.select("table:eq(2) td:eq(7)")) {	
+					DKA.add(c.text());
+				}
+			}
+			for (Element src : div) {
+				for(Element c : src.select("table:eq(2) td:eq(8)")) {	
+					PTS.add(c.text());
+				}
+			}
+			for (Element src : div) {
+				for(Element c : src.select("table:eq(2) td:eq(9)")) {	
+					PPG.add(c.text());
+				}
+			}
+			for (Element src : div) {
+				for(Element c : src.select("table:eq(2) tfoot tr td")) {	
+					foot.add(c.text());
+				}
+			}
+			table3.put("num", num);
+			table3.put("name", name);
+			table3.put("STL", STL);
+			table3.put("BS", BS);
+			table3.put("GD", GD);
+			table3.put("TO", TO);
+			table3.put("DK", DK);
+			table3.put("DKA", DKA);
+			table3.put("PTS", PTS);
+			table3.put("PPG", PPG);
+			table3.put("foot", foot);
+			table3.put("size", num.size());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return table3;	
+	}
+	private List<Object> season(String pnum) {
+		List<Object> table = new ArrayList<Object>();
+		String url = "https://www.kbl.or.kr/players/player_season_record.asp?pcode="+pnum+"&flag1=1";
+		try {
+			Document doc = Jsoup.connect(url).get();
+			Elements div = doc.select("table.tbltype_record");
+			for (Element src : div) {
+				for(Element c : src.select("table")) {	
+					//System.out.println(c.toString());
+					//c.child(1).attr("style","float:left");
+					table.add(c.toString());
+				}
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return table;		
+	}
+	private List<Object> game(String pnum) {
+		List<Object> table = new ArrayList<Object>();
+		String url = "https://www.kbl.or.kr/players/player_game_record.asp?pcode="+pnum+"&flag1=1";
+
+		try {
+			Document doc = Jsoup.connect(url).get();
+			Elements div = doc.select("table.tbltype_record");
+			for (Element src : div) {
+				for(Element c : src.select("table")) {	
+					//System.out.println(c.toString());
+					table.add(c.toString());
+				}
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return table;		
 	}
 }

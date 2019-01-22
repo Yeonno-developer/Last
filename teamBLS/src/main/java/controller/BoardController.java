@@ -6,7 +6,6 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
-import org.jboss.netty.handler.codec.http.HttpRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -78,19 +77,18 @@ public class BoardController {
 	 * refstep 보다 큰 모든 레코드들을 refstep+1로 수정하기 3. 등록 후 list.shop 요청하기
 	 */
 	@RequestMapping(value = "board/reply", method = RequestMethod.POST)
-	public ModelAndView reply(Board board, BindingResult br) {
-		ModelAndView mav = new ModelAndView();
+	public ModelAndView reply(Board board, BindingResult br,HttpServletRequest value) {
+		ModelAndView mav = new ModelAndView("redirect:detail.shop?num=" + board.getRef()+"&tcode="+value.getParameter("tcode"));
 		if (br.hasErrors()) {
 			mav.getModel().putAll(br.getModel());
 			return mav;
 		}
 		try {
 			service.replyadd(board);
-			mav.addObject("board", board);
-			mav.setViewName("redirect:detail.shop?num=" + board.getRef());
+			mav.addObject("boardt", board);
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new ShopException("답글 등록에 실패했습니다", "detail.shop?num=" + board.getRef());
+			throw new ShopException("답글 등록에 실패했습니다", "detail.shop?num=" + board.getRef()+"&tcode"+value.getParameter("tcode"));
 		}
 		return mav;
 	}
@@ -117,25 +115,38 @@ public class BoardController {
 				throw new ShopException("게시글 수정에 실패했습니다", "update.shop?num=" + board.getNum());
 			}
 		}
-		mav.setViewName("redirect:list.shop");
+		mav.setViewName("redirect:detail.shop?num=" + board.getNum()+"&tcode="+board.getTcode());
 		return mav;
 	}
 	
 	@RequestMapping(value = "board/delete", method = RequestMethod.POST)
-	public ModelAndView delete(Board board) {
+	public ModelAndView delete(Board board,HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView();
-		Board bo = service.getBoard(board.getNum());
+		int delnum=Integer.parseInt(request.getParameter("delnum"));
+		int num=Integer.parseInt(request.getParameter("num"));
+		String tcode=request.getParameter("tcode");
+		Board bo;
+		if(delnum==num) {
+			bo = service.getBoard(delnum);
+		} else {
+			bo = service.getdeBoard(delnum);
+		}
 		if(!board.getPass().equals(bo.getPass())) {
-			throw new ShopException("비밀번호 오류", "delete.shop?num=" + board.getNum());
+			throw new ShopException("비밀번호 오류", "detail.shop?num=" + board.getNum()+"&tcode="+board.getTcode());
 		}
 		//비밀번호 확인 성공
 		try {
-			service.boarddelete(board.getNum());
-			mav.setViewName("redirect:list.shop");
+			if(delnum==num) {
+				service.boarddelete(delnum);
+				mav.setViewName("redirect:list.shop?tcode="+tcode);
+			} else {
+				service.boarddelete(delnum);
+				mav.setViewName("redirect:detail.shop?num="+num+"&tcode="+board.getTcode());
+			}
 			mav.addObject("board",bo);
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new ShopException("게시글 삭제에 실패했습니다", "delete.shop?num=" + board.getNum());
+			throw new ShopException("게시글 삭제에 실패했습니다", "detail.shop?num=" + board.getRef()+"&tcode="+board.getTcode());
 		}
 		return mav;
 	}

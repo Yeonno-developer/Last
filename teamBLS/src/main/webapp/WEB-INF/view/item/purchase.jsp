@@ -18,6 +18,7 @@ td.title {background-color : # e2e2e2; color:blue};
 </script>
 </head>
 <body>
+<form action="item/payment" method="post" >
  <table>
 	<tr><td width="30%" class="title">구매자 ID</td>
 	<td width="70%">${sessionScope.loginUser.userId }</td></tr>
@@ -43,9 +44,10 @@ td.title {background-color : # e2e2e2; color:blue};
 		<fmt:formatNumber value="${price * quantity }"	pattern="#,###"/>원
 	</td></tr>
 	<tr><td colspan="4">
-	<a href="end.shop">결제</a> &nbsp;
+	<input type="submit" value="결제하기" /> &nbsp;
 	<a href="../item/list.shop">상품록록</a>
 	</td></tr>
 </table> 
+</form>
 </body>
 </html>
