@@ -113,7 +113,7 @@
 				<li>
 					<div class="inner">
 						<a href="detail.shop?id=${item.id}"> <img class="thumb lazy"
-							src="../picture/${item.pictureUrl}" data-original=".jpg"
+							src="../picture/uniform/${item.pictureUrl}" data-original=".jpg"
 							style="display: inline;"> <span class="title">${item.name }</span>
 						</a>
 						<div class="info">
