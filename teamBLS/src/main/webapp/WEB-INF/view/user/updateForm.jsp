@@ -6,6 +6,11 @@
 <head>
 <meta charset="EUC-KR">
 <title>사용자 수정</title>
+<style type="text/css">
+.update_section{
+margin-left: 360px;
+}
+</style>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script src="/resources/js/addressapi.js"></script>
 <script type="text/javascript">
@@ -44,9 +49,10 @@
 	</script>
 </head>
 <body>
-
+<div class="update_section">
 <h2>사용자 수정</h2>
 <form:form modelAttribute="user" method="post" action="update.shop">
+
 	<spring:hasBindErrors name="user">
 		<font color="red">
 			<c:forEach items="${errors.globalErrors}" var="error">
@@ -91,7 +97,7 @@
 		</tr>
 		<tr height="40px">
 			<td>좋아하는 팀<td>
-			<td><form:select path="ft">
+			<form:select path="ft">
 				<form:option value="현대모비스">울산 현대모비스</form:option>
 				<form:option value="전자랜드">인천 전자랜드</form:option>
 				<form:option value="부산 KT">부산 KT</form:option>
@@ -103,7 +109,7 @@
 				<form:option value="서울 SK">서울 SK</form:option>
 				<form:option value="서울 삼성">서울 삼성</form:option>
 				</form:select>
-				<form:errors path="ft"/></td>
+				<form:errors path="ft"/>
 		</tr>
 		<tr height="40px">
 			<td>좋아하는 선수</td>
@@ -116,5 +122,6 @@
 		<input type="reset" value="초기화">
 		</td></tr></table>
 </form:form>
+</div>
 </body>
 </html>

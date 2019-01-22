@@ -8,6 +8,9 @@
 <head>
 <meta charset="EUC-KR">
 <title>My page</title>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link href="https://fonts.googleapis.com/css?family=Russo+One" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR" rel="stylesheet">
 <script type="text/javascript"
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <style type="text/css">
@@ -63,7 +66,7 @@ height : 300px;
 margin-top: -89px;
 width: 550px !important;
 height : 300px;
-background: #bababa url(/teamBLS/picture/teams/team_bg.jpg) no-repeat 0 0;
+background: #9e9e9e url(/teamBLS/picture/teams/team_bg.jpg) no-repeat 0 0;
 }
 .info_user_team h2{
 color: white;
@@ -96,12 +99,42 @@ color: white;
 }
 .info_user_tinfo{
 margin-left : 237.98px;
-width: 300px;
+width: 312px;
 height: 200px;
 background: white;
 }
 .info_user_my td{
 width: 50%;
+}
+.rank_sub{
+width: 98px;
+float: left;
+align-content: center;
+font-size: 35px;
+}
+.rank_rank{
+width : 294px;
+
+
+}
+.rank_rank p{
+font-family: 'Russo One', sans-serif;
+margin-block-start: 0px !important;
+margin-block-end: 0px !important;
+}
+.rank_rank_num{
+font-size: 70px;
+}
+.rank_sub p{
+font-family: 'Russo One', sans-serif;
+margin-block-start: 0px !important;
+margin-block-end: 0px !important;
+}
+.info_table{
+font-family: 'Noto Sans KR', sans-serif !important;
+}
+.info_table td{
+padding: 0px !important;
 }
 </style>
 <script type="text/javascript">
@@ -153,7 +186,7 @@ function list_disp(id){
 <div class="inner">
 <ul class="tabs-nav" style="float: none;">
 <li><a href="#work01">회원정보</a></li>
-<li><a href="#work02">구매정보</a></li>
+<li><a href="#work02">주문목록</a></li>
 </ul>
 <ul class="tabs-up">
 <li><a href="updateForm.shop?id=${user.userId}">회원정보수정</a></li>
@@ -171,72 +204,72 @@ function list_disp(id){
 	<div class="info_user_team" style="float: left;">
 	<c:choose>
 	<c:when test="${user.ft =='전자랜드'}">
-	
+	<c:set value="인천전자랜드 엘리펀츠" var="teamname"/>
 	<h2>&nbsp;인천전자랜드 엘리펀츠</h2>
 	<div style="float: left;">
 	<img src="${path}/picture/teams/info_logo/logo_65.gif" style="height: 200px">
 	</div>
 	</c:when>
-	<c:when test="${user.ft =='부산 KT'}">
-	
+	<c:when test="${user.ft =='부산KT'}">
+	<c:set value="부산 KT 소닉붐" var="teamname"/>
 	<h2>&nbsp;부산 KT 소닉붐</h2>
 	<div style="float: left;">
 	<img src="${path}/picture/teams/info_logo/logo_06.gif" style="height: 200px">
 	</div>
 	</c:when>
-	<c:when test="${user.ft =='안양 KGC'}">
-	
+	<c:when test="${user.ft =='안양KGC'}">
+	<c:set value="안양 KGC 인삼공사" var="teamname"/>
 	<h2>&nbsp;안양 KGC 인삼공사</h2>
 	<div style="float: left;">
 	<img src="${path}/picture/teams/info_logo/logo_70.gif" style="height: 200px">
 	</div>
 	</c:when>
-	<c:when test="${user.ft =='전주 KCC'}">
-	
+	<c:when test="${user.ft =='전주KCC'}">
+	<c:set value="전수 KCC 이지스" var="teamname"/>
 	<h2>&nbsp;전주 KCC 이지스</h2>
 	<div style="float: left;">
 	<img src="${path}/picture/teams/info_logo/logo_60.gif" style="height: 200px">
 	</div>
 	</c:when>
-	<c:when test="${user.ft =='원주 DB'}">
-	
+	<c:when test="${user.ft =='원주DB'}">
+	<c:set value="원주 DB 프로미" var="teamname"/>
 	<h2>&nbsp;원주 DB 프로미</h2>
 	<div style="float: left;">
 	<img src="${path}/picture/teams/info_logo/logo_16.gif" style="height: 200px">
 	</div>
 	</c:when>
-	<c:when test="${user.ft =='창원 LG'}">
-	
+	<c:when test="${user.ft =='창원LG'}">
+	<c:set value="창원 LG 세이커스" var="teamname"/>
 	<h2>&nbsp;창원 LG 세이커스</h2>
 	<div style="float: left;">
 	<img src="${path}/picture/teams/info_logo/logo_50.gif" style="height: 200px">
 	</div>
 	</c:when>
-	<c:when test="${user.ft =='고양 오리온'}">
-	
+	<c:when test="${user.ft =='고양오리온'}">
+	<c:set value="고양 오리온 오리온스" var="teamname"/>
 	<h2>&nbsp;고양 오리온 오리온스</h2>
 	<div style="float: left;">
 	<img src="${path}/picture/teams/info_logo/logo_30.gif" style="height: 200px">
 	</div>
 	</c:when>
-	<c:when test="${user.ft =='서울 SK'}">
+	<c:when test="${user.ft =='서울SK'}">
+	<c:set value="서울 SK 나이츠" var="teamname"/>
 	<div style="float: left;">
-	
 	</div>
 	<h2>&nbsp;서울 SK 나이츠</h2>
 	<div style="float: left;">
 	<img src="${path}/picture/teams/info_logo/logo_55.gif" style="height: 200px">
 	</div>
 	</c:when>
-	<c:when test="${user.ft =='서울 삼성'}">
-	
+	<c:when test="${user.ft =='서울삼성'}">
+	<c:set value="서울 삼성 썬더스" var="teamname"/>
 	<h2>서울 삼성 썬더스</h2>
 	<div style="float: left;">
 	<img src="${path}/picture/teams/info_logo/logo_35.gif" style="height: 200px">
 	</div> 
 	</c:when>
 	<c:when test="${user.ft =='현대모비스'}">
-	
+	<c:set value="울산 현대모비스 피버스" var="teamname"/>
 	<h2>&nbsp;울산 현대모비스 피버스</h2>
 	<div style="float: left;">
 	<img src="${path}/picture/teams/info_logo/logo_10.gif" style="height: 200px">
@@ -245,25 +278,66 @@ function list_disp(id){
 	</c:choose>
 	<div class="info_user_tinfo">
 	
+	<c:forEach items="${rank}" var="r">
+	   
+	      <c:if test="${r[1] == teamname }">
+	  <div class="rank_rank" ><p align="center" class="rank_rank_num">${r[0]}<span style="font-size: 40px !important;">등</span></p></div>
+	  <div style="margin-top: -15px;">
+	  <div class="rank_sub"><p align="center">승</p></div>
+	  <div class="rank_sub"><p align="center">패</p></div>
+	  <div class="rank_sub"><p align="center">승률</p></div>	 
+	  <div class="rank_sub"><p align="center">${r[2]}</p></div>
+	  <div class="rank_sub"><p align="center">${r[3]}</p></div>
+	  <div class="rank_sub"><p align="center">${r[4]}</p></div>
+	  </div>    
+	      </c:if>
+		
+<%-- 	  <c:if test="${r[1] == teamname}">
+	  <div class="rank_rank" ><p align="center" class="rank_rank_num">${r[0]}<span style="font-size: 40px !important;">등</span></p></div>
+	  <div style="margin-top: -15px;">
+	  <div class="rank_sub"><p align="center">승</p></div>
+	  <div class="rank_sub"><p align="center">패</p></div>
+	  <div class="rank_sub"><p align="center">승률</p></div>	 
+	  <div class="rank_sub"><p align="center">${r[2]}</p></div>
+	  <div class="rank_sub"><p align="center">${r[3]}</p></div>
+	  <div class="rank_sub"><p align="center">${r[4]}</p></div>
+	  </div>
+	  </c:if> --%>
+	</c:forEach>
+
 	</div>
 	</div>
 	<div class="info_user_my" >
-               <table border="1" style="width:400px;">
-                  <tr><td colspan="2">회원 정보 </td> </tr>
-                  <tr><td>아이디</td><td>${user.userId }</td></tr>
-                  <tr><td>이름</td><td>${user.userName }</td></tr>
-                  <tr><td>전화번호</td><td>${user.tel }</td></tr>
-                  <tr><td>이메일</td><td>${user.email }</td></tr>
-                  <tr><td>우편번호</td><td>${user.postcode }</td></tr>
-                  <tr><td>주소</td><td>${user.addr }</td></tr>
-                  <tr><td>상세주소</td><td>${user.addr1 }</td></tr>
-                  <tr><td>좋아하는 팀</td><td>${user.ft }</td></tr>
-                  <tr><td>좋아하는 선수</td><td>${user.fp }</td></tr>
+               <table style="width:400px; height: 300px;" class="w3-table-all w3-large info_table">
+               <colgroup>
+               <col style="width: 150px !important;">
+               <col style="width: 200px;">
+               </colgroup>
+                  <tr><th colspan="2" style="text-align: center;">회원 정보 </th></tr>
+                  <tr><td style="padding-left: 15px !important; width: 150px !important;">아이디</td>
+                  <td>${user.userId }</td></tr>
+                  <tr><td style="padding-left: 15px !important;">이름</td>
+                  <td>${user.userName}</td></tr>
+                  <tr><td style="padding-left: 15px !important;">전화번호</td>
+                  <td>${user.tel}</td></tr>
+                  <tr><td style="padding-left: 15px !important;">이메일</td>
+                  <td>${user.email}</td></tr>
+                  <tr><td style="padding-left: 15px !important;">우편번호</td>
+                  <td>${user.postcode}</td></tr>
+                  <tr><td style="padding-left: 15px !important;">주소</td>
+                  <td>${user.addr}</td></tr>
+                  <tr><td style="padding-left: 15px !important;">상세주소</td>
+                  <td>${user.addr1}</td></tr>
+                  <tr><td style="padding-left: 15px !important;">좋아하는 팀</td>
+                  <td>${user.ft}</td></tr>
+                  <tr><td style="padding-left: 15px !important;">좋아하는 선수</td>
+                  <td>${user.fp}</td></tr>
                </table>
 	</div>
 	</div>       
 <div id="work02" class="tabs-panel">
-   <table border="1" style="width:100%">
+	<c:if test="${!empty salelist}">
+   <table border="1" style="width:950px;  height: 300px;" class="w3-table-all w3-large">
       <tr>
          <td colspan="3" align="center"><b>주문 목록</b>
       </tr>
@@ -273,14 +347,14 @@ function list_disp(id){
             <td align="center">
             <a href="javascript:list_disp('saleLine${stat.index}')">${sale.saleId}</a>
             </td>
-            <td align="center"><fmt:formatDate value="${sale.updateTime }" pattern="yyyy-MM-dd"/>
+            <td align="center"><fmt:formatDate value="${sale.updateTime}" pattern="yyyy-MM-dd"/>
             </td>
             <td align="right">${sale.totAmount}원</td>
          </tr>
          <tr>
             <td colspan="3" align="center">
                <div id="saleLine${stat.index }" style="display: none;"> 
-                  <table border="1" style="width:90%">
+                  <table border="1" style="width:90%;" class="w3-table-all w3-large">
                      <tr>
                         <th width="25%">상품명</th>
                         <th width="25%">상품가격</th>
@@ -296,7 +370,13 @@ function list_disp(id){
                         </tr>
                      </c:forEach>
                   </table>
-               </div></td></tr></c:forEach></table></div>
+               </div></td></tr></c:forEach></table>
+               </c:if>
+                     <c:if test="${empty salelist}">
+
+     	
+      </c:if>
+               </div>
 </div>
 </body>
 </html>
