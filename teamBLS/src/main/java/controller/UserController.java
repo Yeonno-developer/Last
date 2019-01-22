@@ -140,7 +140,7 @@ public class UserController {
     			}	
     		}
    		for(int i=0;i<10;i++) {
-    			trlist.add(tr.subList(i, (i+1)*10));
+    			trlist.add(tr.subList(i*10, (i+1)*10));
     		}
     	} catch (IOException e) {
     		e.printStackTrace();

@@ -10,6 +10,7 @@
 <title>My page</title>
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link href="https://fonts.googleapis.com/css?family=Russo+One" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR" rel="stylesheet">
 <script type="text/javascript"
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <style type="text/css">
@@ -65,7 +66,7 @@ height : 300px;
 margin-top: -89px;
 width: 550px !important;
 height : 300px;
-background: #bababa url(/teamBLS/picture/teams/team_bg.jpg) no-repeat 0 0;
+background: #9e9e9e url(/teamBLS/picture/teams/team_bg.jpg) no-repeat 0 0;
 }
 .info_user_team h2{
 color: white;
@@ -114,6 +115,7 @@ font-size: 35px;
 .rank_rank{
 width : 294px;
 
+
 }
 .rank_rank p{
 font-family: 'Russo One', sans-serif;
@@ -129,7 +131,7 @@ margin-block-start: 0px !important;
 margin-block-end: 0px !important;
 }
 .info_table{
-font-family: 'Russo One', sans-serif !important;
+font-family: 'Noto Sans KR', sans-serif !important;
 }
 .info_table td{
 padding: 0px !important;
@@ -184,7 +186,7 @@ function list_disp(id){
 <div class="inner">
 <ul class="tabs-nav" style="float: none;">
 <li><a href="#work01">회원정보</a></li>
-<li><a href="#work02">구매정보</a></li>
+<li><a href="#work02">주문목록</a></li>
 </ul>
 <ul class="tabs-up">
 <li><a href="updateForm.shop?id=${user.userId}">회원정보수정</a></li>
@@ -253,7 +255,6 @@ function list_disp(id){
 	<c:when test="${user.ft =='서울SK'}">
 	<c:set value="서울 SK 나이츠" var="teamname"/>
 	<div style="float: left;">
-	
 	</div>
 	<h2>&nbsp;서울 SK 나이츠</h2>
 	<div style="float: left;">
@@ -276,9 +277,22 @@ function list_disp(id){
 	</c:when>
 	</c:choose>
 	<div class="info_user_tinfo">
-
+	
 	<c:forEach items="${rank}" var="r">
-	  <c:if test="${r[1]== teamname}">
+	   
+	      <c:if test="${r[1] == teamname }">
+	  <div class="rank_rank" ><p align="center" class="rank_rank_num">${r[0]}<span style="font-size: 40px !important;">등</span></p></div>
+	  <div style="margin-top: -15px;">
+	  <div class="rank_sub"><p align="center">승</p></div>
+	  <div class="rank_sub"><p align="center">패</p></div>
+	  <div class="rank_sub"><p align="center">승률</p></div>	 
+	  <div class="rank_sub"><p align="center">${r[2]}</p></div>
+	  <div class="rank_sub"><p align="center">${r[3]}</p></div>
+	  <div class="rank_sub"><p align="center">${r[4]}</p></div>
+	  </div>    
+	      </c:if>
+		
+<%-- 	  <c:if test="${r[1] == teamname}">
 	  <div class="rank_rank" ><p align="center" class="rank_rank_num">${r[0]}<span style="font-size: 40px !important;">등</span></p></div>
 	  <div style="margin-top: -15px;">
 	  <div class="rank_sub"><p align="center">승</p></div>
@@ -288,28 +302,42 @@ function list_disp(id){
 	  <div class="rank_sub"><p align="center">${r[3]}</p></div>
 	  <div class="rank_sub"><p align="center">${r[4]}</p></div>
 	  </div>
-	  </c:if>
+	  </c:if> --%>
 	</c:forEach>
 
 	</div>
 	</div>
 	<div class="info_user_my" >
-               <table style="width:400px; height: 300px;" class="w3-table info_table">
-                  <tr><td colspan="2">회원 정보 </td></tr>
-                  <tr><td style="width: 150px;">아이디</td><td>${user.userId }</td></tr>
-                  <tr><td>이름</td><td>${user.userName }</td></tr>
-                  <tr><td>전화번호</td><td>${user.tel }</td></tr>
-                  <tr><td>이메일</td><td>${user.email }</td></tr>
-                  <tr><td>우편번호</td><td>${user.postcode }</td></tr>
-                  <tr><td>주소</td><td>${user.addr }</td></tr>
-                  <tr><td>상세주소</td><td>${user.addr1 }</td></tr>
-                  <tr><td>좋아하는 팀</td><td>${user.ft }</td></tr>
-                  <tr><td>좋아하는 선수</td><td>${user.fp }</td></tr>
+               <table style="width:400px; height: 300px;" class="w3-table-all w3-large info_table">
+               <colgroup>
+               <col style="width: 150px !important;">
+               <col style="width: 200px;">
+               </colgroup>
+                  <tr><th colspan="2" style="text-align: center;">회원 정보 </th></tr>
+                  <tr><td style="padding-left: 15px !important; width: 150px !important;">아이디</td>
+                  <td>${user.userId }</td></tr>
+                  <tr><td style="padding-left: 15px !important;">이름</td>
+                  <td>${user.userName}</td></tr>
+                  <tr><td style="padding-left: 15px !important;">전화번호</td>
+                  <td>${user.tel}</td></tr>
+                  <tr><td style="padding-left: 15px !important;">이메일</td>
+                  <td>${user.email}</td></tr>
+                  <tr><td style="padding-left: 15px !important;">우편번호</td>
+                  <td>${user.postcode}</td></tr>
+                  <tr><td style="padding-left: 15px !important;">주소</td>
+                  <td>${user.addr}</td></tr>
+                  <tr><td style="padding-left: 15px !important;">상세주소</td>
+                  <td>${user.addr1}</td></tr>
+                  <tr><td style="padding-left: 15px !important;">좋아하는 팀</td>
+                  <td>${user.ft}</td></tr>
+                  <tr><td style="padding-left: 15px !important;">좋아하는 선수</td>
+                  <td>${user.fp}</td></tr>
                </table>
 	</div>
 	</div>       
 <div id="work02" class="tabs-panel">
-   <table border="1" style="width:950px;  height: 300px;">
+	<c:if test="${!empty salelist}">
+   <table border="1" style="width:950px;  height: 300px;" class="w3-table-all w3-large">
       <tr>
          <td colspan="3" align="center"><b>주문 목록</b>
       </tr>
@@ -319,14 +347,14 @@ function list_disp(id){
             <td align="center">
             <a href="javascript:list_disp('saleLine${stat.index}')">${sale.saleId}</a>
             </td>
-            <td align="center"><fmt:formatDate value="${sale.updateTime }" pattern="yyyy-MM-dd"/>
+            <td align="center"><fmt:formatDate value="${sale.updateTime}" pattern="yyyy-MM-dd"/>
             </td>
             <td align="right">${sale.totAmount}원</td>
          </tr>
          <tr>
             <td colspan="3" align="center">
                <div id="saleLine${stat.index }" style="display: none;"> 
-                  <table border="1" style="width:90%">
+                  <table border="1" style="width:90%;" class="w3-table-all w3-large">
                      <tr>
                         <th width="25%">상품명</th>
                         <th width="25%">상품가격</th>
@@ -342,7 +370,13 @@ function list_disp(id){
                         </tr>
                      </c:forEach>
                   </table>
-               </div></td></tr></c:forEach></table></div>
+               </div></td></tr></c:forEach></table>
+               </c:if>
+                     <c:if test="${empty salelist}">
+
+     	
+      </c:if>
+               </div>
 </div>
 </body>
 </html>

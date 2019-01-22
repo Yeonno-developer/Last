@@ -6,6 +6,7 @@
 <head>
 <meta charset="EUC-KR">
 <title>회원 목록</title>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <script type="text/javascript">
 	function allchkbox(chk){
 		var chks = document.getElementsByName("idchks");
@@ -16,7 +17,7 @@
 </script>
 </head>
 <body>
-<table border="1" style="border-collapse: collapse; width=100%;">
+<table border="1" style="border-collapse: collapse; width:100%;" class="w3-table-all w3-large">
 <tr><th>아이디</th>
 	<th>이름</th>
 	<th>전화번호</th>
@@ -35,7 +36,7 @@
 <td>${user.postcode}</td><td>${user.addr}</td><td>${user.addr1}</td><td>${user.ft}</td><td>${user.fp}</td>
 	<td><a href="../user/updateForm.shop?id=${user.userId}">수정</a>
 		<a href="../user/delete.shop?id=${user.userId}">삭제</a>
-		<a href="../user/mypage.shop?id=${user.userId}">회원정보</a></td>
+		</td>
 </c:forEach>
 </table>
 </body>
