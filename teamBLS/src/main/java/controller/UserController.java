@@ -126,7 +126,6 @@ public class UserController {
         mav.addObject("user",user);
       return mav;  
      }
-   
       private List<List<String>> rank() {
     	String url = "https://www.kbl.or.kr/stats/team_rank.asp";
     	List<String> tr = new ArrayList<String>();
@@ -140,20 +139,9 @@ public class UserController {
     				tr.add(c.text());	
     			}	
     		}
-/*    		for(int i=0;i<trlist.size();i++) {
+   		for(int i=0;i<10;i++) {
     			trlist.add(tr.subList(i, (i+1)*10));
     		}
-*/
-    		trlist.add(tr.subList(0, 10));
-    		trlist.add(tr.subList(10,20));
-    		trlist.add(tr.subList(20, 30));
-    		trlist.add(tr.subList(30, 40));
-    		trlist.add(tr.subList(40, 50));
-    		trlist.add(tr.subList(50, 60));
-    		trlist.add(tr.subList(60, 70));
-    		trlist.add(tr.subList(70, 80));
-    		trlist.add(tr.subList(80, 90));
-    		trlist.add(tr.subList(90, 100));
     	} catch (IOException e) {
     		e.printStackTrace();
     	}
