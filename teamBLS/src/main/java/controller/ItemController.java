@@ -12,6 +12,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import logic.Comment;
 import logic.Item;			//Bean
 import logic.ShopService;	//Service
 
@@ -62,8 +63,10 @@ public class ItemController {
 //		 id 파라미터를  가져옴 .
 //		()안에 여러가지 자신이 원하는대로 객체를 넣어줄 수 있음. request, 클래스, 매개변수... 
 		ModelAndView mav = new ModelAndView();
+		List<Comment> commentlist = service.commentlist();
 		Item item = service.getItem(id);	//item은 ItemDao의 return 값으로 ... mapper로 나오게 됨.
 		mav.addObject("item",item);
+		mav.addObject("commentlist", commentlist);
 		return mav;
 	}
 	

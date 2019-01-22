@@ -8,9 +8,14 @@
 <title>사용자 수정</title>
 <style type="text/css">
 .update_section{
+margin-top : 50px;
 margin-left: 360px;
+margin-right: 360px;
+margin-bottom: 50px;
 }
+
 </style>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script src="/resources/js/addressapi.js"></script>
 <script type="text/javascript">
@@ -50,7 +55,7 @@ margin-left: 360px;
 </head>
 <body>
 <div class="update_section">
-<h2>사용자 수정</h2>
+
 <form:form modelAttribute="user" method="post" action="update.shop">
 
 	<spring:hasBindErrors name="user">
@@ -60,7 +65,9 @@ margin-left: 360px;
 			</c:forEach>
 		</font>
 	</spring:hasBindErrors>
-	<table>
+	<table class="w3-table-all w3-large">
+	<caption>사용자 정보 수정</caption>
+	<colgroup><col width="150px;"></colgroup>
 		<tr height="40px">
 			<td>아이디</td>
 			<td><form:input path="userId" readonly="true"/>

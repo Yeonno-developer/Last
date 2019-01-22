@@ -7,6 +7,13 @@
 <meta charset="EUC-KR">
 <title>회원 목록</title>
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<style type="text/css">
+.list_table{
+margin : 50px 200px 50px 200px;
+
+}
+
+</style>
 <script type="text/javascript">
 	function allchkbox(chk){
 		var chks = document.getElementsByName("idchks");
@@ -17,7 +24,8 @@
 </script>
 </head>
 <body>
-<table border="1" style="border-collapse: collapse; width:100%;" class="w3-table-all w3-large">
+<div class="list_table">
+<table border="1" style="border-collapse: collapse; width:100%;" class="w3-table-all">
 <tr><th>아이디</th>
 	<th>이름</th>
 	<th>전화번호</th>
@@ -39,5 +47,6 @@
 		</td>
 </c:forEach>
 </table>
+</div>
 </body>
 </html>

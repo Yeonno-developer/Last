@@ -222,11 +222,7 @@ public class ShopService {
 		return hashvalue;
 	}
 
-	public void commregster(Comment comment) {
-		int max = commentDao.maxnum();
-		comment.setComnum(++max);
-		commentDao.commentRegister(comment);
-	}
+	
 
 	public List<Item> getItemList_type(String ft, int pagenum) {
 		System.out.println("shopservice ft : " + ft);
@@ -246,6 +242,32 @@ public class ShopService {
 		return itemDao.typeList2(pagenum);
 	}
 
+	public void commregster(Comment comment) {
+	      int max= commentDao.maxnum();
+	      comment.setComnum(++max);
+	        commentDao.commentRegister(comment);
+	     }
 
+
+
+	public Comment getComment(Integer comnum, HttpServletRequest request) {
+		return commentDao.select(comnum);
+	}
+
+	public void commentdelete(Comment comment) {
+		commentDao.cmdelete(comment.getComnum());
+		
+	}
+
+	public void commnetUpdate(Comment comment, HttpServletRequest request) {
+		commentDao.update(comment);	
+	}
+	 public Comment selectUser(Integer comnum) {	
+			return commentDao.selectuser(comnum);
+		}
+	 
+	 public List<Comment> commentlist() {
+		return commentDao.commentlist();
+		}
 
 }
