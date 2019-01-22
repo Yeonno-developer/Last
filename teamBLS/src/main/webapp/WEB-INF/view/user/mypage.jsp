@@ -198,7 +198,6 @@ function list_disp(id){
             </c:if></li>
              <li><a href="logout.shop?">로그아웃</a></li>
 </ul>
-
 </div>
 	<div class="tabs-panel" id="work01">
 	<div class="info_user_team" style="float: left;">
@@ -211,76 +210,49 @@ function list_disp(id){
 	</div>
 	</c:when>
 	<c:when test="${user.ft =='부산KT'}">
-<<<<<<< HEAD
 	<c:set value="부산 KT 소닉붐" var="teamname"/>
-=======
-	
->>>>>>> branch 'test1111' of https://github.com/Yeonno-developer/Last.git
 	<h2>&nbsp;부산 KT 소닉붐</h2>
 	<div style="float: left;">
 	<img src="${path}/picture/teams/info_logo/logo_06.gif" style="height: 200px">
 	</div>
 	</c:when>
 	<c:when test="${user.ft =='안양KGC'}">
-<<<<<<< HEAD
 	<c:set value="안양 KGC 인삼공사" var="teamname"/>
-=======
-	
->>>>>>> branch 'test1111' of https://github.com/Yeonno-developer/Last.git
 	<h2>&nbsp;안양 KGC 인삼공사</h2>
 	<div style="float: left;">
 	<img src="${path}/picture/teams/info_logo/logo_70.gif" style="height: 200px">
 	</div>
 	</c:when>
 	<c:when test="${user.ft =='전주KCC'}">
-<<<<<<< HEAD
 	<c:set value="전수 KCC 이지스" var="teamname"/>
-=======
-	
->>>>>>> branch 'test1111' of https://github.com/Yeonno-developer/Last.git
 	<h2>&nbsp;전주 KCC 이지스</h2>
 	<div style="float: left;">
 	<img src="${path}/picture/teams/info_logo/logo_60.gif" style="height: 200px">
 	</div>
 	</c:when>
 	<c:when test="${user.ft =='원주DB'}">
-<<<<<<< HEAD
 	<c:set value="원주 DB 프로미" var="teamname"/>
-=======
-	
->>>>>>> branch 'test1111' of https://github.com/Yeonno-developer/Last.git
 	<h2>&nbsp;원주 DB 프로미</h2>
 	<div style="float: left;">
 	<img src="${path}/picture/teams/info_logo/logo_16.gif" style="height: 200px">
 	</div>
 	</c:when>
 	<c:when test="${user.ft =='창원LG'}">
-<<<<<<< HEAD
 	<c:set value="창원 LG 세이커스" var="teamname"/>
-=======
-	
->>>>>>> branch 'test1111' of https://github.com/Yeonno-developer/Last.git
 	<h2>&nbsp;창원 LG 세이커스</h2>
 	<div style="float: left;">
 	<img src="${path}/picture/teams/info_logo/logo_50.gif" style="height: 200px">
 	</div>
 	</c:when>
 	<c:when test="${user.ft =='고양오리온'}">
-<<<<<<< HEAD
 	<c:set value="고양 오리온 오리온스" var="teamname"/>
-=======
-	
->>>>>>> branch 'test1111' of https://github.com/Yeonno-developer/Last.git
 	<h2>&nbsp;고양 오리온 오리온스</h2>
 	<div style="float: left;">
 	<img src="${path}/picture/teams/info_logo/logo_30.gif" style="height: 200px">
 	</div>
 	</c:when>
 	<c:when test="${user.ft =='서울SK'}">
-<<<<<<< HEAD
 	<c:set value="서울 SK 나이츠" var="teamname"/>
-=======
->>>>>>> branch 'test1111' of https://github.com/Yeonno-developer/Last.git
 	<div style="float: left;">
 	</div>
 	<h2>&nbsp;서울 SK 나이츠</h2>
@@ -289,11 +261,7 @@ function list_disp(id){
 	</div>
 	</c:when>
 	<c:when test="${user.ft =='서울삼성'}">
-<<<<<<< HEAD
 	<c:set value="서울 삼성 썬더스" var="teamname"/>
-=======
-	
->>>>>>> branch 'test1111' of https://github.com/Yeonno-developer/Last.git
 	<h2>서울 삼성 썬더스</h2>
 	<div style="float: left;">
 	<img src="${path}/picture/teams/info_logo/logo_35.gif" style="height: 200px">
@@ -307,10 +275,8 @@ function list_disp(id){
 	</div>
 	</c:when>
 	</c:choose>
-	<div class="info_user_tinfo">
-	
-	<c:forEach items="${rank}" var="r">
-	   
+	<div class="info_user_tinfo">	
+	<c:forEach items="${rank}" var="r">	   
 	      <c:if test="${r[1] == teamname }">
 	  <div class="rank_rank" ><p align="center" class="rank_rank_num">${r[0]}<span style="font-size: 40px !important;">등</span></p></div>
 	  <div style="margin-top: -15px;">
@@ -322,30 +288,13 @@ function list_disp(id){
 	  <div class="rank_sub"><p align="center">${r[4]}</p></div>
 	  </div>    
 	      </c:if>
-		
-<%-- 	  <c:if test="${r[1] == teamname}">
-	  <div class="rank_rank" ><p align="center" class="rank_rank_num">${r[0]}<span style="font-size: 40px !important;">등</span></p></div>
-	  <div style="margin-top: -15px;">
-	  <div class="rank_sub"><p align="center">승</p></div>
-	  <div class="rank_sub"><p align="center">패</p></div>
-	  <div class="rank_sub"><p align="center">승률</p></div>	 
-	  <div class="rank_sub"><p align="center">${r[2]}</p></div>
-	  <div class="rank_sub"><p align="center">${r[3]}</p></div>
-	  <div class="rank_sub"><p align="center">${r[4]}</p></div>
-	  </div>
-	  </c:if> --%>
 	</c:forEach>
-
 	</div>
 	</div>
 	<div class="info_user_my" >
                <table style="width:400px; height: 300px;" class="w3-table-all w3-large info_table">
-               <colgroup>
-               <col style="width: 150px !important;">
-               <col style="width: 200px;">
-               </colgroup>
                   <tr><th colspan="2" style="text-align: center;">회원 정보 </th></tr>
-                  <tr><td style="padding-left: 15px !important; width: 150px !important;">아이디</td>
+                  <tr><td style="padding-left: 15px !important;" width=" 150px">아이디</td>
                   <td>${user.userId }</td></tr>
                   <tr><td style="padding-left: 15px !important;">이름</td>
                   <td>${user.userName}</td></tr>
@@ -404,8 +353,7 @@ function list_disp(id){
                </div></td></tr></c:forEach></table>
                </c:if>
                      <c:if test="${empty salelist}">
-
-     	
+					<h1> 주문내역이 없습니다.</h1>
       </c:if>
                </div>
 </div>

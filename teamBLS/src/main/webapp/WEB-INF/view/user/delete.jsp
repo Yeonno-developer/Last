@@ -6,8 +6,14 @@
 <head>
 <meta charset="EUC-KR">
 <title>회원 탈퇴 확인</title>
+<style type="text/css">
+.del_table{
+margin : 50px 360px 50px 360px;
+}
+</style>
 </head>
 <body>
+<div class="del_table">
 <table border="1" style="border-collapse: collapse;">
 	<tr><td>아이디</td><td>${user.userId}</td></tr>
 	<tr><td>이름</td><td>${user.userName}</td></tr>
@@ -24,5 +30,6 @@
 	비밀번호<input type="password" name="password" size="12">
 	<a href="javascript:document.deleteform.submit()">[회원탈퇴]</a>
 	</form>
+</div>
 </body>
 </html>
