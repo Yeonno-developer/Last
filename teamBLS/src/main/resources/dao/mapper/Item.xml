@@ -9,7 +9,7 @@
 		where id=#{id}
 	</if>
 	<if test="ft != null">
-		where ft=#{ft}
+		where ft='#{ft}'
 	</if>
 	order by id
 		limit 0, 6

@@ -211,49 +211,76 @@ function list_disp(id){
 	</div>
 	</c:when>
 	<c:when test="${user.ft =='부산KT'}">
+<<<<<<< HEAD
 	<c:set value="부산 KT 소닉붐" var="teamname"/>
+=======
+	
+>>>>>>> branch 'test1111' of https://github.com/Yeonno-developer/Last.git
 	<h2>&nbsp;부산 KT 소닉붐</h2>
 	<div style="float: left;">
 	<img src="${path}/picture/teams/info_logo/logo_06.gif" style="height: 200px">
 	</div>
 	</c:when>
 	<c:when test="${user.ft =='안양KGC'}">
+<<<<<<< HEAD
 	<c:set value="안양 KGC 인삼공사" var="teamname"/>
+=======
+	
+>>>>>>> branch 'test1111' of https://github.com/Yeonno-developer/Last.git
 	<h2>&nbsp;안양 KGC 인삼공사</h2>
 	<div style="float: left;">
 	<img src="${path}/picture/teams/info_logo/logo_70.gif" style="height: 200px">
 	</div>
 	</c:when>
 	<c:when test="${user.ft =='전주KCC'}">
+<<<<<<< HEAD
 	<c:set value="전수 KCC 이지스" var="teamname"/>
+=======
+	
+>>>>>>> branch 'test1111' of https://github.com/Yeonno-developer/Last.git
 	<h2>&nbsp;전주 KCC 이지스</h2>
 	<div style="float: left;">
 	<img src="${path}/picture/teams/info_logo/logo_60.gif" style="height: 200px">
 	</div>
 	</c:when>
 	<c:when test="${user.ft =='원주DB'}">
+<<<<<<< HEAD
 	<c:set value="원주 DB 프로미" var="teamname"/>
+=======
+	
+>>>>>>> branch 'test1111' of https://github.com/Yeonno-developer/Last.git
 	<h2>&nbsp;원주 DB 프로미</h2>
 	<div style="float: left;">
 	<img src="${path}/picture/teams/info_logo/logo_16.gif" style="height: 200px">
 	</div>
 	</c:when>
 	<c:when test="${user.ft =='창원LG'}">
+<<<<<<< HEAD
 	<c:set value="창원 LG 세이커스" var="teamname"/>
+=======
+	
+>>>>>>> branch 'test1111' of https://github.com/Yeonno-developer/Last.git
 	<h2>&nbsp;창원 LG 세이커스</h2>
 	<div style="float: left;">
 	<img src="${path}/picture/teams/info_logo/logo_50.gif" style="height: 200px">
 	</div>
 	</c:when>
 	<c:when test="${user.ft =='고양오리온'}">
+<<<<<<< HEAD
 	<c:set value="고양 오리온 오리온스" var="teamname"/>
+=======
+	
+>>>>>>> branch 'test1111' of https://github.com/Yeonno-developer/Last.git
 	<h2>&nbsp;고양 오리온 오리온스</h2>
 	<div style="float: left;">
 	<img src="${path}/picture/teams/info_logo/logo_30.gif" style="height: 200px">
 	</div>
 	</c:when>
 	<c:when test="${user.ft =='서울SK'}">
+<<<<<<< HEAD
 	<c:set value="서울 SK 나이츠" var="teamname"/>
+=======
+>>>>>>> branch 'test1111' of https://github.com/Yeonno-developer/Last.git
 	<div style="float: left;">
 	</div>
 	<h2>&nbsp;서울 SK 나이츠</h2>
@@ -262,7 +289,11 @@ function list_disp(id){
 	</div>
 	</c:when>
 	<c:when test="${user.ft =='서울삼성'}">
+<<<<<<< HEAD
 	<c:set value="서울 삼성 썬더스" var="teamname"/>
+=======
+	
+>>>>>>> branch 'test1111' of https://github.com/Yeonno-developer/Last.git
 	<h2>서울 삼성 썬더스</h2>
 	<div style="float: left;">
 	<img src="${path}/picture/teams/info_logo/logo_35.gif" style="height: 200px">

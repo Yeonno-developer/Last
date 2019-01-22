@@ -94,10 +94,11 @@ function submitform()
       fullscreenClose('PDPLayer');
    }
 </script>
+<font size="200px">${item.name}</font>
                   
                      <div class="prod_info">
                         
-<p class="buy_num">구매 15,816<span class="remainder">(남은수량 : ${item.stock })</span></p> 
+<p class="buy_num"><span class="remainder">(남은수량 : ${item.stock })</span></p> 
                            
                      </div> 
                   

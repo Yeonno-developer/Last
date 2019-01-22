@@ -41,7 +41,8 @@ public class ItemDao {
 	}
 	public List<Item> typeList(String ft, int pagenum) {
 		Map<String, Object> map = new HashMap<String, Object>();
-		System.out.println("itemDao : " + pagenum);
+		System.out.println("itemDao ft : " + ft);
+		System.out.println("itemDao pagenum : " + pagenum);
 		map.put("ft", ft);
 		map.put("pagenum", pagenum);
 		return sqlSession.selectList(NS+"list1", map);
