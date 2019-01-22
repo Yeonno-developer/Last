@@ -29,9 +29,14 @@ div.test1 {
 	<div class="test1">
 		<h1>Realtime Chatting</h1>
 	</div>
-	<div class="test1" style="height: 1000px">
+	
+	<div class="test1" style="height: 2000px">
 		<iframe name="userId" src="http://192.168.0.157:3000?id=${sessionScope.loginUser.userId}"
 			style="width: 1000px; height: 500px; border:0px;">
+		</iframe>
+<%-- 		<iframe name="userId" src="http://192.168.0.157:4000${path}/chat/index1.html" --%>
+		<iframe name="userId" src="http://192.168.0.157:4000"
+			style="width: 1000px; height: 1000px; border:0px;">
 		</iframe>
 		<div>
 		<!-- 
@@ -174,23 +179,5 @@ div.test1 {
 		})
 	</script>
 	-->
-	<script>
-    $(function(){
-        $("#btn_reg_basic").click(function(){
-            $("#form_basic").attr("target", "hiddenIframe");
-            $("#form_basic").attr("action", "/adm/basic_x/");
-            $("#form_basic").submit(function(){
-                 $("#hiddenIframe").load(function() {
-                   console.log(this);
-                });
-            }).submit();
-            
-        });
-        
-    });
-
-	</script>
-	<iframe name="hiddenIframe" id="hiddenIframe" width="100px" height="100px"></iframe>
-	
 </body>
 </html>

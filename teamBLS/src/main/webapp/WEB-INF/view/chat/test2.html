@@ -33,40 +33,39 @@ li{
 			</form>
 		</div>
 		<div class="w3-col s4">
-		  <div id="app">
-		    <div class="container">
-		      <h1>Let's vote Team!</h1>
-		      <ul class="list-group">
-		        <story v-for="(story, index) in stories"
-		          :key="index"
-		          :story="story"
-		          :favorite="favorite"
-		          @update="updateFavorite">
-		        </story>
-			   </ul>
-			  </div>
+			<div>
+			  <div id="app">
+			    <div class="container">
+			      <h1>Let's vote Team!</h1>
+			      <ul class="list-group">
+			        <story v-for="(story, index) in stories"
+			          :key="index"
+			          :story="story"
+			          :favorite="favorite"
+			          @update="updateFavorite">
+			        </story>
+				   </ul>
+				  </div>
+				</div>
+			</div>
+			<div>
+				 <div id="app2">
+				   <div class="container">
+				     <h1>Let's vote Team!</h1>
+				     <ul class="list-group">
+				       <story v-for="(test, index) in stories"
+				         :key="index"
+				         :story="test"
+				         :favorite="favorite"
+				         @update="updateFavorite">
+				       </story>
+				   </ul>
+				  </div>
+				</div>
 			</div>
 		</div>
-		
-		
-		<div class="w3-col s4">
-			 <div id="app2">
-			   <div class="container">
-			     <h1>Let's vote Team!</h1>
-			     <ul class="list-group">
-			       <story v-for="(test, index) in stories"
-			         :key="index"
-			         :story="test"
-			         :favorite="favorite"
-			         @update="updateFavorite">
-			       </story>
-			   </ul>
-			  </div>
-			</div>
-		</div>
-		
-		
 	</div>
+	
 	<template id="story-template">
 	  <li class="list-group-item">
 	    "{{ story.writer }}"	 upvotes {{ story.upvotes }}.
@@ -79,8 +78,7 @@ li{
 	  <span v-show="isFavorite" class="glyphicon glyphicon-star pull-right" aria-hidden="true"></span>
 	  </li>
 	</template>
-	
-	
+
 	<template id="test-template">
 	  <li class="list-group-item">
 	    {{ test.writer }} 	upvotes {{ test.upvotes }}.
@@ -93,7 +91,7 @@ li{
 	  <span v-show="isFavorite" class="glyphicon glyphicon-star pull-right" aria-hidden="true"></span>
 	  </li>
 	</template>
-	
+
 	
 	</body>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.0-rc.8/vue.js"></script>
@@ -180,8 +178,6 @@ li{
 		    },
 		})
 	</script>
-
-
 
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>

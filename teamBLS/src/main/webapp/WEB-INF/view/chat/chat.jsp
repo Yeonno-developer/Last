@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
 <meta charset="EUC-KR">
 <title>WebSocket Client</title>
 <script type="text/javascript"
@@ -48,7 +49,8 @@
 	<textarea rows="15" cols="40" name="chatMsg"></textarea>
 	<br> 메세지입력:
 	<input type="text" name="chatInput">
-<!-- 
+
+	<!-- 
 	============================================================================
 	<div class='j-message'></div>
 	<div class='j-footer'>
@@ -108,10 +110,141 @@
 		});
 	</script>
  -->
+
+
+
+
+
+	<div class="w3-col s4">
+		<div>
+			<div id="app">
+				<div class="container">
+					<h1>Let's vote Team!</h1>
+					<ul class="list-group">
+						<story v-for="(story, index) in stories" :key="index"
+							:story="story" :favorite="favorite" @update="updateFavorite">
+						</story>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div>
+			<div id="app2">
+				<div class="container">
+					<h1>Let's vote Team!</h1>
+					<ul class="list-group">
+						<story v-for="(test, index) in stories" :key="index" :story="test"
+							:favorite="favorite" @update="updateFavorite"> </story>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<template id="story-template">
+	<li class="list-group-item">"{{ story.writer }}" upvotes {{
+		story.upvotes }}.
+		<button v-show="!story.voted" @click="upvote" class="btn btn-default">
+			Upvote</button>
+		<button v-show="!isFavorite" @click="markAsFavorite"
+			class="btn btn-primary">Favorite</button> <span v-show="isFavorite"
+		class="glyphicon glyphicon-star pull-right" aria-hidden="true"></span>
+	</li>
+	</template>
+
+
+	<template id="test-template">
+	<li class="list-group-item">{{ test.writer }} upvotes {{
+		test.upvotes }}.
+		<button v-show="!story.voted" @click="upvote" class="btn btn-default">
+			Upvote</button>
+		<button v-show="!isFavorite" @click="markAsFavorite"
+			class="btn btn-primary">Favorite</button> <span v-show="isFavorite"
+		class="glyphicon glyphicon-star pull-right" aria-hidden="true"></span>
+	</li>
+	</template>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.0-rc.8/vue.js"></script>
+	<script type="text/javascript">
+		Vue.component('story', {
+			template : "#story-template",
+			props : [ 'story', 'favorite' ],
+			methods : {
+				upvote : function() {
+					this.story.upvotes += 1;
+					this.story.voted = true;
+				},
+				markAsFavorite : function() {
+					// 'update' is just the name of the custom event
+					// it could be anything. ex: fav-update
+					this.$emit('update', this.story)
+				},
+			},
+			computed : {
+				isFavorite : function() {
+					return this.story === this.favorite;
+				},
+			}
+		});
+
+		new Vue({
+			el : '#app',
+			data : {
+				stories : [ {
+					writer : 'Mr. Weebl',
+					upvotes : 28,
+					voted : false,
+				}, ],
+				favorite : {}
+			},
+			methods : {
+				updateFavorite : function(story) {
+					this.favorite = story;
+				},
+			},
+		})
+	</script>
+	
+<script type="text/javascript">
+		Vue.component('test', {
+			template : "#test-template",
+			props : [ 'test', 'favorite' ],
+			methods : {
+				upvote : function() {
+					this.story.upvotes += 1;
+					this.story.voted = true;
+				},
+				markAsFavorite : function() {
+					// 'update' is just the name of the custom event
+					// it could be anything. ex: fav-update
+					this.$emit('update', this.story)
+				},
+			},
+			computed : {
+				isFavorite : function() {
+					return this.story === this.favorite;
+				},
+			}
+		});
+
+		new Vue({
+			el : '#app2',
+			data : {
+				stories : [ {
+					writer : 'test',
+					upvotes : 28,
+					voted : false,
+				}, ],
+				favorite : {}
+			},
+			methods : {
+				updateFavorite : function(story) {
+					this.favorite = story;
+				},
+			},
+		})
+	</script>
 </body>
-
-
-
 
 
 </html>
