@@ -122,6 +122,9 @@ border-top: 1px solid #fff;
 border-bottom: 1px solid #fff;
 border-color: rgba(255,255,255,.2);
 }
+.rank_main{
+width: 200px;
+}
 </style>
 <script type="text/javascript"
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -195,11 +198,10 @@ hhh += '<div class ="item"><img src="${path}/picture/teams/logo_06.png">';
 
 <img class="back" src="${path}/picture/back.jpg" >
 <div class="sh_gr">
-
 </div>
 
 <div class="p_rank">
-<h1>PLAYER RANKING</h1>
+<h2>PLAYER RANKING</h2>
 <div class="p_rank_row">
 <c:forEach var="i"  begin="0"  end="2">
 <div class="p_rank_p">
@@ -225,7 +227,8 @@ hhh += '<div class ="item"><img src="${path}/picture/teams/logo_06.png">';
 
 
 <div class="visual_side2">
-<h1>TEAM RANKING</h1>
+<div style="float: left;"><h2>TEAM RANKING</h2></div>
+<div style="margin-top:28px; margin-left: 255px;"><a href="${path}/team/teamMain.shop" style="color: white; ">´õº¸±â</a></div>
 <div>
 <c:forEach var="i"  begin="0"  end="4">
   <div class="rank_main">

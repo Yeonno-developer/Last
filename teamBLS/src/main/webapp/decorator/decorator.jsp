@@ -78,24 +78,37 @@ z-index:300;
 padding-top : 5px;
 }
 header{
-margin-left: 360px;
+margin-left: 360px !important;
 width: 1200px;
 align-content: center;
 }
 hr{
 margin: 0px;
 }
-.fo1{
+.footer_line1{
 	background-color: #0d141f;
 	height: 50px;
 	padding-bottom: 0;
 	margin-bottom: auto;
 }
-.fo2{
+.footer_line2{
 	background-color: #1b2637;
-	height: 150px;
+	height: 200px;
 	padding-bottom: 0;
 	margin-bottom: auto;
+}
+.goodee{
+float: left;
+width: 300px;
+margin-top: 18px;
+}
+.goodee_con{
+color: white;
+}
+.goodee2{
+float: left;
+width: 500px;
+margin-top: 18px;
 }
 </style>
 <decorator:head />
@@ -135,7 +148,7 @@ $(document).on('mouseover', 'section,header,footer', function () {
 <div class="main_menu" style="margin-left: 0px;"><a href="${path}/schedule/CrowlingSchdule.shop">경기일정 및 순위정보</a></div>
 <div class="main_menu" style="margin-left: 240px;"><a href="${path}/team/tInfo.shop?tcode=06">구단정보</a></div>
 <div class="main_menu" style="margin-left: 480px;"><a href="${path}/board/list.shop?tcode=06">게시판</a></div>
-<div class="main_menu" style="margin-left: 720px;"><a href="${path}/item/list.shop">굿즈</a></div>
+<div class="main_menu" style="margin-left: 720px;"><a href="${path}/item/list.shop?pagenum=1">MALL</a></div>
 <div class="main_menu" style="margin-left: 960px;"><a href="${path}/chat/multi.shop">실시간 중계</a></div>
 
 </div>
@@ -156,8 +169,8 @@ $(document).on('mouseover', 'section,header,footer', function () {
 </c:forEach>
 </div>
 <div class="sub_menu" style="left:720px;"> <!-- 굿즈 -->
-<div><a href="${path}/item/list.shop?pagenum=1">Goods</a></div>
-<div><a href="${path}/item/list.shop?pagenum=1">내굿즈를 보여줄게</a></div>
+<div><a href="${path}/item/list.shop?pagenum=1">굿즈 몰</a></div>
+<div><a href="${path}/item/list.shop?board=1">중고 몰</a></div>
 </div>
 <div class="sub_menu" style="left:960px;"> <!-- 실시간 중계 -->
 </div>
@@ -166,8 +179,22 @@ $(document).on('mouseover', 'section,header,footer', function () {
 	<decorator:body />
 </section>
 	<footer>
-	<div class="fo1"></div>
-	<div class="fo2"></div>
+	<div class="footer_line1"></div>
+	<div class="footer_line2">
+<div style="float: left; height: 150px; margin-left: 460px; margin-top: 50px;">
+<img src="${path}/picture/goodee.png" style="width: 300px; height: 100px;">
+</div>
+<div class="goodee" style="float: left; margin-left: 20px;">
+	<div class="goodee_con" ><span>가산디지털단지의&nbsp;&nbsp;</span><span style="font-size: 55px;">IT</span><span>플레이스</span></div>
+	<span style="margin-top : -15px !important; color: white; font-size: 40px;">구디 아카데미</span>
+	</div>
+	<div class="goodee2" style="margin-top: 80px;">
+	<div class="goodee_con">
+	<span style="font-size:25px; align-content: flex-end;">스프링 기반 빅데이터 팀 프로젝트</span><br>
+	<span style="font-size:20px;">김민석,  박성순,  이수범,  정연호</span>
+	</div>
+	</div>
+	</div>
 	</footer>
 </body>
 </html>
