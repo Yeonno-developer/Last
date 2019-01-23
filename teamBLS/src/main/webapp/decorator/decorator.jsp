@@ -148,14 +148,13 @@ $(document).on('mouseover', 'section,header,footer', function () {
 <div class="menu1">
 <div class="main_menu" style="margin-left: 0px;"><a href="${path}/schedule/CrowlingSchdule.shop">경기일정 및 순위정보</a></div>
 <div class="main_menu" style="margin-left: 300px;"><a href="${path}/team/tInfo.shop?tcode=06">구단정보</a></div>
-<div class="main_menu" style="margin-left: 600px;"><a href="${path}/board/list.shop">게시판</a></div>
+<div class="main_menu" style="margin-left: 600px;">게시판</div>
 <div class="main_menu" style="margin-left: 900px;"><a href="${path}/item/list.shop?pagenum=1">MALL</a></div>
 
 </div>
 <div class="menu2">
 <div class="sub_menu" style="margin-left: 0px;"> <!-- 경기일정 및 경기기록 -->
 <div><a href="${path}/team/teamMain.shop">팀 순위</a></div>
-<div><a href="${path}/schedule/teamB.shop">팀 비교</a></div>
 <div><a href="${path}/schedule/playerR.shop">선수 순위</a></div>
 </div>
 <div class="sub_menu" style="left:240px;"> <!-- 구단정보 -->
