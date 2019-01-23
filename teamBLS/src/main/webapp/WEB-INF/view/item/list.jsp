@@ -102,9 +102,12 @@
 
 
    <div class="hp_allkill">
- <c:if test="${sessionScope.loginUser.userId == 'admin' ||  sessionScope.loginUser.ft == item.ft}">
+  
+  
+  <c:if test="${sessionScope.loginUser.userId == 'admin' || (sessionScope.loginUser.ft == item.ft && sessionScope.loginUser.type == 1)}">
       <a href="create.shop" style="margin-left : 37%;">상품등록</a>
-      </c:if>
+ </c:if>
+
    <div class="wrap" align="center">
    <div class="prev1 list_common" style="margin-bottom:250px;"><button onclick="prev2(${pagenum-1})"><img src="../picture/left.png" width="60"></button></div>
       <div class="item_list_wrap list_common">

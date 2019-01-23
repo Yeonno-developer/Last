@@ -88,9 +88,14 @@ $(window).on("load resize ", function() {
  
 <script type="text/javascript">
 function submitform()
-{
-  document.frmMain.submit();
+	{
+	   if(${sessionScope.loginUser.userId == null }) {
+	      alert("Please Login");
+	   }else {
+	  document.frmMain.submit();
+	}
 }
+
 </script>
  
    <script type="text/javascript">
@@ -183,14 +188,18 @@ function valuechange(){
 </script>
 <script type="text/javascript">
 function purchaseform() {
-	var name = "${item.name}";
-	 var price = ${item.price};
-	 var obj = document.getElementById("quantity");
-	 if(obj.value == "" || obj.value==null)
-	 alert("수량을 선택하세요");
+	   if(${sessionScope.loginUser.userId == null }){
+	      alert("Please Login");
+	   } else {
+	   var name = "${item.name}";
+	    var price = ${item.price};
+	    var obj = document.getElementById("quantity");
+	    if(obj.value == "" || obj.value==null)
+	    alert("수량을 선택하세요");
 
-	 location.href = "../item/purchase.shop?quantity="+obj.value+"&name="+name+"&price="+price;
-}
+	    location.href = "../item/purchase.shop?quantity="+obj.value+"&name="+name+"&price="+price;
+	   }
+	}
 </script>
 <script type="text/javascript" language="javascript">
 
