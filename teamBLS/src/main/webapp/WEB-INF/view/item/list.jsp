@@ -70,15 +70,15 @@
     }
     
     function next2(pagenum) {
-    	
+    
        if(${maxpage == pagenum}){
-    	   if(${ft != null}){
+          if(${ft != null}){
           alert("마지막 페이지 입니다.");
           location.href="../item/list.shop?ft=${ft}&pagenum=${pagenum}";
-    	   }
-    	   else {
-    	  location.href="../item/list.shop?ft=현대모비스&pagenum=${pagenum}";
-    	   }
+          }
+          else {
+         location.href="../item/list.shop?ft=현대모비스&pagenum=${pagenum}";
+          }
        } else {   
        location.href="../item/list.shop?ft=${ft}&pagenum=${pagenum+1}";
        }
