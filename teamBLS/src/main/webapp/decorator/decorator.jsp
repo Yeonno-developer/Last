@@ -57,7 +57,7 @@ background-color: white;
 widht : 1200px;
 height : 320px;
 display: none;
-z-index:2;
+z-index:299;
 position: absolute; 
 /* relative가 안쪽의 앱솔루트를 잡아준다. */
 }
@@ -168,7 +168,7 @@ $(document).on('mouseover', 'section,header,footer', function () {
 </c:forEach>
 </div>
 <div class="sub_menu" style="left:720px;"> <!-- 굿즈 -->
-<div><a href="${path}/item/list.shop?pagenum=1">굿즈 몰</a></div>
+<div></div>
 </div>
 </div>
 <section>
