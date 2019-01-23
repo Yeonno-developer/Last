@@ -153,10 +153,6 @@ public class ShopService {
 //		return boardDao.count(searchType, searchContent);
 	}
 
-	public int boardcount(String searchType, String searchContent) {
-		return 0;
-	}
-
 	public int commentcount(int num) {
 		return boardDao.commentcount(num);
 	}
@@ -166,9 +162,6 @@ public class ShopService {
 //	return boardDao.list(searchType, searchContent, pageNum, limit);
 	public List<Board> boardlist(String searchType, String searchContent, String tcode, Integer pageNum, int limit) {
 		return boardDao.list(searchType, searchContent, tcode,pageNum, limit);
-	}
-	public List<Board> boardlist(String searchType, String searchContent, Integer pageNum, int limit) {
-		return boardDao.list1(searchType, searchContent,pageNum, limit);
 	}
 
 	public void boardadd(Board board, HttpServletRequest request) {
