@@ -246,6 +246,11 @@ public class ShopService {
 		return itemDao.typeList2(pagenum);
 	}
 
+	public int boardcnt(String ft) {
+		return itemDao.boradcount(ft);
+		
+	}
+
 
 
 }

@@ -14,9 +14,6 @@
 <link rel="stylesheet" type="text/css" href="http://script.auction.co.kr/style/css/common/etc.css">
 <link rel="stylesheet" type="text/css" href="http://script.auction.co.kr/style/css/frame/vip_all2013.css">
 <link rel="stylesheet" type="text/css" href="http://script.auction.co.kr/pc/style/css/hp.css" />
-
-
-
 </head>
 <body>
 <div class="item-topinfowrap">
@@ -30,7 +27,7 @@
       
             <li class="on">
                <a href="javascript:;">
-                  <img src="../picture/${item.pictureUrl}">
+                  <img src="../picture/uniform/${item.pictureUrl}">
                </a>
             </li>
          
@@ -447,13 +444,6 @@ function purchaseform() {
         
       <div class="item_options uxeselectbox combination disable">
          <input type="hidden" value="-1" title="상품 옵션값" name="selectedRequest">
-            <button class="select-item_option uxeselect_btn" onclick="pvprofiler.sendEvt('click', '100000452', 'Utility');" type="button">
-            <span class="txt" data-textinit="사이즈">사이즈</span>
-            <input type="radio" name="size" value="S" />s(95)     
-            <input type="radio" name="size" value="M" />M(100)     
-            <input type="radio" name="size" value="L" />L(105)     
-            <input type="radio" name="size" value="XL" />XL(110)
-            </button>
          <ul class="select-itemoption-list uxeselect_dropdown" style="display: none;">
       
          </ul>
