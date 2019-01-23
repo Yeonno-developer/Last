@@ -16,11 +16,59 @@
 <link rel="stylesheet" type="text/css" href="http://script.auction.co.kr/pc/style/css/hp.css" />
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
+<style>
+table#scro {
+	width: 100%;
+	table-layout: fixed;
+}
 
+.tbl-content {
+	height: 300px;
+	overflow-x: auto;
+	margin-top: 0px;
+	border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+td.scro {
+	padding: 2px 5px 2px 0px;
+	text-align: right;
+	vertical-align: middle;
+	font-weight: 100;
+	font-size: 12px;
+	border-color: bdbebe;
+	border-bottom: solid 1px rgba(255, 255, 255, 0.1);
+	border-bottom: 2px solid;
+}
+
+/* demo styles */
+@import
+	url(https://fonts.googleapis.com/css?family=Roboto:400,500,300,700);
+
+/* for custom scrollbar for webkit browser*/
+::-webkit-scrollbar {
+	width: 6px;
+}
+
+::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+	-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+</style>
+<script>
+<script type="text/javascript">
+$(window).on("load resize ", function() {
+  var scrollWidth = $('.tbl-content').width() - $('.tbl-content table').width();
+  $('.tbl-header').css({'padding-right':scrollWidth});
+}).resize();
+</script>
+</script>
 
 </head>
 <body>
-<div class="item-topinfowrap">
+<div class="item-topinfowrap" style="margin-bottom:700px;">
             <div class="item-topgallerywrap">
                
                <!-- 좌측 상품상세정보 -->
@@ -447,14 +495,6 @@ function purchaseform() {
             <h2 id="ucItemOrderInfo_ucOptionTemplate_ucItemRequest_ucCombinationRequest_rpDisplays_hdivOptionTile_0" class="tit_options">수량선택</h2>
         
       <div class="item_options uxeselectbox combination disable">
-         <input type="hidden" value="-1" title="상품 옵션값" name="selectedRequest">
-            <button class="select-item_option uxeselect_btn" onclick="pvprofiler.sendEvt('click', '100000452', 'Utility');" type="button">
-            <span class="txt" data-textinit="사이즈">사이즈</span>
-            <input type="radio" name="size" value="S" />s(95)     
-            <input type="radio" name="size" value="M" />M(100)     
-            <input type="radio" name="size" value="L" />L(105)     
-            <input type="radio" name="size" value="XL" />XL(110)
-            </button>
          <ul class="select-itemoption-list uxeselect_dropdown" style="display: none;">
       
          </ul>
@@ -502,7 +542,7 @@ function purchaseform() {
             </div><!-- //.item-topinfo -->
          </div>
          <script type="text/javascript" src="http://script.auction.co.kr/itempage3/1.0/ItemOrderButtons.js?_cb=20171221080000"></script>
-    <div class="w3-card-4 w3-container w3-display-middle" style="width:1200px; height:650px; margin-top:700px">
+    <div class="w3-card-4 w3-container w3-display-middle" style="width:1200px; height:700px; margin-top:700px;">
     <form:form modelAttribute="comment" action="../comment/register.shop">
     <input type="hidden" name="itemid" value="${param.id}">
     <div class="w3-display-middle" style="width:1100px; height:650px; margin-top:10px">
@@ -515,16 +555,18 @@ function purchaseform() {
  	   	</tr>
  	   	
  	   	<tr><td colspan="4" style="padding-top:10px"><textarea  name="contents" cols="140" rows="10" style="width:1100px"></textarea></td></tr>
- 	   	<tr><td><input type="submit" value="등록" class="w3-btn w3-red"></td></tr>
+ 	   	<tr><td colspan="4"><input type="submit" value="등록" class="w3-btn w3-red" style="width:80px; margin-left:1020px;"></td></tr>
    	   </table>
    	   </div>
    	</form:form>
-   	<div class="w3-display-middle w3-card-4" style="margin-top:120px; padding-left: 50px; width:1100px; height:230px">
-    <table>
+   	<div class="w3-display-middle w3-card-4" style="margin-top:160px; padding-left: 50px; width:1100px; height:330px">
+   	<div class="w3-row tbl-content"
+							style="padding: 8px 8px 8px 8px; margin: 16px 16px 16px 16px; border: 1px solid; border-color: #d3d4d5">
+    <table id="scro">
     <c:forEach items="${commentlist}" var="comment">
     <tr>
 <td width="150px" align="center" colspan="4">${comment.writer}</td>
-<td width="1200px" colspan="4">${comment.contents}</td>
+<td width="700px" colspan="4">${comment.contents}</td>
 <td>
 <a href="../comment/commentupdate.shop?comnum=${comment.comnum}&password=${comment.password}&contents=${comment.contents}&writer=${comment.writer}" class="w3-btn w3-red" style="width:80px">수정</a></td>
 <td><a href="../comment/commentdelete.shop?comnum=${comment.comnum}&password=${comment.password}&writer=${comment.writer}&contents=${comment.contents}" class="w3-btn w3-gray" style="width:80px">삭제</a>
@@ -534,8 +576,5 @@ function purchaseform() {
 </table>
 </div>
     </div>
-
-
-
 </body>
 </html>

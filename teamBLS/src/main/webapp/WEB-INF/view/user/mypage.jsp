@@ -346,23 +346,23 @@ function list_disp(id){
                </colgroup>
                   <tr><th colspan="2" style="text-align: center;">회원 정보 </th></tr>
                   <tr><td style="padding-left: 15px !important; width: 150px !important;">아이디</td>
-                  <td>${user.userId }</td></tr>
+                  <td>${sessionScope.loginUser.userId }</td></tr>
                   <tr><td style="padding-left: 15px !important;">이름</td>
-                  <td>${user.userName}</td></tr>
+                  <td>${sessionScope.loginUser.userName}</td></tr>
                   <tr><td style="padding-left: 15px !important;">전화번호</td>
-                  <td>${user.tel}</td></tr>
+                  <td>${sessionScope.loginUser.tel}</td></tr>
                   <tr><td style="padding-left: 15px !important;">이메일</td>
-                  <td>${user.email}</td></tr>
+                  <td>${sessionScope.loginUser.email}</td></tr>
                   <tr><td style="padding-left: 15px !important;">우편번호</td>
-                  <td>${user.postcode}</td></tr>
+                  <td>${sessionScope.loginUser.postcode}</td></tr>
                   <tr><td style="padding-left: 15px !important;">주소</td>
-                  <td>${user.addr}</td></tr>
+                  <td>${sessionScope.loginUser.addr}</td></tr>
                   <tr><td style="padding-left: 15px !important;">상세주소</td>
-                  <td>${user.addr1}</td></tr>
+                  <td>${sessionScope.loginUser.addr1}</td></tr>
                   <tr><td style="padding-left: 15px !important;">좋아하는 팀</td>
-                  <td>${user.ft}</td></tr>
+                  <td>${sessionScope.loginUser.ft}</td></tr>
                   <tr><td style="padding-left: 15px !important;">좋아하는 선수</td>
-                  <td>${user.fp}</td></tr>
+                  <td>${sessionScope.loginUser.fp }</td></tr>
                </table>
 	</div>
 	</div>       
