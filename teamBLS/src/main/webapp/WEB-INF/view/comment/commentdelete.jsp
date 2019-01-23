@@ -10,7 +10,7 @@
 </head>
 
 <body>
-
+<div style="height: 450px;">
 	<form:form modelAttribute="comment" action="../comment/commentdeletefrom.shop">
 	<input type="hidden" value="${param.comnum}" name="comnum">
 	<div class="w3-card-4 w3-container w3-display-middle" style="width:1200px; height:100px; margin-top:120px">
@@ -20,10 +20,11 @@
 				<td><input type="password" name="password"></td>
 			</tr>
 			<tr>
-				<td ><input type="submit" value="삭제"></td>
+				<td ><input type="submit" value="삭제" class="w3-btn w3-red"></td>
 			</tr>
 		</table>
 		</div>
 	</form:form>
+	</div>
 </body>
 </html>

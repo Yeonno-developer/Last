@@ -189,8 +189,8 @@ function list_disp(id){
 <li><a href="#work02">주문목록</a></li>
 </ul>
 <ul class="tabs-up">
-<li><a href="updateForm.shop?id=${user.userId}">회원정보수정</a></li>
-<li><c:if test="${loginUser.userId != 'admin'}">
+<li><a href="updateForm.shop?id=${sessionScope.loginUser.userId}">회원정보수정</a></li>
+<li><c:if test="${sessionScope.loginUser.userId != 'admin'}">
     <a href="delete.shop?id=${user.userId }">회원탈퇴</a>
             </c:if>
             <c:if test="${loginUser.userId == 'admin'}">

@@ -441,7 +441,7 @@ function purchaseform() {
    System.loadFile("http://script.auction.co.kr/itempage3/1.0/ItemRequest.js?t=20180115110000");
    System.loadFile("http://script.auction.co.kr/itempage3/1.0/ItemOrderInfo.js?_cb=201802051000000");
 </script><script type="text/javascript" src="http://script.auction.co.kr/itempage3/1.0/itemrequest.js?t=20180115110000"></script><script type="text/javascript" src="http://script.auction.co.kr/itempage3/1.0/itemorderinfo.js?_cb=201802051000000"></script>
-<fieldset>
+
    <legend>옵션선택 폼</legend>
    <!-- 선택옵션전체 -->
   <div class="select-item">
@@ -542,7 +542,7 @@ function purchaseform() {
             </div><!-- //.item-topinfo -->
          </div>
          <script type="text/javascript" src="http://script.auction.co.kr/itempage3/1.0/ItemOrderButtons.js?_cb=20171221080000"></script>
-    <div class="w3-card-4 w3-container w3-display-middle" style="width:1200px; height:700px; margin-top:700px;">
+    <div class="w3-card-4 w3-container w3-display-middle" style="width:1200px; height:700px; margin-top:730px;">
     <form:form modelAttribute="comment" action="../comment/register.shop">
     <input type="hidden" name="itemid" value="${param.id}">
     <div class="w3-display-middle" style="width:1100px; height:650px; margin-top:10px">
