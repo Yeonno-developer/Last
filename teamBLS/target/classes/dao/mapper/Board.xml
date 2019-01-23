@@ -13,8 +13,9 @@
 	
 	<select id="select" resultType="Board" parameterType="map">
 		select num,name,pass,subject,content,file1 fileurl, regdate, readcnt, ref, reflevel, refstep, tcode from board
+		where tcode=#{tcode}
 		<if test="del == null">
-			where reflevel=0
+			and reflevel=0
 		</if>
 		<if test="num != null">
 			and num = #{num}

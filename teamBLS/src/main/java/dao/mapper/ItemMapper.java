@@ -30,4 +30,7 @@ public interface ItemMapper {
 	@Select("select ifnull(max(id), 0) from item")
 	int maxnum();
 
+	@Select("select count(ft) from item where ft = #{ft}")
+	int boardcnt(Map<String, String> map);
+
 }

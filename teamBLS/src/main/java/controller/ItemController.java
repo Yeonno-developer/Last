@@ -32,10 +32,17 @@ public class ItemController {
 	public ModelAndView list(HttpServletRequest request) {
 		//itemList : Item테이블의 모든 레코드를 저장하고 있는 List객체
 		ModelAndView mav = new ModelAndView();	//view 등록 안함 : "item/list"가 기본 view
+		
 		List<Item> itemList = service.getItemList();
 		int maxnum = service.getMaxnum();
 		String ft = request.getParameter("ft");
 		int pagenum = Integer.parseInt(request.getParameter("pagenum"));
+		int count = service.boardcnt(ft);
+		int maxpage = count/6 + 1;
+		
+		
+		
+		mav.addObject("maxpage", maxpage);
 		mav.addObject("pagenum", pagenum);
 		mav.addObject("ft", ft);
 		
@@ -44,7 +51,6 @@ public class ItemController {
 			int size = itemList.size();
 			itemList = service.getItemList_type(ft, pagenum);
 			mav.addObject("size",size);
-			System.out.println(itemList);
 			mav.addObject("maxnum", maxnum);
 			mav.addObject("itemList",itemList);
 			return mav;

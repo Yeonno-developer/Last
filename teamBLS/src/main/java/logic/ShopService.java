@@ -249,12 +249,15 @@ public class ShopService {
 		return itemDao.typeList2(pagenum);
 	}
 
+	public int boardcnt(String ft) {
+		return itemDao.boradcount(ft);
+	}
+	
 	public void commregster(Comment comment) {
 	      int max= commentDao.maxnum();
 	      comment.setComnum(++max);
 	        commentDao.commentRegister(comment);
 	     }
-
 
 	public Comment getComment(Integer comnum, HttpServletRequest request) {
 		return commentDao.select(comnum);

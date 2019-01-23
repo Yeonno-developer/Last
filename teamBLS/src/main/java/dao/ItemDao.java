@@ -56,4 +56,10 @@ public class ItemDao {
 		map.put("pagenum", pagenum);
 		return sqlSession.selectList(NS+"list2", map);
 	}
+	public int boradcount(String ft) {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("ft", ft);
+		int boardcnt = sqlSession.getMapper(ItemMapper.class).boardcnt(map);
+		return boardcnt;
+	}
 }
