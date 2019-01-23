@@ -22,8 +22,11 @@ div.test1 {
 	margin-bottom: 20px;
 }
 </style>
+<script type="text/javascript">
+</script>
 <title>Socket.IO chat</title>
 <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+<!-- 
 <script type="text/javascript">
 	var btn = document.getElementById( 'btn' );       // 메시지 전송 버튼
 	var child = document.getElementById( 'child' );   // iframe
@@ -38,7 +41,12 @@ div.test1 {
 	    child.contentWindow.postMessage( msg, '*' );
 	}
 </script>
+ -->
 </head>
+<script type="text/javascript">
+
+
+</script>
 <body>
 	<hr style="border-top: 1px solid gray;">
 	<div class="test1">
@@ -85,9 +93,12 @@ div.test1 {
 			<li class="list-group-item">"{{ story.writer }}" upvotes {{
 				story.upvotes }}.
 				<button v-show="!story.voted" @click="upvote"
-					class="btn btn-default">Upvote</button>
+					class="btn btn-default" name="clickt">Upvote</button>
+					<!-- 
 				<button v-show="!isFavorite" @click="markAsFavorite"
-					class="btn btn-primary">Favorite</button> <span v-show="isFavorite"
+					class="btn btn-primary">Favorite</button>
+					 -->
+					<span v-show="isFavorite"
 				class="glyphicon glyphicon-star pull-right" aria-hidden="true"></span>
 				<input type="hidden" v-model="story.upvotes" name="storyupvotes">
 			</li>
@@ -97,17 +108,20 @@ div.test1 {
 			<li class="list-group-item">{{ test.writer }} upvotes {{
 				test.upvotes }}.
 				<button v-show="!story.voted" @click="upvote"
-					class="btn btn-default">Upvote</button>
+					class="btn btn-default" name="clickp">Upvote</button>
+					<!-- 
 				<button v-show="!isFavorite" @click="markAsFavorite"
-					class="btn btn-primary">Favorite</button> <span v-show="isFavorite"
+					class="btn btn-primary">Favorite</button>
+					 -->
+					<span v-show="isFavorite"
 				class="glyphicon glyphicon-star pull-right" aria-hidden="true"></span>
 				<input type="hidden" v-model="test.upvotes" name="testupvotes">
 			</li>
 			</template>
 
-			<script type="text/javascript"
-				src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.0-rc.8/vue.js"></script>
-			<script type="text/javascript">
+	<script type="text/javascript"
+		src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.0-rc.8/vue.js"></script>
+	<script type="text/javascript">
 	Vue.component('story', {
 	  template: "#story-template",
 	  props: ['story', 'favorite'],
@@ -148,8 +162,7 @@ div.test1 {
 	    },
 	})
 	</script>
-
-			<script type="text/javascript">
+	<script>
 	Vue.component('test', {
 		  template: "#test-template",
 		  props: ['test', 'favorite'],
@@ -194,21 +207,8 @@ div.test1 {
 
 		</div>
 	</div>
-	<script src=“https://unpkg.com/vue@2.3.2”></script>
-	<template>
-	<div>
-		<la-cartesian :width="300" :height="75" :data="values">
-		<la-line animated v-if="show === 'line'" prop="value"></la-line> <la-area
-			animated v-else-if="show === 'area'" prop="value"></la-area> <la-bar
-			animated v-else prop="value"></la-bar> </la-cartesian>
 
-		<label>Choose type:</label>
-		<button @click="show = 'line'">line</button>
-		<button @click="show = 'area'">area</button>
-		<button @click="show = 'bar'">bar</button>
-	</div>
-	</template>
-
+<!-- 
 	<script>
 export default {
   data: () => ({
@@ -225,5 +225,19 @@ export default {
   })
 };
 </script>
+	<template>
+	<div>
+		<la-cartesian :width="300" :height="75" :data="values">
+		<la-line animated v-if="show === 'line'" prop="value"></la-line> <la-area
+			animated v-else-if="show === 'area'" prop="value"></la-area> <la-bar
+			animated v-else prop="value"></la-bar> </la-cartesian>
+
+		<label>Choose type:</label>
+		<button @click="show = 'line'">line</button>
+		<button @click="show = 'area'">area</button>
+		<button @click="show = 'bar'">bar</button>
+	</div>
+	</template>
+	 -->
 </body>
 </html>

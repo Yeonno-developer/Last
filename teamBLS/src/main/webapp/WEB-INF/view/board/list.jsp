@@ -81,8 +81,10 @@ td {
 </head>
 <body>
 	<hr style="border-top: 1px solid gray;">
+	<c:if test="${!empty param.tcode}">
 	<img src="${path}/picture/teams/info_logo/logo_${param.tcode}.gif"
 		id="backImg">
+	</c:if>
 	<!-- 
 	<div class="w3-row">
 		<c:forEach items="${sessionScope.teamCode}" var="c">
@@ -109,7 +111,9 @@ td {
 					<%-- 검색 기능 --%>
 					<form action="list.shop?tcode=${param.tcode}" method="post"
 						name="searchform" onsubmit="return list(1)">
-						<input type="hidden" name="tcode" value="${param.tcode}">
+						<c:if test="${!empty param.tcode}">
+							<input type="hidden" name="tcode" value="${param.tcode}">
+						</c:if>
 						<input type="hidden" name="pageNum" value="1">
 						<select
 							name="searchType" id="searchType">

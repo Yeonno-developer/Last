@@ -96,4 +96,7 @@ public class BoardDao {
 	public int commentcount(int num) {
 		return sqlSession.getMapper(BoardMapper.class).ccount(num);
 	}
+	public List<Board> list1(String searchType, String searchContent, Integer pageNum, int limit) {
+		return null;
+	}
 }

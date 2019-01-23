@@ -18,4 +18,3 @@ user.userName.default=��� �� �ʿ��մϴ�.
 typeMismatch.birthDay=��������� YYYY-MM-DD �������� �Է��� �ּ���
 error.duplicate.user=�ߺ��� ���̵��Դϴ�
 error.board.password=��й�ȣ�� Ʋ���ϴ�
- 

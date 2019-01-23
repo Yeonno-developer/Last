@@ -152,15 +152,23 @@ public class ShopService {
 //	public int boardcount(String searchType, String searchContent) {
 //		return boardDao.count(searchType, searchContent);
 	}
-	
+
+	public int boardcount(String searchType, String searchContent) {
+		return 0;
+	}
+
 	public int commentcount(int num) {
 		return boardDao.commentcount(num);
 	}
+
 
 //	public List<Board> boardlist(String searchType, String searchContent, Integer pageNum, int limit) {
 //	return boardDao.list(searchType, searchContent, pageNum, limit);
 	public List<Board> boardlist(String searchType, String searchContent, String tcode, Integer pageNum, int limit) {
 		return boardDao.list(searchType, searchContent, tcode,pageNum, limit);
+	}
+	public List<Board> boardlist(String searchType, String searchContent, Integer pageNum, int limit) {
+		return boardDao.list1(searchType, searchContent,pageNum, limit);
 	}
 
 	public void boardadd(Board board, HttpServletRequest request) {
@@ -222,7 +230,6 @@ public class ShopService {
 		return hashvalue;
 	}
 
-	
 
 	public List<Item> getItemList_type(String ft, int pagenum) {
 		System.out.println("shopservice ft : " + ft);
@@ -249,7 +256,6 @@ public class ShopService {
 	     }
 
 
-
 	public Comment getComment(Integer comnum, HttpServletRequest request) {
 		return commentDao.select(comnum);
 	}
@@ -269,5 +275,4 @@ public class ShopService {
 	 public List<Comment> commentlist() {
 		return commentDao.commentlist();
 		}
-
 }
