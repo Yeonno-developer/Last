@@ -159,25 +159,23 @@ public class UserController {
      @RequestMapping("user/update")
      public ModelAndView update(@Valid User user, HttpSession session, BindingResult br) {
         ModelAndView mav = new ModelAndView("user/updateForm");
+        User dbuser = service.selectUser(user.getUserId());  
         if(br.hasErrors()) {
            mav.getModel().putAll(br.getModel());
-
            return mav;
         }
-
-        User dbuser = service.selectUser(user.getUserId());  
         if(user.getPassword().equals(dbuser.getPassword())) {
            try {// 업데이트 성공
-              System.out.println(1);
            service.userUpdate(user);
-           mav.setViewName("user/mypage");
+           mav.setViewName("redirect:../team/mainPage.shop");
+           session.invalidate();
         }catch(Exception e) {// 업데이트 오류 , 작성 이 안되거나 맞는 값이 아님
-           mav.setViewName("user/updateForm");
+           mav.setViewName("redirect:updateForm.shop?id="+user.getUserId());
         }
         }else {   // 비밀번호가 맞지 않음...
            br.reject("error.login.password");
            mav.getModel().putAll(br.getModel());
-           mav.setViewName("user/update");
+           mav.setViewName("redirect:updateForm.shop?id="+ user.getUserId());
         }
       return mav;
      }
