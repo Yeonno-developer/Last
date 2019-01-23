@@ -76,7 +76,7 @@ td.scro {
 	font-size: 12px;
 	border-color: bdbebe;
 	border-bottom: solid 1px rgba(255, 255, 255, 0.1);
-	border-bottom: 2px solid;
+	border-bottom: 1px solid;
 }
 
 td.scrt {
