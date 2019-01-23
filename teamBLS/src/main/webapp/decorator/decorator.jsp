@@ -18,7 +18,9 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR" rel="stylesheet">
 <style>
-
+html{
+overflow: auto;
+}
 a {
 	text-decoration: none;
 }
@@ -40,14 +42,13 @@ height : 70px;
 
 .menu1 .main_menu{
 float: left;
-width : 200px;
 text-align: center;
 font-size: 22px;
 font-family: 'Noto Sans KR', sans-serif;
 margin-top: 19px;
 position: absolute;
 align-content: center;
-width : 235px;
+width : 300px;
 }
 .menu2 {
 margin-left: 360px;
@@ -66,7 +67,7 @@ z-index:0;
 .menu2 .sub_menu{
 /* position: absolute; */
 float: left;
-width : 235px;
+width : 295px;
 text-align: center;
 font-size : 15px;
 font-family: 'Noto Sans KR', sans-serif;
@@ -146,10 +147,9 @@ $(document).on('mouseover', 'section,header,footer', function () {
 <hr style="border-top : 2px solid gray;">
 <div class="menu1">
 <div class="main_menu" style="margin-left: 0px;"><a href="${path}/schedule/CrowlingSchdule.shop">경기일정 및 순위정보</a></div>
-<div class="main_menu" style="margin-left: 240px;"><a href="${path}/team/tInfo.shop?tcode=06">구단정보</a></div>
-<div class="main_menu" style="margin-left: 480px;"><a href="${path}/board/list.shop?tcode=06">게시판</a></div>
-<div class="main_menu" style="margin-left: 720px;"><a href="${path}/item/list.shop?pagenum=1">MALL</a></div>
-<div class="main_menu" style="margin-left: 960px;"><a href="${path}/chat/multi.shop">실시간 중계</a></div>
+<div class="main_menu" style="margin-left: 300px;"><a href="${path}/team/tInfo.shop?tcode=06">구단정보</a></div>
+<div class="main_menu" style="margin-left: 600px;"><a href="${path}/board/list.shop">게시판</a></div>
+<div class="main_menu" style="margin-left: 900px;"><a href="${path}/item/list.shop?pagenum=1">MALL</a></div>
 
 </div>
 <div class="menu2">
@@ -170,9 +170,6 @@ $(document).on('mouseover', 'section,header,footer', function () {
 </div>
 <div class="sub_menu" style="left:720px;"> <!-- 굿즈 -->
 <div><a href="${path}/item/list.shop?pagenum=1">굿즈 몰</a></div>
-<div><a href="${path}/item/list.shop?board=1">중고 몰</a></div>
-</div>
-<div class="sub_menu" style="left:960px;"> <!-- 실시간 중계 -->
 </div>
 </div>
 <section>
