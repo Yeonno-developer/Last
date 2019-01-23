@@ -109,7 +109,6 @@ public class ItemController {
 				mav.getModel().putAll(br.getModel());
 				return mav;
 			}
-			System.out.println(item.getId());
 			service.itemUpdate(item,request);
 			mav.setViewName("redirect:/item/list.shop?pagenum=1");
 			return mav;

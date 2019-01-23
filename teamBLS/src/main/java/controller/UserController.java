@@ -193,9 +193,8 @@ public class UserController {
       @RequestMapping(value = "user/delete", method = RequestMethod.POST)
       public ModelAndView delete(String id, HttpSession session, String password, @Valid User user) {
          ModelAndView mav = new ModelAndView();
-         User dbuser = service.selectUser(id);
          User loginUser =(User)session.getAttribute("loginUser");
-         if(loginUser.getPassword().equals(dbuser.getPassword())) {
+         if(loginUser.getPassword().equals(password)) {
             try {
                service.userDelete(id);
                if(!loginUser.getUserId().equals("admin")) {
