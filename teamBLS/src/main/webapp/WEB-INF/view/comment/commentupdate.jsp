@@ -10,7 +10,8 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
 <body>
-	<div class="w3-display-middle w3-card-4" style="margin-top:120px; padding-left: 50px; width:1100px; height:450px">
+<div style="height: 610px;">
+	<div class="w3-display-middle w3-card-4" style="margin-top:150px;padding-left: 50px; width:1100px; height:450px">
 <form:form modelAttribute="comment" action="../comment/commentupdatefrom.shop">
 	<input type="hidden" value="${param.comnum}" name="comnum">
 	<table>
@@ -22,6 +23,7 @@
  	   	</div>
 	</table>
 </form:form>
+</div>
 </div>
 </body>
 </html>
