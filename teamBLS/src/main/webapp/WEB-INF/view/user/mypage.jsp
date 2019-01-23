@@ -206,8 +206,8 @@ function list_disp(id){
 	<div class="info_user_team" style="float: left;">
 	<c:choose>
 	<c:when test="${user.ft =='전자랜드'}">
-	<c:set value="인천전자랜드 엘리펀츠" var="teamname"/>
-	<h2>&nbsp;인천전자랜드 엘리펀츠</h2>
+	<c:set value="인천 전자랜드 엘리펀츠" var="teamname"/>
+	<h2>&nbsp;인천 전자랜드 엘리펀츠</h2>
 	<div style="float: left;">
 	<img src="${path}/picture/teams/info_logo/logo_65.gif" style="height: 200px">
 	</div>
