@@ -88,22 +88,22 @@
 </head>
 <body>
 <ul class="high">
-      <li class="inhigh" style="margin-left:250px;margin-right:10px;"><a href="../item/list.shop?ft=현대모비스&pagenum=1">울산 현대 모비스 |</a></li>
-      <li class="inhigh" style="margin-left:10px;margin-right:10px;"><a href="../item/list.shop?ft=전자랜드&pagenum=1">인천 전자랜드 |</a></li>
-      <li class="inhigh" style="margin-left:10px;margin-right:10px;"><a href="../item/list.shop?ft=부산KT&pagenum=1">부산 KT |</a></li>
-      <li class="inhigh" style="margin-left:10px;margin-right:10px;"><a href="../item/list.shop?ft=안양KGC&pagenum=1">안양 KGC |</a></li>
-      <li class="inhigh" style="margin-left:10px;margin-right:10px;"><a href="../item/list.shop?ft=전주KCC&pagenum=1"> 전주 KCC |</a></li>
-      <li class="inhigh" style="margin-left:10px;margin-right:10px;"><a href="../item/list.shop?ft=원주DB&pagenum=1"> 원주 DB |</a></li>
-      <li class="inhigh" style="margin-left:10px;margin-right:10px;"><a href="../item/list.shop?ft=창원LG&pagenum=1"> 창원 LG |</a></li>
-      <li class="inhigh" style="margin-left:10px;margin-right:10px;"><a href="../item/list.shop?ft=고양오리온&pagenum=1"> 고양 오리온 |</a></li>
-      <li class="inhigh" style="margin-left:10px;margin-right:10px;"><a href="../item/list.shop?ft=서울SK&pagenum=1"> 서울 SK |</a></li>
+      <li class="inhigh" style="margin-left:370px;margin-right:10px;"><a href="../item/list.shop?ft=현대모비스&pagenum=1">울산 현대 모비스 </a></li>
+      <li class="inhigh" style="margin-left:10px;margin-right:10px;"><a href="../item/list.shop?ft=전자랜드&pagenum=1">인천 전자랜드 </a></li>
+      <li class="inhigh" style="margin-left:10px;margin-right:10px;"><a href="../item/list.shop?ft=부산KT&pagenum=1">부산 KT </a></li>
+      <li class="inhigh" style="margin-left:10px;margin-right:10px;"><a href="../item/list.shop?ft=안양KGC&pagenum=1">안양 KGC </a></li>
+      <li class="inhigh" style="margin-left:10px;margin-right:10px;"><a href="../item/list.shop?ft=전주KCC&pagenum=1"> 전주 KCC </a></li>
+      <li class="inhigh" style="margin-left:10px;margin-right:10px;"><a href="../item/list.shop?ft=원주DB&pagenum=1"> 원주 DB </a></li>
+      <li class="inhigh" style="margin-left:10px;margin-right:10px;"><a href="../item/list.shop?ft=창원LG&pagenum=1"> 창원 LG </a></li>
+      <li class="inhigh" style="margin-left:10px;margin-right:10px;"><a href="../item/list.shop?ft=고양오리온&pagenum=1"> 고양 오리온 </a></li>
+      <li class="inhigh" style="margin-left:10px;margin-right:10px;"><a href="../item/list.shop?ft=서울SK&pagenum=1"> 서울 SK </a></li>
       <li class="inhigh" style="margin-left:10px;margin-right:10px;"><a href="../item/list.shop?ft=서울삼성&pagenum=1"> 서울 삼성 </a></li>
 </ul>
 
 
    <div class="hp_allkill">
  <c:if test="${sessionScope.loginUser.userId == 'admin' ||  sessionScope.loginUser.ft == item.ft}">
-      <h1><a href="create.shop">상품등록</a></h1>
+      <a href="create.shop" style="margin-left : 37%;">상품등록</a>
       </c:if>
    <div class="wrap" align="center">
    <div class="prev1 list_common" style="margin-bottom:250px;"><button onclick="prev2(${pagenum-1})"><img src="../picture/left.png" width="60"></button></div>
