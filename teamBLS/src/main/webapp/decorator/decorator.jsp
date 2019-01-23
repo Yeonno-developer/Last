@@ -67,7 +67,7 @@ z-index:0;
 .menu2 .sub_menu{
 /* position: absolute; */
 float: left;
-width : 295px;
+width : 292px;
 text-align: center;
 font-size : 15px;
 font-family: 'Noto Sans KR', sans-serif;
