@@ -15,6 +15,9 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <style type="text/css">
 /* ег */
+hr{
+margin: 0px;
+}
 .work-section{
 margin-top : 100px;
 margin-left: 360px;

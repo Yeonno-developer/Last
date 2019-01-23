@@ -67,7 +67,7 @@ z-index:0;
 .menu2 .sub_menu{
 /* position: absolute; */
 float: left;
-width : 292px;
+width : 295px;
 text-align: center;
 font-size : 15px;
 font-family: 'Noto Sans KR', sans-serif;
@@ -131,17 +131,17 @@ $(document).on('mouseover', 'section,header,footer', function () {
 	<script type="text/javascript"></script>
 	<header>
 		<div class="head" align="center">
+			<a href="${path}/team/mainPage.shop"><img src="${path}/picture/logo.jpg"
+				style="width: 200px; height: 100px; margin-top: 20px;"></a>
 			<div align="right">
 				<c:if test="${empty sessionScope.loginUser}">
-					<a href="${path}/user/login.shop">로그인</a>
+					<a href="${path}/user/login.shop" class="w3-button">로그인</a>
 				</c:if>
 				<c:if test="${!empty sessionScope.loginUser}">
-					<a href="${path}/user/mypage.shop?id=${sessionScope.loginUser.userId}">Mypage</a>
-					<a href="${path}/user/logout.shop">로그아웃</a>
+					<a href="${path}/user/mypage.shop?id=${sessionScope.loginUser.userId}" class="w3-button">Mypage</a>
+					<a href="${path}/user/logout.shop" class="w3-button">로그아웃</a>
 				</c:if>
 			</div>
-			<a href="${path}/team/mainPage.shop"><img src="${path}/picture/logo.jpg"
-				style="width: 200px; height: 100px; margin-bottom: 20px;"></a>
 		</div>
 	</header>
 <hr style="border-top : 2px solid gray;">

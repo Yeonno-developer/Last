@@ -126,6 +126,9 @@ border-color: rgba(255,255,255,.2);
 .rank_main{
 width: 200px;
 }
+.sh_gr_live{
+color: white;
+}
 </style>
 <script type="text/javascript"
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -199,6 +202,7 @@ hhh += '<div class ="item"><img src="${path}/picture/teams/logo_06.png">';
 
 <img class="back" src="${path}/picture/back.jpg" >
 <div class="sh_gr">
+<div class="sh_gr_live"><h2>실시간 채팅</h2></div>
 		<iframe name="userId" id="child"
 			src="http://192.168.0.157:3000?id=${sessionScope.loginUser.userId}"
 			style="width: 500px; height: 400px; border: 0px;"> </iframe>
