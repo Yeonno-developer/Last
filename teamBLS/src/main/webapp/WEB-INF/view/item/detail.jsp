@@ -17,6 +17,9 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
 <style>
+.item-topinfo{
+    margin-left: -12px;
+}
 table#scro {
 	width: 100%;
 	table-layout: fixed;
